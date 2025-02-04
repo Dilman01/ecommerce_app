@@ -1,10 +1,13 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref {
-  SharedPref._internal();
-  static final SharedPref _instance = SharedPref._internal();
+  factory SharedPref() {
+    return _instance;
+  }
 
-  static SharedPref get instance => _instance;
+  SharedPref._();
+
+  static final SharedPref _instance = SharedPref._();
 
   static SharedPreferences? _sharedPreferences;
 
@@ -30,12 +33,12 @@ class SharedPref {
   String? getString(String key) => prefs.getString(key);
 
   /// Set boolean value.
-  Future<void> setBoolean(String key, bool value) async {
+  Future<void> setBool(String key, bool value) async {
     await prefs.setBool(key, value);
   }
 
   /// Get boolean value.
-  bool? getBoolean(String key) => prefs.getBool(key);
+  bool? getBool(String key) => prefs.getBool(key);
 
   /// Set double value.
   Future<void> setDouble(String key, double value) async {
