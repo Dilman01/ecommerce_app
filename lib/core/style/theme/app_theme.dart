@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/core/style/colors/app_colors.dart';
+import 'package:ecommerce_app/core/style/images/app_images.dart';
 import 'package:ecommerce_app/core/style/theme/app_typography.dart';
+import 'package:ecommerce_app/core/style/theme/assets_extension.dart';
 import 'package:ecommerce_app/core/style/theme/color_extension.dart';
 import 'package:ecommerce_app/core/style/theme/text_extension.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +12,7 @@ abstract class AppTheme {
     extensions: [
       _lightAppColors,
       _lightTextTheme,
+      _lightAssets,
     ],
   );
 
@@ -18,6 +21,7 @@ abstract class AppTheme {
     extensions: [
       _darkAppColors,
       _darkTextTheme,
+      _darkAssets,
     ],
   );
 
@@ -71,6 +75,8 @@ abstract class AppTheme {
     navIconBorderColor: AppColors.grey150Light,
     buttonBgColor: AppColors.black,
     favButtonBgColor: AppColors.black,
+    arrowColor: AppColors.black,
+    buttonTextColor: AppColors.black,
     cyan: AppColors.cyan,
     cyan50: AppColors.cyan50Light,
     black: AppColors.black,
@@ -95,6 +101,8 @@ abstract class AppTheme {
     navIconBorderColor: AppColors.grey150Light,
     buttonBgColor: AppColors.cyan,
     favButtonBgColor: AppColors.white,
+    arrowColor: AppColors.white,
+    buttonTextColor: AppColors.cyan,
     cyan: AppColors.cyan,
     cyan50: AppColors.cyan50Dark,
     black: AppColors.black,
@@ -111,5 +119,15 @@ abstract class AppTheme {
     merigold: AppColors.merigold,
     brown: AppColors.brown,
     pink: AppColors.pink,
+  );
+
+  static const MyAssets _lightAssets = MyAssets(
+    appIcon: AppImages.quickMartIconLight,
+    arrowBack: AppImages.arrowBackLight,
+  );
+
+  static const MyAssets _darkAssets = MyAssets(
+    appIcon: AppImages.quickMartIconDark,
+    arrowBack: AppImages.arrowBackDark,
   );
 }
