@@ -1,11 +1,11 @@
-import 'package:ecommerce_app/core/common/screens/splash/splash_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/common/screens/onboarding/onboarding_screen.dart';
+import 'package:ecommerce_app/core/common/screens/splash/splash_screen.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
 import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
-import 'package:ecommerce_app/test_screen.dart';
+import 'package:ecommerce_app/features/auth/presentation/screens/signup_screen.dart';
 
 GoRouter router() {
   return GoRouter(
@@ -18,7 +18,7 @@ GoRouter router() {
       }
 
       if (isOnBoardingDone) {
-        return state.namedLocation(RouteNames.test);
+        return state.namedLocation(RouteNames.signup);
       }
 
       return null;
@@ -34,9 +34,9 @@ GoRouter router() {
         builder: (context, state) => OnBoardingScreen(),
       ),
       GoRoute(
-        path: '/test',
-        name: RouteNames.test,
-        builder: (context, state) => TestScreen(),
+        path: '/signup',
+        name: RouteNames.signup,
+        builder: (context, state) => SignupScreen(),
       ),
     ],
   );

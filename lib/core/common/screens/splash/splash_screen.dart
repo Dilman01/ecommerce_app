@@ -1,7 +1,8 @@
-import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});

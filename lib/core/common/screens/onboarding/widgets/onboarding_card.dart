@@ -1,15 +1,14 @@
-import 'package:ecommerce_app/core/routes/route_names.dart';
-import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
-import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
+import 'package:ecommerce_app/core/routes/route_names.dart';
+import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
+import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
 import 'package:ecommerce_app/core/style/images/app_images.dart';
-import 'package:go_router/go_router.dart';
 
 class OnBoardingCard extends StatelessWidget {
   const OnBoardingCard({
@@ -138,7 +137,7 @@ class OnBoardingCard extends StatelessWidget {
                   onPressed: () {
                     SharedPref().setBool(PrefKeys.onBoardingDone, true);
 
-                    context.pushReplacementNamed(RouteNames.test);
+                    // context.pushNamed(RouteNames.test);
                   },
                   title: 'Login',
                   backgroundColor: context.appColors.backgroundColor,
@@ -150,7 +149,7 @@ class OnBoardingCard extends StatelessWidget {
                   onPressed: () {
                     SharedPref().setBool(PrefKeys.onBoardingDone, true);
 
-                    context.pushReplacementNamed(RouteNames.test);
+                    context.pushNamed(RouteNames.signup);
                   },
                   title: 'Get Started',
                   size: Size(160.w, 60.h),

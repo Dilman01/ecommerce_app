@@ -1,13 +1,19 @@
+import 'package:flutter/material.dart';
+
 import 'package:ecommerce_app/core/style/colors/app_colors.dart';
 import 'package:ecommerce_app/core/style/images/app_images.dart';
 import 'package:ecommerce_app/core/style/theme/app_typography.dart';
 import 'package:ecommerce_app/core/style/theme/assets_extension.dart';
 import 'package:ecommerce_app/core/style/theme/color_extension.dart';
 import 'package:ecommerce_app/core/style/theme/text_extension.dart';
-import 'package:flutter/material.dart';
 
 abstract class AppTheme {
   static final light = ThemeData.light().copyWith(
+    appBarTheme: AppBarTheme(
+      elevation: 0,
+      backgroundColor: AppColors.white,
+      scrolledUnderElevation: 0,
+    ),
     scaffoldBackgroundColor: AppColors.white,
     extensions: [
       _lightAppColors,
@@ -17,6 +23,11 @@ abstract class AppTheme {
   );
 
   static final dark = ThemeData.dark().copyWith(
+    appBarTheme: AppBarTheme(
+      elevation: 0,
+      backgroundColor: AppColors.black,
+      scrolledUnderElevation: 0,
+    ),
     scaffoldBackgroundColor: AppColors.black,
     extensions: [
       _darkAppColors,
