@@ -1,3 +1,6 @@
+import 'package:ecommerce_app/core/routes/route_names.dart';
+import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
+import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/style/images/app_images.dart';
+import 'package:go_router/go_router.dart';
 
 class OnBoardingCard extends StatelessWidget {
   const OnBoardingCard({
@@ -76,7 +80,15 @@ class OnBoardingCard extends StatelessWidget {
                       ),
                     if (!isLastPage)
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          pageController.animateToPage(
+                            2,
+                            duration: const Duration(
+                              milliseconds: 500,
+                            ),
+                            curve: Curves.linearToEaseOut,
+                          );
+                        },
                         child: Text(
                           'Skip for now',
                           style: context.appTextTheme.body2Medium.copyWith(
@@ -123,7 +135,11 @@ class OnBoardingCard extends StatelessWidget {
               spacing: 8.w,
               children: [
                 CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    SharedPref().setBool(PrefKeys.onBoardingDone, true);
+
+                    context.pushReplacementNamed(RouteNames.test);
+                  },
                   title: 'Login',
                   backgroundColor: context.appColors.backgroundColor,
                   textButtonColor: context.appColors.buttonTextColor,
@@ -131,7 +147,11 @@ class OnBoardingCard extends StatelessWidget {
                   size: Size(160.w, 60.h),
                 ),
                 CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    SharedPref().setBool(PrefKeys.onBoardingDone, true);
+
+                    context.pushReplacementNamed(RouteNames.test);
+                  },
                   title: 'Get Started',
                   size: Size(160.w, 60.h),
                   icon: SvgPicture.asset(
