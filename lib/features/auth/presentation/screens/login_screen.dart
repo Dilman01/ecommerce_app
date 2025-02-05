@@ -1,14 +1,13 @@
+import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
+import 'package:ecommerce_app/features/auth/presentation/widgets/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'package:ecommerce_app/core/extensions/context_extensions.dart';
-import 'package:ecommerce_app/features/auth/presentation/widgets/signup_form.dart';
 import 'package:go_router/go_router.dart';
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class SignupScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Signup',
+                'Login',
                 style: context.appTextTheme.heading2Bold,
               ),
               SizedBox(
@@ -35,15 +34,15 @@ class SignupScreen extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Already have an account?',
+                    'Don\'t have an account?',
                     style: context.appTextTheme.body2Regular,
                   ),
                   InkWell(
                     onTap: () {
-                      context.pushReplacementNamed(RouteNames.login);
+                      context.pushReplacementNamed(RouteNames.signup);
                     },
                     child: Text(
-                      ' Login ',
+                      ' Signup ',
                       style: context.appTextTheme.body2Regular.copyWith(
                         color: context.appColors.cyan,
                       ),
@@ -54,7 +53,7 @@ class SignupScreen extends StatelessWidget {
               SizedBox(
                 height: 32.h,
               ),
-              SignupForm(),
+              LoginForm(),
               SizedBox(
                 height: 32.h,
               ),

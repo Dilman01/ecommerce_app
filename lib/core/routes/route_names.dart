@@ -3,4 +3,5 @@ class RouteNames {
 
   static const onBoarding = 'onboarding';
   static const signup = 'signup';
+  static const login = 'login';
 }

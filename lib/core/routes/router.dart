@@ -5,19 +5,24 @@ import 'package:ecommerce_app/core/common/screens/splash/splash_screen.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
 import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
+import 'package:ecommerce_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/signup_screen.dart';
 
 GoRouter router() {
   return GoRouter(
     initialLocation: '/',
-    redirect: (context, state) async {
+    redirect: (context, state) {
       final isOnBoardingDone = SharedPref().getBool(PrefKeys.onBoardingDone) ?? false;
 
       if (!isOnBoardingDone) {
         return state.namedLocation(RouteNames.onBoarding);
       }
 
-      if (isOnBoardingDone) {
+      if (state.matchedLocation == '/login') {
+        return state.namedLocation(RouteNames.login);
+      } else if (state.matchedLocation == '/signup') {
+        return state.namedLocation(RouteNames.signup);
+      } else if (isOnBoardingDone) {
         return state.namedLocation(RouteNames.signup);
       }
 
@@ -37,6 +42,11 @@ GoRouter router() {
         path: '/signup',
         name: RouteNames.signup,
         builder: (context, state) => SignupScreen(),
+      ),
+      GoRoute(
+        path: '/login',
+        name: RouteNames.login,
+        builder: (context, state) => LoginScreen(),
       ),
     ],
   );
