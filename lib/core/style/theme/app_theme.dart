@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/core/style/colors/app_colors.dart';
+import 'package:ecommerce_app/core/style/theme/app_typography.dart';
 import 'package:ecommerce_app/core/style/theme/color_extension.dart';
+import 'package:ecommerce_app/core/style/theme/text_extension.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppTheme {
@@ -7,6 +9,7 @@ abstract class AppTheme {
     scaffoldBackgroundColor: AppColors.white,
     extensions: [
       _lightAppColors,
+      _lightTextTheme,
     ],
   );
 
@@ -14,7 +17,52 @@ abstract class AppTheme {
     scaffoldBackgroundColor: AppColors.black,
     extensions: [
       _darkAppColors,
+      _darkTextTheme,
     ],
+  );
+
+  static final _lightTextTheme = AppTextThemeExt(
+    heading1Bold: AppTypography.heading1Bold.copyWith(color: AppColors.black),
+    heading1SemiBold: AppTypography.heading1SemiBold.copyWith(color: AppColors.black),
+    heading1Regular: AppTypography.heading1Regular.copyWith(color: AppColors.black),
+    heading2Bold: AppTypography.heading2Bold.copyWith(color: AppColors.black),
+    heading2SemiBold: AppTypography.heading2SemiBold.copyWith(color: AppColors.black),
+    heading2Regular: AppTypography.heading2Regular.copyWith(color: AppColors.black),
+    heading3Bold: AppTypography.heading3Bold.copyWith(color: AppColors.black),
+    heading3SemiBold: AppTypography.heading3SemiBold.copyWith(color: AppColors.black),
+    heading3Regular: AppTypography.heading3Regular.copyWith(color: AppColors.black),
+    button1SemiBold: AppTypography.button1SemiBold.copyWith(color: AppColors.black),
+    button2SemiBold: AppTypography.button2SemiBold.copyWith(color: AppColors.black),
+    body1Medium: AppTypography.body1Medium.copyWith(color: AppColors.black),
+    body1Regular: AppTypography.body1Regular.copyWith(color: AppColors.black),
+    body2Medium: AppTypography.body2Medium.copyWith(color: AppColors.black),
+    body2Regular: AppTypography.body2Regular.copyWith(color: AppColors.black),
+    captionSemiBold: AppTypography.captionSemiBold.copyWith(color: AppColors.black),
+    captionRegular: AppTypography.captionRegular.copyWith(color: AppColors.black),
+    overlineSemiBold: AppTypography.overlineSemiBold.copyWith(color: AppColors.black),
+    overlineRegular: AppTypography.overlineRegular.copyWith(color: AppColors.black),
+  );
+
+  static final _darkTextTheme = AppTextThemeExt(
+    heading1Bold: AppTypography.heading1Bold.copyWith(color: AppColors.white),
+    heading1SemiBold: AppTypography.heading1SemiBold.copyWith(color: AppColors.white),
+    heading1Regular: AppTypography.heading1Regular.copyWith(color: AppColors.white),
+    heading2Bold: AppTypography.heading2Bold.copyWith(color: AppColors.white),
+    heading2SemiBold: AppTypography.heading2SemiBold.copyWith(color: AppColors.white),
+    heading2Regular: AppTypography.heading2Regular.copyWith(color: AppColors.white),
+    heading3Bold: AppTypography.heading3Bold.copyWith(color: AppColors.white),
+    heading3SemiBold: AppTypography.heading3SemiBold.copyWith(color: AppColors.white),
+    heading3Regular: AppTypography.heading3Regular.copyWith(color: AppColors.white),
+    button1SemiBold: AppTypography.button1SemiBold.copyWith(color: AppColors.white),
+    button2SemiBold: AppTypography.button2SemiBold.copyWith(color: AppColors.white),
+    body1Medium: AppTypography.body1Medium.copyWith(color: AppColors.white),
+    body1Regular: AppTypography.body1Regular.copyWith(color: AppColors.white),
+    body2Medium: AppTypography.body2Medium.copyWith(color: AppColors.white),
+    body2Regular: AppTypography.body2Regular.copyWith(color: AppColors.white),
+    captionSemiBold: AppTypography.captionSemiBold.copyWith(color: AppColors.white),
+    captionRegular: AppTypography.captionRegular.copyWith(color: AppColors.white),
+    overlineSemiBold: AppTypography.overlineSemiBold.copyWith(color: AppColors.white),
+    overlineRegular: AppTypography.overlineRegular.copyWith(color: AppColors.white),
   );
 
   static const _lightAppColors = MyColors(
