@@ -14,6 +14,23 @@ abstract class AppTheme {
       backgroundColor: AppColors.white,
       scrolledUnderElevation: 0,
     ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.white,
+      selectedItemColor: AppColors.cyan,
+      unselectedItemColor: AppColors.grey150Light,
+      enableFeedback: false,
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+      selectedIconTheme: IconThemeData(color: AppColors.cyan),
+      unselectedIconTheme: IconThemeData(color: AppColors.grey150Light),
+      unselectedLabelStyle: AppTypography.captionRegular.copyWith(
+        color: AppColors.grey150Light,
+      ),
+      selectedLabelStyle: AppTypography.captionSemiBold.copyWith(
+        color: AppColors.black,
+      ),
+      elevation: 0.5,
+    ),
     scaffoldBackgroundColor: AppColors.white,
     extensions: [_lightAppColors, _lightTextTheme, _lightAssets],
   );
@@ -23,6 +40,23 @@ abstract class AppTheme {
       elevation: 0,
       backgroundColor: AppColors.black,
       scrolledUnderElevation: 0,
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.black,
+      selectedItemColor: AppColors.cyan,
+      unselectedItemColor: AppColors.grey150Dark,
+      enableFeedback: false,
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
+      selectedIconTheme: IconThemeData(color: AppColors.cyan),
+      unselectedIconTheme: IconThemeData(color: AppColors.grey150Light),
+      unselectedLabelStyle: AppTypography.captionRegular.copyWith(
+        color: AppColors.grey150Light,
+      ),
+      selectedLabelStyle: AppTypography.captionSemiBold.copyWith(
+        color: AppColors.white,
+      ),
+      elevation: 0.5,
     ),
     scaffoldBackgroundColor: AppColors.black,
     extensions: [_darkAppColors, _darkTextTheme, _darkAssets],
