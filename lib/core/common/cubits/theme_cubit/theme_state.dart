@@ -6,9 +6,7 @@ sealed class ThemeState extends Equatable {
   const ThemeState(this.themeMode);
 
   @override
-  List<Object> get props => [
-        themeMode
-      ];
+  List<Object> get props => [themeMode];
 }
 
 final class ThemeInitial extends ThemeState {

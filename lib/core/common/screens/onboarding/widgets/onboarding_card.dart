@@ -58,33 +58,24 @@ class OnBoardingCard extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    if (isFirstPage)
-                      SvgPicture.asset(
-                        context.assets.appIcon,
-                      ),
+                    if (isFirstPage) SvgPicture.asset(context.assets.appIcon),
                     if (!isFirstPage)
                       GestureDetector(
                         onTap: () {
                           pageController.animateToPage(
                             index - 1,
-                            duration: const Duration(
-                              milliseconds: 500,
-                            ),
+                            duration: const Duration(milliseconds: 500),
                             curve: Curves.linear,
                           );
                         },
-                        child: SvgPicture.asset(
-                          context.assets.arrowBack,
-                        ),
+                        child: SvgPicture.asset(context.assets.arrowBack),
                       ),
                     if (!isLastPage)
                       InkWell(
                         onTap: () {
                           pageController.animateToPage(
                             2,
-                            duration: const Duration(
-                              milliseconds: 500,
-                            ),
+                            duration: const Duration(milliseconds: 500),
                             curve: Curves.linearToEaseOut,
                           );
                         },
@@ -121,9 +112,7 @@ class OnBoardingCard extends StatelessWidget {
               onPressed: () {
                 pageController.animateToPage(
                   index + 1,
-                  duration: const Duration(
-                    milliseconds: 500,
-                  ),
+                  duration: const Duration(milliseconds: 500),
                   curve: Curves.linear,
                 );
               },

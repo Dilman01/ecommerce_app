@@ -89,7 +89,10 @@ class AppTextThemeExt extends ThemeExtension<AppTextThemeExt> {
   }
 
   @override
-  ThemeExtension<AppTextThemeExt> lerp(covariant ThemeExtension<AppTextThemeExt>? other, double t) {
+  ThemeExtension<AppTextThemeExt> lerp(
+    covariant ThemeExtension<AppTextThemeExt>? other,
+    double t,
+  ) {
     return AppTextThemeExt(
       heading1Bold: heading1Bold,
       heading1SemiBold: heading1SemiBold,

@@ -38,10 +38,7 @@ class CustomTextFormField extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(
-              title,
-              style: context.appTextTheme.body2Medium,
-            ),
+            Text(title, style: context.appTextTheme.body2Medium),
             Text(
               '*',
               style: context.appTextTheme.body2Medium.copyWith(
@@ -78,9 +75,7 @@ class CustomTextFormField extends StatelessWidget {
   OutlineInputBorder _border(Color color) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(12).r,
-      borderSide: BorderSide(
-        color: color,
-      ),
+      borderSide: BorderSide(color: color),
     );
   }
 }

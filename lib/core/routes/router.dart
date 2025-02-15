@@ -12,7 +12,8 @@ GoRouter router() {
   return GoRouter(
     initialLocation: '/',
     redirect: (context, state) {
-      final isOnBoardingDone = SharedPref().getBool(PrefKeys.onBoardingDone) ?? false;
+      final isOnBoardingDone =
+          SharedPref().getBool(PrefKeys.onBoardingDone) ?? false;
 
       if (!isOnBoardingDone) {
         return state.namedLocation(RouteNames.onBoarding);
@@ -29,10 +30,7 @@ GoRouter router() {
       return null;
     },
     routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) => SplashScreen(),
-      ),
+      GoRoute(path: '/', builder: (context, state) => SplashScreen()),
       GoRoute(
         path: '/onboarding',
         name: RouteNames.onBoarding,

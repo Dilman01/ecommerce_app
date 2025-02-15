@@ -105,7 +105,10 @@ class MyColors extends ThemeExtension<MyColors> {
   }
 
   @override
-  ThemeExtension<MyColors> lerp(covariant ThemeExtension<MyColors>? other, double t) {
+  ThemeExtension<MyColors> lerp(
+    covariant ThemeExtension<MyColors>? other,
+    double t,
+  ) {
     return MyColors(
       primaryColor: primaryColor,
       backgroundColor: backgroundColor,

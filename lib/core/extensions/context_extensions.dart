@@ -8,5 +8,6 @@ extension ContextExt on BuildContext {
 
   MyAssets get assets => Theme.of(this).extension<MyAssets>()!;
 
-  AppTextThemeExt get appTextTheme => Theme.of(this).extension<AppTextThemeExt>()!;
+  AppTextThemeExt get appTextTheme =>
+      Theme.of(this).extension<AppTextThemeExt>()!;
 }

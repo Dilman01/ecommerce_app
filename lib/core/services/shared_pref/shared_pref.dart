@@ -19,7 +19,9 @@ class SharedPref {
   /// Get SharedPreferences instance safely.
   SharedPreferences get prefs {
     if (_sharedPreferences == null) {
-      throw Exception("SharedPreferences is not initialized. Call init() first.");
+      throw Exception(
+        "SharedPreferences is not initialized. Call init() first.",
+      );
     }
     return _sharedPreferences!;
   }

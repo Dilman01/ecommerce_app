@@ -30,12 +30,10 @@ class CustomButton extends StatelessWidget {
         fixedSize: size ?? Size(328.w, 60.h),
         backgroundColor: backgroundColor ?? context.appColors.buttonBgColor,
         elevation: 0,
-        side: hasBorder
-            ? BorderSide(
-                color: context.appColors.grey50,
-                width: 1,
-              )
-            : null,
+        side:
+            hasBorder
+                ? BorderSide(color: context.appColors.grey50, width: 1)
+                : null,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12).r,
         ),
@@ -50,7 +48,7 @@ class CustomButton extends StatelessWidget {
               color: textButtonColor ?? context.appColors.white,
             ),
           ),
-          if (icon != null) icon!
+          if (icon != null) icon!,
         ],
       ),
     );

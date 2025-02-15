@@ -43,7 +43,9 @@ class _SignupFormState extends State<SignupForm> {
             keyboardType: TextInputType.name,
             textCapitalization: TextCapitalization.words,
             validator: (value) {
-              if (value == null || value.trim().length < 3 || value.trim().isEmpty) {
+              if (value == null ||
+                  value.trim().length < 3 ||
+                  value.trim().isEmpty) {
                 return 'Name must be at lease 3 characters.';
               }
 
@@ -56,7 +58,9 @@ class _SignupFormState extends State<SignupForm> {
             hintText: 'Enter your email',
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
-              if (value == null || !value.contains('@') || value.trim().isEmpty) {
+              if (value == null ||
+                  !value.contains('@') ||
+                  value.trim().isEmpty) {
                 return 'Invalid email.';
               }
 
@@ -86,9 +90,7 @@ class _SignupFormState extends State<SignupForm> {
               return null;
             },
           ),
-          SizedBox(
-            height: 8.h,
-          ),
+          SizedBox(height: 8.h),
           CustomButton(
             onPressed: () {
               _formKey.currentState!.validate();

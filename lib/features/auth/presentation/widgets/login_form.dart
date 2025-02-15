@@ -39,7 +39,9 @@ class _LoginFormState extends State<LoginForm> {
             hintText: 'Enter your email',
             keyboardType: TextInputType.emailAddress,
             validator: (value) {
-              if (value == null || !value.contains('@') || value.trim().isEmpty) {
+              if (value == null ||
+                  !value.contains('@') ||
+                  value.trim().isEmpty) {
                 return 'Invalid email.';
               }
 
@@ -69,9 +71,7 @@ class _LoginFormState extends State<LoginForm> {
               return null;
             },
           ),
-          SizedBox(
-            height: 8.h,
-          ),
+          SizedBox(height: 8.h),
           CustomButton(
             onPressed: () {
               _formKey.currentState!.validate();

@@ -13,9 +13,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: SvgPicture.asset(
-          context.assets.appIcon,
-        ),
+        title: SvgPicture.asset(context.assets.appIcon),
         centerTitle: false,
       ),
       body: Padding(
@@ -24,13 +22,8 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Login',
-                style: context.appTextTheme.heading2Bold,
-              ),
-              SizedBox(
-                height: 8.h,
-              ),
+              Text('Login', style: context.appTextTheme.heading2Bold),
+              SizedBox(height: 8.h),
               Row(
                 children: [
                   Text(
@@ -50,13 +43,9 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                height: 32.h,
-              ),
+              SizedBox(height: 32.h),
               LoginForm(),
-              SizedBox(
-                height: 32.h,
-              ),
+              SizedBox(height: 32.h),
             ],
           ),
         ),
