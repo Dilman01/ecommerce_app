@@ -21,8 +21,8 @@ class EcommerceApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               darkTheme: AppTheme.dark,
               theme: AppTheme.light,
-              themeMode: state.themeMode,
-              routerConfig: router(),
+              themeMode: ThemeMode.dark,
+              routerConfig: AppRouter().router,
             );
           },
         ),

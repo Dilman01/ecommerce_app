@@ -15,43 +15,49 @@ import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/signup_screen.dart';
 
-final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
-final GlobalKey<NavigatorState> _homeNavigatorKey = GlobalKey<NavigatorState>();
-final GlobalKey<NavigatorState> _categoriesNavigatorKey =
-    GlobalKey<NavigatorState>();
-final GlobalKey<NavigatorState> _cartNavigatorKey = GlobalKey<NavigatorState>();
-final GlobalKey<NavigatorState> _wishlistNavigatorKey =
-    GlobalKey<NavigatorState>();
-final GlobalKey<NavigatorState> _profilerootNavigatorKey =
-    GlobalKey<NavigatorState>();
+final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
+final _homeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'homeShell');
+final _categoriesNavigatorKey = GlobalKey<NavigatorState>(
+  debugLabel: 'categoriesShell',
+);
+final _cartNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'cartShell');
+final _wishlistNavigatorKey = GlobalKey<NavigatorState>(
+  debugLabel: 'wishlistShell',
+);
+final _profilerootNavigatorKey = GlobalKey<NavigatorState>(
+  debugLabel: 'profileShell',
+);
 
-GoRouter router() {
-  return GoRouter(
+class AppRouter {
+  static final GoRouter _router = GoRouter(
     navigatorKey: _rootNavigatorKey,
+    debugLogDiagnostics: true,
+
     initialLocation: '/home',
-    redirect: (context, state) {
-      // final isOnBoardingDone =
-      //     SharedPref().getBool(PrefKeys.onBoardingDone) ?? false;
+    // redirect: (context, state) {
+    //   final isOnBoardingDone =
+    //       SharedPref().getBool(PrefKeys.onBoardingDone) ?? false;
 
-      // if (!isOnBoardingDone) {
-      //   return state.namedLocation(RouteNames.onBoarding);
-      // }
+    //   if (!isOnBoardingDone) {
+    //     return state.namedLocation(RouteNames.onBoarding);
+    //   }
 
-      // if (state.matchedLocation == '/login') {
-      //   return state.namedLocation(RouteNames.login);
-      // } else if (state.matchedLocation == '/signup') {
-      //   return state.namedLocation(RouteNames.signup);
-      // } else if (isOnBoardingDone) {
-      //   return state.namedLocation(RouteNames.signup);
-      // }
+    //   if (state.matchedLocation == '/login') {
+    //     return state.namedLocation(RouteNames.login);
+    //   } else if (state.matchedLocation == '/signup') {
+    //     return state.namedLocation(RouteNames.signup);
+    //   } else if (isOnBoardingDone) {
+    //     return state.namedLocation(RouteNames.signup);
+    //   }
 
-      // return null;
-    },
+    //   return null;
+    // },
     routes: [
       StatefulShellRoute.indexedStack(
         builder:
             (context, state, navigationShell) =>
                 MainScreen(navigationShell: navigationShell),
+
         branches: [
           StatefulShellBranch(
             navigatorKey: _homeNavigatorKey,
@@ -95,6 +101,7 @@ GoRouter router() {
           ),
           StatefulShellBranch(
             navigatorKey: _profilerootNavigatorKey,
+
             routes: [
               GoRoute(
                 path: '/profile',
@@ -125,4 +132,6 @@ GoRouter router() {
       ),
     ],
   );
+
+  GoRouter get router => _router;
 }
