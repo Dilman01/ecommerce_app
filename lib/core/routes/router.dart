@@ -1,20 +1,20 @@
-import 'package:ecommerce_app/features/customer/cart/presentation/screens/cart_screen.dart';
-import 'package:ecommerce_app/features/customer/category/presentation/screens/categories_screen.dart';
-import 'package:ecommerce_app/features/customer/category/presentation/screens/category_screen.dart';
-import 'package:ecommerce_app/features/customer/home/presentation/screens/home_screen.dart';
-import 'package:ecommerce_app/features/customer/main/presentation/screens/main_screen.dart';
-import 'package:ecommerce_app/features/customer/profile/presentation/screens/profile_screen.dart';
-import 'package:ecommerce_app/features/customer/wishlist/presentation/screens/wishlist_screen.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/common/screens/onboarding/onboarding_screen.dart';
+import 'package:ecommerce_app/core/common/screens/products_list_screen.dart';
 import 'package:ecommerce_app/core/common/screens/splash/splash_screen.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
 import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/signup_screen.dart';
+import 'package:ecommerce_app/features/customer/cart/presentation/screens/cart_screen.dart';
+import 'package:ecommerce_app/features/customer/category/presentation/screens/categories_screen.dart';
+import 'package:ecommerce_app/features/customer/home/presentation/screens/home_screen.dart';
+import 'package:ecommerce_app/features/customer/main/presentation/screens/main_screen.dart';
+import 'package:ecommerce_app/features/customer/profile/presentation/screens/profile_screen.dart';
+import 'package:ecommerce_app/features/customer/wishlist/presentation/screens/wishlist_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 final _homeNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'homeShell');
@@ -58,7 +58,6 @@ class AppRouter {
         builder:
             (context, state, navigationShell) =>
                 MainScreen(navigationShell: navigationShell),
-
         branches: [
           StatefulShellBranch(
             navigatorKey: _homeNavigatorKey,
@@ -113,9 +112,7 @@ class AppRouter {
           ),
         ],
       ),
-
       GoRoute(path: '/', builder: (context, state) => SplashScreen()),
-
       GoRoute(
         path: '/onboarding',
         name: RouteNames.onBoarding,
@@ -131,11 +128,14 @@ class AppRouter {
         name: RouteNames.login,
         builder: (context, state) => LoginScreen(),
       ),
-
       GoRoute(
-        path: '/category',
-        name: RouteNames.category,
-        builder: (context, state) => CategoryScreen(),
+        path: '/products-list/:title',
+        name: RouteNames.productsList,
+        builder: (context, state) {
+          final title = state.pathParameters['title'] ?? 'Items';
+
+          return ProductsListScreen(title: title);
+        },
       ),
     ],
   );

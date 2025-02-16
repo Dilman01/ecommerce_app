@@ -32,23 +32,7 @@ class OrderInfo extends StatelessWidget {
             ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Subtotal',
-              style: context.appTextTheme.captionRegular.copyWith(
-                color: context.appColors.grey150,
-              ),
-            ),
-            Text(
-              '\$27.25',
-              style: context.appTextTheme.captionRegular.copyWith(
-                color: context.appColors.grey150,
-              ),
-            ),
-          ],
-        ),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -70,7 +54,7 @@ class OrderInfo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Totoal', style: context.appTextTheme.body1Medium),
-            Text('\$54.50', style: context.appTextTheme.body1Medium),
+            Text('\$27.25', style: context.appTextTheme.body1Medium),
           ],
         ),
         SizedBox(height: 8.h),

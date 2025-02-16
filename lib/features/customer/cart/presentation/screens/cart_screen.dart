@@ -15,15 +15,15 @@ class CartScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Stack(
           fit: StackFit.expand,
           children: [
             FractionallySizedBox(
-              heightFactor: 0.6,
+              heightFactor: 0.62,
               alignment: Alignment.topCenter,
               child: ListView.separated(
-                itemCount: 5,
+                itemCount: 2,
                 separatorBuilder: (context, index) => SizedBox(height: 16.h),
                 itemBuilder: (context, index) {
                   return CartItem();
@@ -31,7 +31,7 @@ class CartScreen extends StatelessWidget {
               ),
             ),
             FractionallySizedBox(
-              heightFactor: 0.4,
+              heightFactor: 0.38,
               alignment: Alignment.bottomCenter,
               child: OrderInfo(),
             ),

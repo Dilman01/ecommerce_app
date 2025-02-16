@@ -26,7 +26,10 @@ class CategoriesScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              context.pushNamed(RouteNames.category);
+              context.pushNamed(
+                RouteNames.productsList,
+                pathParameters: {'title': 'Electronics'},
+              );
             },
             borderRadius: BorderRadius.circular(16).r,
             child: Container(

@@ -33,7 +33,15 @@ class HomeScreen extends StatelessWidget {
                     title: 'Categories',
                   ),
                   CategoriesList(),
-                  SectionHeader(onTap: () {}, title: 'Lates Products'),
+                  SectionHeader(
+                    onTap: () {
+                      context.pushNamed(
+                        RouteNames.productsList,
+                        pathParameters: {'title': 'Lates Products'},
+                      );
+                    },
+                    title: 'Lates Products',
+                  ),
                   LatestProductsList(),
                 ],
               ),

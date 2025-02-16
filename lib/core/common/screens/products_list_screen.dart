@@ -3,14 +3,16 @@ import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+class ProductsListScreen extends StatelessWidget {
+  const ProductsListScreen({super.key, required this.title});
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Electronics', style: context.appTextTheme.body2Medium),
+        title: Text(title, style: context.appTextTheme.body2Medium),
       ),
       body: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

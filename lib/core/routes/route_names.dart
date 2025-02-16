@@ -11,5 +11,5 @@ class RouteNames {
   static const profile = 'profile';
   static const search = 'search';
   static const productDetails = 'productDetails';
-  static const category = 'category';
+  static const productsList = 'productsList';
 }
