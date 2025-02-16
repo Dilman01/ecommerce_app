@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                   CarouselWidget(),
                   SectionHeader(
                     onTap: () {
-                      context.goNamed(RouteNames.category);
+                      context.goNamed(RouteNames.categories);
                     },
                     title: 'Categories',
                   ),

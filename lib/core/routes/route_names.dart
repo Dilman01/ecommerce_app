@@ -5,10 +5,11 @@ class RouteNames {
   static const signup = 'signup';
   static const login = 'login';
   static const home = 'home';
-  static const category = 'category';
+  static const categories = 'categories';
   static const cart = 'cart';
   static const wishlist = 'wishlist';
   static const profile = 'profile';
   static const search = 'search';
   static const productDetails = 'productDetails';
+  static const category = 'category';
 }

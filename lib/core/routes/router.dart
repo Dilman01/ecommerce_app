@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/features/customer/cart/presentation/screens/cart_screen.dart';
 import 'package:ecommerce_app/features/customer/category/presentation/screens/categories_screen.dart';
+import 'package:ecommerce_app/features/customer/category/presentation/screens/category_screen.dart';
 import 'package:ecommerce_app/features/customer/home/presentation/screens/home_screen.dart';
 import 'package:ecommerce_app/features/customer/main/presentation/screens/main_screen.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/screens/profile_screen.dart';
@@ -74,7 +75,7 @@ class AppRouter {
             routes: [
               GoRoute(
                 path: '/categories',
-                name: RouteNames.category,
+                name: RouteNames.categories,
                 builder: (context, state) => CategoriesScreen(),
               ),
             ],
@@ -129,6 +130,12 @@ class AppRouter {
         path: '/login',
         name: RouteNames.login,
         builder: (context, state) => LoginScreen(),
+      ),
+
+      GoRoute(
+        path: '/category',
+        name: RouteNames.category,
+        builder: (context, state) => CategoryScreen(),
       ),
     ],
   );

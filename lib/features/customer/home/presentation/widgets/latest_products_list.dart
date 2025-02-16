@@ -12,11 +12,9 @@ class LatestProductsList extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 12.h,
         crossAxisSpacing: 8.w,
-        // childAspectRatio: 2 / 3,
         childAspectRatio: 160 / 198,
       ),
       shrinkWrap: true,
-
       physics: NeverScrollableScrollPhysics(),
       itemCount: 10,
       itemBuilder: (context, index) {
