@@ -9,6 +9,7 @@ class MyColors extends ThemeExtension<MyColors> {
     required this.favButtonBgColor,
     required this.arrowColor,
     required this.buttonTextColor,
+    required this.dynamicWhiteOrBlack,
     required this.cyan,
     required this.cyan50,
     required this.black,
@@ -34,6 +35,7 @@ class MyColors extends ThemeExtension<MyColors> {
   final Color favButtonBgColor;
   final Color arrowColor;
   final Color buttonTextColor;
+  final Color dynamicWhiteOrBlack;
   final Color cyan;
   final Color cyan50;
   final Color black;
@@ -60,6 +62,7 @@ class MyColors extends ThemeExtension<MyColors> {
     Color? favButtonBgColor,
     Color? arrowColor,
     Color? buttonTextColor,
+    Color? dynamicWhiteOrBlack,
     Color? cyan,
     Color? cyan50,
     Color? black,
@@ -85,6 +88,7 @@ class MyColors extends ThemeExtension<MyColors> {
       favButtonBgColor: favButtonBgColor ?? this.favButtonBgColor,
       arrowColor: arrowColor ?? this.arrowColor,
       buttonTextColor: buttonBgColor ?? this.buttonBgColor,
+      dynamicWhiteOrBlack: dynamicWhiteOrBlack ?? this.dynamicWhiteOrBlack,
       cyan: cyan ?? this.cyan,
       cyan50: cyan50 ?? this.cyan50,
       black: black ?? this.black,
@@ -117,6 +121,7 @@ class MyColors extends ThemeExtension<MyColors> {
       favButtonBgColor: favButtonBgColor,
       arrowColor: arrowColor,
       buttonTextColor: buttonBgColor,
+      dynamicWhiteOrBlack: dynamicWhiteOrBlack,
       cyan: cyan,
       cyan50: cyan50,
       black: black,

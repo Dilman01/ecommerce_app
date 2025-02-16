@@ -29,4 +29,6 @@ class AppImages {
       'assets/icons/bottom_nav_icons/profile_icon_unselected.svg';
   static const profileIconSelected =
       'assets/icons/bottom_nav_icons/profile_icon_selected.svg';
+  static const searchIconLight = 'assets/icons/search_icon_light.svg';
+  static const searchIconDark = 'assets/icons/search_icon_dark.svg';
 }

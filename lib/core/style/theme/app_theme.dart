@@ -162,6 +162,7 @@ abstract class AppTheme {
     favButtonBgColor: AppColors.black,
     arrowColor: AppColors.black,
     buttonTextColor: AppColors.black,
+    dynamicWhiteOrBlack: AppColors.white,
     cyan: AppColors.cyan,
     cyan50: AppColors.cyan50Light,
     black: AppColors.black,
@@ -188,6 +189,7 @@ abstract class AppTheme {
     favButtonBgColor: AppColors.white,
     arrowColor: AppColors.white,
     buttonTextColor: AppColors.cyan,
+    dynamicWhiteOrBlack: AppColors.black,
     cyan: AppColors.cyan,
     cyan50: AppColors.cyan50Dark,
     black: AppColors.black,
@@ -209,10 +211,12 @@ abstract class AppTheme {
   static const MyAssets _lightAssets = MyAssets(
     appIcon: AppImages.quickMartIconLight,
     arrowBack: AppImages.arrowBackLight,
+    searchIcon: AppImages.searchIconLight,
   );
 
   static const MyAssets _darkAssets = MyAssets(
     appIcon: AppImages.quickMartIconDark,
     arrowBack: AppImages.arrowBackDark,
+    searchIcon: AppImages.searchIconDark,
   );
 }
