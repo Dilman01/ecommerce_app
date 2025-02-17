@@ -32,4 +32,14 @@ class AppImages {
   static const searchIconLight = 'assets/icons/search_icon_light.svg';
   static const searchIconDark = 'assets/icons/search_icon_dark.svg';
   static const deleteIcon = 'assets/icons/delete_icon.svg';
+  static const logoutIcon = 'assets/icons/profile/logout_icon.svg';
+  static const shippingIcon = 'assets/icons/profile/shipping_icon.svg';
+  static const paymentIcon = 'assets/icons/profile/payment_icon.svg';
+  static const orderHistoryIcon = 'assets/icons/profile/order_history_icon.svg';
+  static const privacyIcon = 'assets/icons/profile/privacy_icon.svg';
+  static const termsIcon = 'assets/icons/profile/terms_icon.svg';
+  static const faqsIcon = 'assets/icons/profile/faqs_icon.svg';
+  static const changePasswordIcon =
+      'assets/icons/profile/change_password_icon.svg';
+  static const themeIcon = 'assets/icons/profile/theme_icon.svg';
 }
