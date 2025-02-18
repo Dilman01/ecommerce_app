@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/customer/product_details/presentation/screens/product_details.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
 import 'package:go_router/go_router.dart';
 
@@ -135,6 +136,14 @@ class AppRouter {
           final title = state.pathParameters['title'] ?? 'Items';
 
           return ProductsListScreen(title: title);
+        },
+      ),
+
+      GoRoute(
+        path: '/product-details',
+        name: RouteNames.productDetails,
+        builder: (context, state) {
+          return ProductDetails();
         },
       ),
     ],
