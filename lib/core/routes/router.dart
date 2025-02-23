@@ -6,8 +6,8 @@ import 'package:ecommerce_app/core/common/screens/onboarding/onboarding_screen.d
 import 'package:ecommerce_app/core/common/screens/products_list_screen.dart';
 import 'package:ecommerce_app/core/common/screens/splash/splash_screen.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
-import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
-import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
+// import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
+// import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:ecommerce_app/features/customer/cart/presentation/screens/cart_screen.dart';
@@ -35,7 +35,7 @@ class AppRouter {
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
 
-    initialLocation: '/home',
+    initialLocation: '/onboarding',
     // redirect: (context, state) {
     //   final isOnBoardingDone =
     //       SharedPref().getBool(PrefKeys.onBoardingDone) ?? false;
