@@ -1,4 +1,7 @@
+import 'package:ecommerce_app/features/auth/data/model/signup_req_params.dart';
+import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
@@ -93,7 +96,20 @@ class _SignupFormState extends State<SignupForm> {
           SizedBox(height: 8.h),
           CustomButton(
             onPressed: () {
-              _formKey.currentState!.validate();
+              if (_formKey.currentState!.validate()) {
+                context.read<AuthBloc>().add(
+                  AuthSignUp(
+                    SignupReqParams(
+                      name: _nameController.text.trim(),
+                      email: _emailController.text.trim(),
+                      password: _passwordController.text.trim(),
+                      role: 'customer',
+                      avatar:
+                          'https://fifpro.org/media/5chb3dva/lionel-messi_imago1019567000h.jpg?rxy=0.32986930611281567,0.18704579979466449&rnd=133378758718600000',
+                    ),
+                  ),
+                );
+              }
             },
             title: 'Create Account',
           ),

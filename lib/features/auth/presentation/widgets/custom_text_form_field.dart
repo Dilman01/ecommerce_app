@@ -48,6 +48,7 @@ class CustomTextFormField extends StatelessWidget {
           ],
         ),
         TextFormField(
+          controller: controller,
           textCapitalization: textCapitalization,
           autovalidateMode: autovalidateMode,
           enableSuggestions: enableSuggestions,

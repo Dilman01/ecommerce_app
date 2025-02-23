@@ -1,3 +1,5 @@
+import 'package:ecommerce_app/core/di/init_dependencies.dart';
+import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +13,11 @@ class EcommerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ThemeCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => ThemeCubit()),
+        BlocProvider(create: (context) => AuthBloc(userSignup: sl())),
+      ],
       child: ScreenUtilInit(
         designSize: Size(360, 800),
         child: BlocBuilder<ThemeCubit, ThemeState>(
