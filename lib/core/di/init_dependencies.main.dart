@@ -18,5 +18,9 @@ Future<void> _initAuth() async {
     )
     ..registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()))
     ..registerLazySingleton(() => UserSignup(sl()))
-    ..registerLazySingleton(() => AuthBloc(userSignup: sl()));
+    ..registerLazySingleton(() => UserLogin(sl()))
+    ..registerLazySingleton(() => UserProfile(sl()))
+    ..registerLazySingleton(
+      () => AuthBloc(userSignup: sl(), userLogin: sl(), userProfile: sl()),
+    );
 }

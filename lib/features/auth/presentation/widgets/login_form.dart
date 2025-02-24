@@ -1,9 +1,11 @@
-import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
-import 'package:ecommerce_app/core/routes/route_names.dart';
-import 'package:ecommerce_app/features/auth/presentation/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
+
+import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
+import 'package:ecommerce_app/features/auth/data/model/login_req_params.dart';
+import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:ecommerce_app/features/auth/presentation/widgets/custom_text_form_field.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -76,8 +78,16 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(height: 8.h),
           CustomButton(
             onPressed: () {
-              // _formKey.currentState!.validate();
-              context.pushReplacementNamed(RouteNames.home);
+              if (_formKey.currentState!.validate()) {
+                context.read<AuthBloc>().add(
+                  AuthLogin(
+                    LoginReqParams(
+                      email: _emailController.text.trim(),
+                      password: _passwordController.text.trim(),
+                    ),
+                  ),
+                );
+              }
             },
             title: 'Login',
           ),

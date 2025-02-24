@@ -15,3 +15,12 @@ final class AuthSignUp extends AuthEvent {
   @override
   List<Object> get props => [signupReq];
 }
+
+final class AuthLogin extends AuthEvent {
+  final LoginReqParams loginReq;
+
+  const AuthLogin(this.loginReq);
+
+  @override
+  List<Object> get props => [loginReq];
+}
