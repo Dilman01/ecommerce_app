@@ -28,9 +28,11 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         data: signupReq.toJson(),
       );
 
+      Logger().f(response.data);
+
       return UserModel.fromJson(response.data);
-    } catch (e) {
-      throw ServerException(e.toString());
+    } on ServerException catch (e) {
+      throw ServerException(e.message);
     }
   }
 
@@ -43,9 +45,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       );
 
       return LoginResponse.fromJson(response.data);
-    } catch (e) {
-      Logger().e(e.toString());
-      throw ServerException(e.toString());
+    } on ServerException catch (e) {
+      throw ServerException(e.message);
     }
   }
 
@@ -58,10 +59,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       );
 
       return UserModel.fromJson(response.data);
-    } catch (e) {
-      Logger().e(e.toString());
-
-      throw ServerException(e.toString());
+    } on ServerException catch (e) {
+      throw ServerException(e.message);
     }
   }
 }

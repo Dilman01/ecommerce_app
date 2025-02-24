@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 
 import 'package:ecommerce_app/core/constants/api_constants.dart';
+import 'package:ecommerce_app/core/errors/exceptions.dart';
 import 'package:ecommerce_app/core/services/secure_storage/secure_storage.dart';
 import 'package:ecommerce_app/core/services/secure_storage/secure_storage_keys.dart';
 
@@ -20,36 +21,36 @@ class DioClient {
 
     _dio.interceptors.addAll([
       LoggerInterceptor(),
-      InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          final accessToken = await SecureStorage().read(
-            SecureStorageKeys.accessToken,
-          );
+      // InterceptorsWrapper(
+      //   onRequest: (options, handler) async {
+      //     final accessToken = await SecureStorage().read(
+      //       SecureStorageKeys.accessToken,
+      //     );
 
-          options.headers['Authorization'] = 'Bearer $accessToken';
+      //     options.headers['Authorization'] = 'Bearer $accessToken';
 
-          return handler.next(options);
-        },
-        onError: (error, handler) async {
-          if (error.response?.statusCode == 401) {
-            try {
-              await refreshAccessToken();
+      //     return handler.next(options);
+      //   },
+      //   onError: (error, handler) async {
+      //     if (error.response?.statusCode == 401) {
+      //       try {
+      //         await refreshAccessToken();
 
-              final accessToken = await SecureStorage().read(
-                SecureStorageKeys.accessToken,
-              );
+      //         final accessToken = await SecureStorage().read(
+      //           SecureStorageKeys.accessToken,
+      //         );
 
-              _dio.options.headers['Authorization'] = 'Bearer $accessToken';
+      //         _dio.options.headers['Authorization'] = 'Bearer $accessToken';
 
-              final retryResponse = await _dio.fetch(error.requestOptions);
+      //         final retryResponse = await _dio.fetch(error.requestOptions);
 
-              return handler.resolve(retryResponse);
-            } catch (e) {
-              return handler.next(error);
-            }
-          }
-        },
-      ),
+      //         return handler.resolve(retryResponse);
+      //       } catch (e) {
+      //         return handler.next(error);
+      //       }
+      //     }
+      //   },
+      // ),
     ]);
   }
 
@@ -80,9 +81,9 @@ class DioClient {
       );
 
       Logger().i('Refreshing the access token was successful ✅');
-    } on DioException {
+    } catch (e) {
       Logger().e('Refreshing the access token failed ❌');
-      rethrow;
+      throw ServerException('Something went wrong, please try again later!');
     }
   }
 
@@ -103,8 +104,8 @@ class DioClient {
         onReceiveProgress: onReceiveProgress,
       );
       return response;
-    } on DioException {
-      rethrow;
+    } catch (e) {
+      throw ServerException('Something went wrong, please try again later!');
     }
   }
 
@@ -127,7 +128,7 @@ class DioClient {
       );
       return response;
     } catch (e) {
-      rethrow;
+      throw ServerException('Something went wrong, please try again later!');
     }
   }
 
@@ -153,7 +154,7 @@ class DioClient {
       );
       return response;
     } catch (e) {
-      rethrow;
+      throw ServerException('Something went wrong, please try again later!');
     }
   }
 
@@ -175,7 +176,7 @@ class DioClient {
       );
       return response.data;
     } catch (e) {
-      rethrow;
+      throw ServerException('Something went wrong, please try again later!');
     }
   }
 }
