@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/common/toast/show_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -78,6 +79,7 @@ class _LoginFormState extends State<LoginForm> {
           SizedBox(height: 8.h),
           CustomButton(
             onPressed: () {
+              ShowToast.showToastSuccessTop(message: 'Logged in', seconds: 3);
               if (_formKey.currentState!.validate()) {
                 context.read<AuthBloc>().add(
                   AuthLogin(
