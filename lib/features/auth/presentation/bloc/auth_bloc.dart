@@ -50,11 +50,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       SecureStorageKeys.accessToken,
     );
     if (accessToken != null) {
-      emit(AuthLoggedIn());
+      // emit(AuthLoggedIn());
       final res = await _userProfile(accessToken);
 
       res.fold((l) => emit(AuthFailure(l.message)), (userData) {
         user = userData;
+        emit(AuthLoggedIn());
       });
     } else {
       emit(AuthLoggedOut());

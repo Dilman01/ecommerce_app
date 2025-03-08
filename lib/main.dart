@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/app_bloc_observer.dart';
+import 'package:ecommerce_app/core/common/app/app_bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

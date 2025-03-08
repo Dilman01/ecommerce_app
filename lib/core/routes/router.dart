@@ -43,7 +43,7 @@ class AppRouter {
 
       // Handle splash screen redirection
       if (currentLocation == '/') {
-        if (authState is AuthInitial) {
+        if (authState is AuthInitial || authState is AuthLoading) {
           // Let splash screen stay while checking auth
           return '/';
         }

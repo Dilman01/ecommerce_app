@@ -8,7 +8,14 @@ Future<void> initDependencies() async {
 }
 
 Future<void> _initCore() async {
-  sl.registerSingleton<DioClient>(DioClient());
+  sl
+    ..registerSingleton<DioClient>(DioClient())
+    ..registerLazySingleton(() => ThemeCubit())
+    ..registerLazySingleton(() => UploadImageCubit(sl()))
+    ..registerLazySingleton<UploadImageDataSource>(
+      () => UploadImageDataSourceImpl(sl()),
+    )
+    ..registerLazySingleton<UploadImageRepo>(() => UploadImageRepoImpl(sl()));
 }
 
 Future<void> _initAuth() async {

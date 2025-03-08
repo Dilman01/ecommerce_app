@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/common/app/upload_image/cubit/upload_image_cubit.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/features/auth/data/model/signup_req_params.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ecommerce_app/features/auth/presentation/widgets/custom_text_form_field.dart';
+import 'package:ecommerce_app/features/auth/presentation/widgets/user_avatar_image.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
@@ -61,6 +63,7 @@ class _SignupFormState extends State<SignupForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 16.h,
             children: [
+              UserAvatarImage(),
               CustomTextFormField(
                 controller: _nameController,
                 title: 'Full Name',
@@ -120,7 +123,15 @@ class _SignupFormState extends State<SignupForm> {
               SizedBox(height: 8.h),
               CustomButton(
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
+                  final imageCubit = context.read<UploadImageCubit>();
+                  if (!_formKey.currentState!.validate() ||
+                      imageCubit.getImageUrl.isEmpty) {
+                    if (imageCubit.getImageUrl.isEmpty) {
+                      ShowToast.showToastErrorTop(
+                        message: 'Please upload your avatar image.',
+                      );
+                    }
+                  } else {
                     context.read<AuthBloc>().add(
                       AuthSignUp(
                         SignupReqParams(
@@ -128,8 +139,7 @@ class _SignupFormState extends State<SignupForm> {
                           email: _emailController.text.trim(),
                           password: _passwordController.text.trim(),
                           role: 'customer',
-                          avatar:
-                              'https://fifpro.org/media/5chb3dva/lionel-messi_imago1019567000h.jpg?rxy=0.32986930611281567,0.18704579979466449&rnd=133378758718600000',
+                          avatar: imageCubit.getImageUrl,
                         ),
                       ),
                     );
