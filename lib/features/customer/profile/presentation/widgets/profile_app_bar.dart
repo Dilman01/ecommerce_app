@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
+import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/core/style/images/app_images.dart';
+import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
 
 class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   const ProfileAppBar({super.key});
@@ -61,7 +65,10 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
       actionsPadding: EdgeInsets.only(right: 16.w),
       actions: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            context.read<AuthBloc>().add(AuthLogout());
+            context.pushReplacementNamed(RouteNames.login);
+          },
           child: SvgPicture.asset(
             AppImages.logoutIcon,
             height: 32.h,

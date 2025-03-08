@@ -23,6 +23,7 @@ class EcommerceApp extends StatelessWidget {
                 userSignup: sl(),
                 userLogin: sl(),
                 userProfile: sl(),
+                userLogout: sl(),
               ),
         ),
       ],

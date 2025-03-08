@@ -10,4 +10,5 @@ abstract interface class AuthRepository {
   Future<Either<Failure, UserEntity>> signUpUser(SignupReqParams signupReq);
   Future<Either<Failure, LoginResponse>> loginUser(LoginReqParams loginReq);
   Future<Either<Failure, UserEntity>> userProfile(String token);
+  Future<Either<Failure, void>> logout();
 }

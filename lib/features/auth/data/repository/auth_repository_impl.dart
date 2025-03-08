@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/auth/data/data_source/auth_local_data_source.dart';
 import 'package:fpdart/fpdart.dart';
 
 import 'package:ecommerce_app/core/errors/exceptions.dart';
@@ -11,8 +12,9 @@ import 'package:ecommerce_app/features/auth/domain/repository/auth_repository.da
 
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource _remoteDataSource;
+  final AuthLocalDataSource _localDataSource;
 
-  const AuthRepositoryImpl(this._remoteDataSource);
+  const AuthRepositoryImpl(this._remoteDataSource, this._localDataSource);
 
   @override
   Future<Either<Failure, UserEntity>> signUpUser(
@@ -48,6 +50,17 @@ class AuthRepositoryImpl implements AuthRepository {
       return right(user);
     } on ServerException catch (e) {
       return left(Failure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> logout() async {
+    try {
+      await _localDataSource.logout();
+
+      return right(null);
+    } catch (e) {
+      return left(Failure('Failed to logout'));
     }
   }
 }

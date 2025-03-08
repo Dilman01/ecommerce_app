@@ -16,11 +16,22 @@ Future<void> _initAuth() async {
     ..registerLazySingleton<AuthRemoteDataSource>(
       () => AuthRemoteDataSourceImpl(sl()),
     )
-    ..registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()))
+    ..registerLazySingleton<AuthLocalDataSource>(
+      () => AuthLocalDataSourceImpl(),
+    )
+    ..registerLazySingleton<AuthRepository>(
+      () => AuthRepositoryImpl(sl(), sl()),
+    )
     ..registerLazySingleton(() => UserSignup(sl()))
     ..registerLazySingleton(() => UserLogin(sl()))
     ..registerLazySingleton(() => UserProfile(sl()))
+    ..registerLazySingleton(() => UserLogout(sl()))
     ..registerLazySingleton(
-      () => AuthBloc(userSignup: sl(), userLogin: sl(), userProfile: sl()),
+      () => AuthBloc(
+        userSignup: sl(),
+        userLogin: sl(),
+        userProfile: sl(),
+        userLogout: sl(),
+      ),
     );
 }

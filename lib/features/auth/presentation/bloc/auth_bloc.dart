@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -5,10 +7,12 @@ import 'package:ecommerce_app/core/services/secure_storage/secure_storage.dart';
 import 'package:ecommerce_app/core/services/secure_storage/secure_storage_keys.dart';
 import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
 import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
+import 'package:ecommerce_app/core/usecase/usecase.dart';
 import 'package:ecommerce_app/features/auth/data/model/login_req_params.dart';
 import 'package:ecommerce_app/features/auth/data/model/signup_req_params.dart';
 import 'package:ecommerce_app/features/auth/domain/entities/user.dart';
 import 'package:ecommerce_app/features/auth/domain/usecases/user_login.dart';
+import 'package:ecommerce_app/features/auth/domain/usecases/user_logout.dart';
 import 'package:ecommerce_app/features/auth/domain/usecases/user_profile.dart';
 import 'package:ecommerce_app/features/auth/domain/usecases/user_signup.dart';
 
@@ -19,18 +23,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final UserSignup _userSignup;
   final UserLogin _userLogin;
   final UserProfile _userProfile;
+  final UserLogout _userLogout;
 
   AuthBloc({
     required UserSignup userSignup,
     required UserLogin userLogin,
     required UserProfile userProfile,
+    required UserLogout userLogout,
   }) : _userSignup = userSignup,
        _userLogin = userLogin,
        _userProfile = userProfile,
+       _userLogout = userLogout,
        super(AuthInitial()) {
     on<AuthSignUp>(_onAuthSignUp);
     on<AuthLogin>(_onAuthLogin);
     on<AuthCheck>(_onAuthCheck);
+    on<AuthLogout>(_onAuthLogout);
   }
 
   Future<void> _onAuthCheck(AuthCheck event, Emitter<AuthState> emit) async {
@@ -78,5 +86,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthSuccess(user));
       });
     });
+  }
+
+  FutureOr<void> _onAuthLogout(
+    AuthLogout event,
+    Emitter<AuthState> emit,
+  ) async {
+    emit(AuthLoading());
+
+    await _userLogout(NoParams());
+
+    emit(AuthLoggedOut());
   }
 }

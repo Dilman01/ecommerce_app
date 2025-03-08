@@ -26,3 +26,5 @@ final class AuthLogin extends AuthEvent {
   @override
   List<Object> get props => [loginReq];
 }
+
+final class AuthLogout extends AuthEvent {}
