@@ -53,7 +53,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       // emit(AuthLoggedIn());
       final res = await _userProfile(accessToken);
 
-      res.fold((l) => emit(AuthFailure(l.message)), (userData) {
+      res.fold((l) => emit(AuthLoggedOut()), (userData) {
         user = userData;
         emit(AuthLoggedIn());
       });

@@ -1,4 +1,5 @@
-import 'package:ecommerce_app/features/customer/category/presentation/bloc/categories_bloc.dart';
+import 'package:ecommerce_app/features/customer/category/presentation/blocs/categories_bloc/categories_bloc.dart';
+import 'package:ecommerce_app/features/customer/category/presentation/blocs/get_products_by_category_bloc/get_products_by_category_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,6 +24,7 @@ class EcommerceApp extends StatelessWidget {
         BlocProvider(
           create: (context) => sl<CategoriesBloc>()..add(GetAllCategories()),
         ),
+        BlocProvider(create: (context) => sl<GetProductsByCategoryBloc>()),
       ],
       child: ScreenUtilInit(
         designSize: Size(360, 800),

@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
-import 'package:ecommerce_app/features/customer/category/presentation/bloc/categories_bloc.dart';
+import 'package:ecommerce_app/features/customer/category/presentation/blocs/categories_bloc/categories_bloc.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
@@ -23,9 +22,7 @@ class CategoriesScreen extends StatelessWidget {
         builder: (context, state) {
           if (state is CategoriesLoading) {
             return Center(
-              child: CircularProgressIndicator(
-                color: context.appColors.grey100,
-              ),
+              child: CircularProgressIndicator(color: context.appColors.cyan),
             );
           }
           if (state is CategoriesFailure) {
@@ -46,8 +43,11 @@ class CategoriesScreen extends StatelessWidget {
                 return InkWell(
                   onTap: () {
                     context.pushNamed(
-                      RouteNames.productsList,
-                      pathParameters: {'title': category.name ?? 'Unknown'},
+                      RouteNames.categoryProductsList,
+                      pathParameters: {
+                        'id': category.id.toString(),
+                        'title': category.name ?? 'Unknown',
+                      },
                     );
                   },
                   borderRadius: BorderRadius.circular(16).r,
@@ -68,8 +68,13 @@ class CategoriesScreen extends StatelessWidget {
                           placeholder:
                               (context, url) => CircularProgressIndicator(),
                           errorWidget:
-                              (context, url, error) =>
-                                  SvgPicture.asset(context.assets.appIcon),
+                              (context, url, error) => Center(
+                                child: Icon(
+                                  Icons.image_not_supported_outlined,
+                                  size: 40.r,
+                                  color: context.appColors.grey100,
+                                ),
+                              ),
                           height: 60.h,
                           fit: BoxFit.cover,
                         ),

@@ -12,4 +12,5 @@ class RouteNames {
   static const search = 'search';
   static const productDetails = 'productDetails';
   static const productsList = 'productsList';
+  static const categoryProductsList = 'categoryProductsList';
 }

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/customer/category/presentation/screens/category_products_list_screen.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -155,6 +156,16 @@ class AppRouter {
           final title = state.pathParameters['title'] ?? 'Items';
 
           return ProductsListScreen(title: title);
+        },
+      ),
+      GoRoute(
+        path: '/category-products-list/:id/:title',
+        name: RouteNames.categoryProductsList,
+        builder: (context, state) {
+          final title = state.pathParameters['title'] ?? 'Items';
+          final id = int.tryParse(state.pathParameters['id'] ?? '0') ?? 0;
+
+          return CategoryProductsListScreen(title: title, id: id);
         },
       ),
 

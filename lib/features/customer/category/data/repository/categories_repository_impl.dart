@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
 import 'package:fpdart/fpdart.dart';
 
 import 'package:ecommerce_app/core/errors/exceptions.dart';
@@ -15,6 +16,21 @@ class CategoriesRepositoryImpl implements CategoriesRepository {
   Future<Either<Failure, List<CategoryEntity>>> getCategories() async {
     try {
       final response = await _categoriesRemoteDataSource.getCategories();
+
+      return right(response);
+    } on ServerException catch (e) {
+      return left(Failure(e.message));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ProductEntity>>> getProductsByCategory(
+    int id,
+  ) async {
+    try {
+      final response = await _categoriesRemoteDataSource.getProductsByCategory(
+        id,
+      );
 
       return right(response);
     } on ServerException catch (e) {

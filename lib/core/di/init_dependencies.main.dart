@@ -53,7 +53,9 @@ Future<void> _initCategories() async {
       () => CategoriesRepositoryImpl(sl()),
     )
     ..registerLazySingleton(() => GetAllCategoriesUsecase(sl()))
+    ..registerLazySingleton(() => GetProductsByCategoryUsecase(sl()))
+    ..registerLazySingleton(() => CategoriesBloc(getAllCategoriesUsecase: sl()))
     ..registerLazySingleton(
-      () => CategoriesBloc(getAllCategoriesUsecase: sl()),
+      () => GetProductsByCategoryBloc(getProductsByCategoryUsecase: sl()),
     );
 }
