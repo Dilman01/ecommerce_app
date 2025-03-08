@@ -68,8 +68,45 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         GestureDetector(
           onTap: () {
-            context.read<AuthBloc>().add(AuthLogout());
-            context.pushReplacementNamed(RouteNames.login);
+            showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text(
+                    'Logout',
+                    style: context.appTextTheme.heading3SemiBold,
+                  ),
+                  content: Text(
+                    'Are you sure you want to logout?',
+                    style: context.appTextTheme.body2Regular,
+                  ),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        context.pop();
+                      },
+                      child: Text(
+                        'Cancel',
+                        style: context.appTextTheme.button1SemiBold,
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        context.read<AuthBloc>().add(AuthLogout());
+                        context.pop();
+                        context.pushReplacementNamed(RouteNames.login);
+                      },
+                      child: Text(
+                        'Logout',
+                        style: context.appTextTheme.button1SemiBold.copyWith(
+                          color: context.appColors.red,
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
+            );
           },
           child: SvgPicture.asset(
             AppImages.logoutIcon,

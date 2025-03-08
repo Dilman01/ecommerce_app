@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:image_picker/image_picker.dart';
 import 'package:logger/logger.dart';
@@ -27,7 +30,9 @@ class PickImageUtils {
 
       if (permissionStatus.isDenied) {
         if (context.mounted) {
-          await _showAlertPermissionsDialog(context);
+          if (Platform.isIOS) {
+            await _showAlertPermissionsDialog(context);
+          }
         }
       } else {
         Logger().e('Image Exception: $e');
@@ -44,9 +49,9 @@ class PickImageUtils {
         return CupertinoAlertDialog(
           title: const Text('Permissions Denied'),
           content: const Text('Allow access to gallery and photos'),
-          actions: <CupertinoDialogAction>[
+          actions: [
             CupertinoDialogAction(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => context.pop(),
               child: const Text('Cancel'),
             ),
             const CupertinoDialogAction(
