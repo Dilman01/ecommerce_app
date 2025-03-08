@@ -25,6 +25,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final UserProfile _userProfile;
   final UserLogout _userLogout;
 
+  UserEntity? user;
+
   AuthBloc({
     required UserSignup userSignup,
     required UserLogin userLogin,
@@ -49,8 +51,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
     if (accessToken != null) {
       emit(AuthLoggedIn());
+      final res = await _userProfile(accessToken);
+
+      res.fold((l) => emit(AuthFailure(l.message)), (userData) {
+        user = userData;
+      });
     } else {
-      emit(AuthFailure("No authentication token found"));
+      emit(AuthLoggedOut());
     }
   }
 
@@ -79,11 +86,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final userRes = await _userProfile(accessToken);
 
       await userRes.fold((l) async => emit(AuthFailure(l.message)), (
-        user,
+        userData,
       ) async {
-        await SharedPref().setString(PrefKeys.userRole, user.role ?? '');
+        await SharedPref().setString(PrefKeys.userRole, userData.role ?? '');
 
-        emit(AuthSuccess(user));
+        user = userData;
+
+        emit(AuthSuccess(userData));
       });
     });
   }

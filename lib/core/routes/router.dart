@@ -52,7 +52,7 @@ class AppRouter {
           // Redirect based on user role
           return '/home';
         }
-        if (authState is AuthFailure) {
+        if (authState is AuthLoggedOut) {
           // Redirect to onboarding if not authenticated
           return '/onboarding';
         }

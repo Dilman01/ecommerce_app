@@ -14,6 +14,7 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<AuthBloc>().user;
     return AppBar(
       backgroundColor: context.appColors.cyan,
       toolbarHeight: kToolbarHeight + 20,
@@ -24,26 +25,27 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            height: 44.h,
-            width: 44.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8).r,
-              image: DecorationImage(
-                image: NetworkImage(
-                  'https://fifpro.org/media/5chb3dva/lionel-messi_imago1019567000h.jpg?rxy=0.32986930611281567,0.18704579979466449&rnd=133378758718600000',
+          if (user != null && user.avatar != null)
+            Container(
+              height: 44.h,
+              width: 44.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8).r,
+                image: DecorationImage(
+                  image: NetworkImage(user.avatar!),
+                  fit: BoxFit.cover,
                 ),
-                fit: BoxFit.cover,
               ),
             ),
-          ),
+          if (user == null || user.avatar == null)
+            Icon(Icons.person, size: 44.r, color: context.appColors.white),
           Column(
             spacing: 2.h,
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Dilman Arif',
+                user?.name ?? 'Unknown',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: context.appTextTheme.button1SemiBold.copyWith(
@@ -51,7 +53,7 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
               Text(
-                'dilmandev@gmail.com',
+                user?.email ?? 'Unknown',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: context.appTextTheme.button2SemiBold.copyWith(
