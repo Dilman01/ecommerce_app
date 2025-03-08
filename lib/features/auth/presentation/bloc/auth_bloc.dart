@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,12 +30,23 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
        super(AuthInitial()) {
     on<AuthSignUp>(_onAuthSignUp);
     on<AuthLogin>(_onAuthLogin);
+    on<AuthCheck>(_onAuthCheck);
   }
 
-  FutureOr<void> _onAuthSignUp(
-    AuthSignUp event,
-    Emitter<AuthState> emit,
-  ) async {
+  Future<void> _onAuthCheck(AuthCheck event, Emitter<AuthState> emit) async {
+    emit(AuthLoading());
+
+    final accessToken = await SecureStorage().read(
+      SecureStorageKeys.accessToken,
+    );
+    if (accessToken != null) {
+      emit(AuthLoggedIn());
+    } else {
+      emit(AuthFailure("No authentication token found"));
+    }
+  }
+
+  Future<void> _onAuthSignUp(AuthSignUp event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
 
     final res = await _userSignup(event.signupReq);
@@ -48,7 +57,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     );
   }
 
-  FutureOr<void> _onAuthLogin(AuthLogin event, Emitter<AuthState> emit) async {
+  Future<void> _onAuthLogin(AuthLogin event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
     final res = await _userLogin(event.loginReq);
 

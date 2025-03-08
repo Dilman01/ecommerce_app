@@ -1,15 +1,15 @@
+import 'package:flutter/material.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+
 import 'package:ecommerce_app/core/common/toast/show_toast.dart';
+import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/features/auth/data/model/signup_req_params.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/features/auth/presentation/widgets/custom_text_form_field.dart';
-import 'package:go_router/go_router.dart';
-import 'package:logger/web.dart';
 
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
@@ -26,6 +26,7 @@ class _SignupFormState extends State<SignupForm> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool obscureText = true;
+  bool isLoading = false;
 
   @override
   void dispose() {
@@ -39,14 +40,17 @@ class _SignupFormState extends State<SignupForm> {
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state is AuthSuccess) {
+        if (state is AuthLoading) {
+          isLoading = true;
+        } else if (state is AuthSuccess) {
           ShowToast.showToastSuccessTop(
             message: 'Account Created Successfully ✅, you can login now!',
             seconds: 5,
           );
+          isLoading = false;
           context.pushReplacementNamed(RouteNames.login);
         } else if (state is AuthFailure) {
-          Logger().f(state.message);
+          isLoading = false;
           ShowToast.showToastErrorTop(message: state.message);
         }
       },
@@ -131,6 +135,7 @@ class _SignupFormState extends State<SignupForm> {
                     );
                   }
                 },
+                isLoading: isLoading,
                 title: 'Create Account',
               ),
             ],

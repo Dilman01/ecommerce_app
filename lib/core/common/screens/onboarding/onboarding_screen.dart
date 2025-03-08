@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:ecommerce_app/core/common/screens/onboarding/widgets/onboarding_card.dart';
@@ -108,7 +109,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     }).toList(),
               ),
             ),
-            SizedBox(height: 30.h),
+            SizedBox(height: 25.h),
           ],
         ),
       ),

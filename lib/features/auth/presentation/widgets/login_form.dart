@@ -1,13 +1,15 @@
-import 'package:ecommerce_app/core/common/toast/show_toast.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_app/core/common/toast/show_toast.dart';
 import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
+import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/features/auth/data/model/login_req_params.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ecommerce_app/features/auth/presentation/widgets/custom_text_form_field.dart';
-import 'package:logger/logger.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -23,22 +25,21 @@ class _LoginFormState extends State<LoginForm> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool obscureText = true;
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
-        if (state is AuthSuccess) {
-          // context.pushReplacementNamed(RouteNames.login);
+        if (state is AuthLoading) {
+          isLoading = true;
+        } else if (state is AuthSuccess) {
+          isLoading = false;
+          if (state.user.role == 'customer') {
+            context.pushReplacementNamed(RouteNames.home);
+          }
         } else if (state is AuthFailure) {
-          Logger().f(state.message);
+          isLoading = false;
           ShowToast.showToastErrorTop(message: state.message);
         }
       },
@@ -103,6 +104,7 @@ class _LoginFormState extends State<LoginForm> {
                     );
                   }
                 },
+                isLoading: isLoading,
                 title: 'Login',
               ),
             ],
@@ -110,5 +112,12 @@ class _LoginFormState extends State<LoginForm> {
         );
       },
     );
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }

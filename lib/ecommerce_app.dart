@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,14 +28,20 @@ class EcommerceApp extends StatelessWidget {
       ],
       child: ScreenUtilInit(
         designSize: Size(360, 800),
+
         child: BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, state) {
-            return MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              darkTheme: AppTheme.dark,
-              theme: AppTheme.light,
-              themeMode: state.themeMode,
-              routerConfig: AppRouter().router,
+            return BlocListener<AuthBloc, AuthState>(
+              listener: (context, state) {
+                AppRouter().router.refresh();
+              },
+              child: MaterialApp.router(
+                debugShowCheckedModeBanner: false,
+                darkTheme: AppTheme.dark,
+                theme: AppTheme.light,
+                themeMode: state.themeMode,
+                routerConfig: AppRouter().router,
+              ),
             );
           },
         ),

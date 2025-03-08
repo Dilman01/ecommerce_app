@@ -126,7 +126,7 @@ class OnBoardingCard extends StatelessWidget {
                   onPressed: () {
                     SharedPref().setBool(PrefKeys.onBoardingDone, true);
 
-                    context.pushNamed(RouteNames.login);
+                    context.pushReplacementNamed(RouteNames.login);
                   },
                   title: 'Login',
                   backgroundColor: context.appColors.backgroundColor,
@@ -138,7 +138,7 @@ class OnBoardingCard extends StatelessWidget {
                   onPressed: () {
                     SharedPref().setBool(PrefKeys.onBoardingDone, true);
 
-                    context.pushNamed(RouteNames.signup);
+                    context.pushReplacementNamed(RouteNames.signup);
                   },
                   title: 'Get Started',
                   size: Size(160.w, 60.h),

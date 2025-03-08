@@ -1,19 +1,20 @@
-import 'package:ecommerce_app/features/customer/product_details/presentation/screens/product_details.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
+
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/common/screens/onboarding/onboarding_screen.dart';
 import 'package:ecommerce_app/core/common/screens/products_list_screen.dart';
 import 'package:ecommerce_app/core/common/screens/splash/splash_screen.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
-// import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
-// import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
+import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:ecommerce_app/features/customer/cart/presentation/screens/cart_screen.dart';
 import 'package:ecommerce_app/features/customer/category/presentation/screens/categories_screen.dart';
 import 'package:ecommerce_app/features/customer/home/presentation/screens/home_screen.dart';
 import 'package:ecommerce_app/features/customer/main/presentation/screens/main_screen.dart';
+import 'package:ecommerce_app/features/customer/product_details/presentation/screens/product_details.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/screens/profile_screen.dart';
 import 'package:ecommerce_app/features/customer/wishlist/presentation/screens/wishlist_screen.dart';
 
@@ -26,7 +27,7 @@ final _cartNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'cartShell');
 final _wishlistNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'wishlistShell',
 );
-final _profilerootNavigatorKey = GlobalKey<NavigatorState>(
+final _profileNavigatorKey = GlobalKey<NavigatorState>(
   debugLabel: 'profileShell',
 );
 
@@ -34,26 +35,44 @@ class AppRouter {
   static final GoRouter _router = GoRouter(
     navigatorKey: _rootNavigatorKey,
     debugLogDiagnostics: true,
+    initialLocation: '/',
+    redirect: (context, state) {
+      final authBloc = context.read<AuthBloc>();
+      final authState = authBloc.state;
+      final currentLocation = state.matchedLocation;
 
-    initialLocation: '/onboarding',
-    // redirect: (context, state) {
-    //   final isOnBoardingDone =
-    //       SharedPref().getBool(PrefKeys.onBoardingDone) ?? false;
+      // Handle splash screen redirection
+      if (currentLocation == '/') {
+        if (authState is AuthInitial) {
+          // Let splash screen stay while checking auth
+          return '/';
+        }
 
-    //   if (!isOnBoardingDone) {
-    //     return state.namedLocation(RouteNames.onBoarding);
-    //   }
+        if (authState is AuthLoggedIn) {
+          // Redirect based on user role
+          return '/home';
+        }
+        if (authState is AuthFailure) {
+          // Redirect to onboarding if not authenticated
+          return '/onboarding';
+        }
+      }
 
-    //   if (state.matchedLocation == '/login') {
-    //     return state.namedLocation(RouteNames.login);
-    //   } else if (state.matchedLocation == '/signup') {
-    //     return state.namedLocation(RouteNames.signup);
-    //   } else if (isOnBoardingDone) {
-    //     return state.namedLocation(RouteNames.signup);
-    //   }
+      // Prevent logged-in users from accessing onboarding
+      if ((authState is AuthSuccess || authState is AuthLoggedIn) &&
+          currentLocation == '/onboarding') {
+        return '/home';
+        // return authState.user.role == 'admin' ? '/admin-home' : '/home';
+      }
 
-    //   return null;
-    // },
+      // Prevent unauthenticated users from accessing protected routes
+      // if (authState is! AuthSuccess &&
+      //     (currentLocation == '/home' || currentLocation == '/admin-home')) {
+      //   return '/onboarding';
+      // }
+
+      return null;
+    },
     routes: [
       StatefulShellRoute.indexedStack(
         builder:
@@ -101,7 +120,7 @@ class AppRouter {
             ],
           ),
           StatefulShellBranch(
-            navigatorKey: _profilerootNavigatorKey,
+            navigatorKey: _profileNavigatorKey,
 
             routes: [
               GoRoute(
@@ -113,7 +132,7 @@ class AppRouter {
           ),
         ],
       ),
-      GoRoute(path: '/', builder: (context, state) => SplashScreen()),
+      GoRoute(path: '/', builder: (context, routeState) => SplashScreen()),
       GoRoute(
         path: '/onboarding',
         name: RouteNames.onBoarding,
