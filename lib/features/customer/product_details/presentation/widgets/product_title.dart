@@ -4,7 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 
 class ProductTitle extends StatelessWidget {
-  const ProductTitle({super.key});
+  const ProductTitle({super.key, required this.title, required this.price});
+
+  final String title;
+  final double price;
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +18,13 @@ class ProductTitle extends StatelessWidget {
         SizedBox(
           width: 255.w,
           child: Text(
-            'Loop Silicone Strong Magnetic watch',
+            title,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: context.appTextTheme.heading3Bold,
           ),
         ),
-        Text('\$15.25', style: context.appTextTheme.heading3Bold),
+        Text('\$$price', style: context.appTextTheme.heading3Bold),
       ],
     );
   }

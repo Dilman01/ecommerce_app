@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,14 +8,16 @@ import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/style/colors/app_colors.dart';
 import 'package:ecommerce_app/core/style/images/app_images.dart';
-import 'package:ecommerce_app/features/customer/product_details/presentation/widgets/produc_chip.dart';
+import 'package:ecommerce_app/features/customer/product_details/presentation/widgets/product_chip.dart';
 import 'package:ecommerce_app/features/customer/product_details/presentation/widgets/product_description.dart';
 import 'package:ecommerce_app/features/customer/product_details/presentation/widgets/product_images_carousel.dart';
 import 'package:ecommerce_app/features/customer/product_details/presentation/widgets/product_rating.dart';
 import 'package:ecommerce_app/features/customer/product_details/presentation/widgets/product_title.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key});
+  const ProductDetails({super.key, this.product});
+
+  final ProductEntity? product;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,7 @@ class ProductDetails extends StatelessWidget {
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            ProductImagesCarousel(),
+            ProductImagesCarousel(images: product?.images ?? []),
             Positioned(
               top: 44.h,
               right: 16.w,
@@ -86,11 +89,16 @@ class ProductDetails extends StatelessWidget {
                 children: [
                   ProductChip(),
                   SizedBox(height: 6.h),
-                  ProductTitle(),
+                  ProductTitle(
+                    title: product?.title ?? 'Unknown',
+                    price: product?.price ?? 0.0,
+                  ),
                   SizedBox(height: 12.h),
                   ProductRating(),
                   SizedBox(height: 12.h),
-                  ProductDescription(),
+                  ProductDescription(
+                    description: product?.description ?? 'Unknown',
+                  ),
                   SizedBox(height: 12.h),
                   Text('Colors', style: context.appTextTheme.captionSemiBold),
                   SizedBox(height: 8.h),

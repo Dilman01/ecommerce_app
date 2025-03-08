@@ -61,11 +61,7 @@ class _CategoryProductsListScreenState
               itemCount: state.products.length,
               itemBuilder: (context, index) {
                 final product = state.products[index];
-                return ProductItem(
-                  title: product.title,
-                  imageUrl: product.images?.first,
-                  price: product.price,
-                );
+                return ProductItem(product: product);
               },
             );
           }

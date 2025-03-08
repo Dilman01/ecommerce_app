@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -7,17 +8,15 @@ import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key, this.title, this.imageUrl, this.price});
+  const ProductItem({super.key, this.product});
 
-  final String? title;
-  final String? imageUrl;
-  final double? price;
+  final ProductEntity? product;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(RouteNames.productDetails);
+        context.pushNamed(RouteNames.productDetails, extra: product);
       },
       child: Column(
         spacing: 8.h,
@@ -25,14 +24,14 @@ class ProductItem extends StatelessWidget {
         children: [
           Stack(
             children: [
-              if (imageUrl != null)
+              if (product?.images?.first != null)
                 Container(
                   height: 138.h,
                   width: 160.w,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24).r,
                     image: DecorationImage(
-                      image: CachedNetworkImageProvider(imageUrl!),
+                      image: CachedNetworkImageProvider(product!.images!.first),
 
                       fit: BoxFit.cover,
                     ),
@@ -78,11 +77,14 @@ class ProductItem extends StatelessWidget {
             ],
           ),
           Text(
-            title ?? 'Unknown',
+            product?.title ?? 'Unknown',
             overflow: TextOverflow.ellipsis,
             style: context.appTextTheme.body2Medium,
           ),
-          Text('\$${price ?? 0}', style: context.appTextTheme.captionSemiBold),
+          Text(
+            '\$${product?.price ?? 0}',
+            style: context.appTextTheme.captionSemiBold,
+          ),
         ],
       ),
     );
