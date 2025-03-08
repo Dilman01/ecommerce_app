@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                     onTap: () {
                       context.pushNamed(
                         RouteNames.productsList,
-                        pathParameters: {'title': 'Lates Products'},
+                        pathParameters: {'title': 'Latest Products'},
                       );
                     },
                     title: 'Lates Products',

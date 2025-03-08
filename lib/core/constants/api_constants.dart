@@ -7,4 +7,5 @@ class ApiConstants {
   static const profile = '$baseUrl/auth/profile';
   static const refreshToken = '$baseUrl/auth/refresh-token';
   static const upload = '$baseUrl/files/upload';
+  static const categories = '$baseUrl/categories/';
 }

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:logger/logger.dart';
 
 import 'package:ecommerce_app/core/constants/api_constants.dart';
 import 'package:ecommerce_app/core/errors/exceptions.dart';
@@ -27,8 +26,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         ApiConstants.users,
         data: signupReq.toJson(),
       );
-
-      Logger().f(response.data);
 
       return UserModel.fromJson(response.data);
     } on ServerException catch (e) {

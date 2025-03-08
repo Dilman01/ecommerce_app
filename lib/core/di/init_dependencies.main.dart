@@ -5,6 +5,7 @@ final sl = GetIt.instance;
 Future<void> initDependencies() async {
   await _initCore();
   await _initAuth();
+  await _initCategories();
 }
 
 Future<void> _initCore() async {
@@ -40,5 +41,19 @@ Future<void> _initAuth() async {
         userProfile: sl(),
         userLogout: sl(),
       ),
+    );
+}
+
+Future<void> _initCategories() async {
+  sl
+    ..registerLazySingleton<CategoriesRemoteDataSource>(
+      () => CategoriesRemoteDataSourceImpl(sl()),
+    )
+    ..registerLazySingleton<CategoriesRepository>(
+      () => CategoriesRepositoryImpl(sl()),
+    )
+    ..registerLazySingleton(() => GetAllCategoriesUsecase(sl()))
+    ..registerLazySingleton(
+      () => CategoriesBloc(getAllCategoriesUsecase: sl()),
     );
 }

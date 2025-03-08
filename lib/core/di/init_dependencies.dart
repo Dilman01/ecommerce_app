@@ -1,4 +1,9 @@
 import 'package:ecommerce_app/core/common/app/theme_cubit/theme_cubit.dart';
+import 'package:ecommerce_app/features/customer/category/data/data_source/categories_remote_data_source.dart';
+import 'package:ecommerce_app/features/customer/category/data/repository/categories_repository_impl.dart';
+import 'package:ecommerce_app/features/customer/category/domain/repository/categories_repository.dart';
+import 'package:ecommerce_app/features/customer/category/domain/usecases/get_all_categories_usecase.dart';
+import 'package:ecommerce_app/features/customer/category/presentation/bloc/categories_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:ecommerce_app/core/common/app/upload_image/cubit/upload_image_cubit.dart';

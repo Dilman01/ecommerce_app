@@ -9,7 +9,7 @@ class UserLogout implements UseCase<void, NoParams> {
   const UserLogout(this._authRepository);
 
   @override
-  Future<Either<Failure, void>> call(NoParams params) {
-    return _authRepository.logout();
+  Future<Either<Failure, void>> call(NoParams params) async {
+    return await _authRepository.logout();
   }
 }
