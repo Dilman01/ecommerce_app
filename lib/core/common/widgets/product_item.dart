@@ -30,11 +30,25 @@ class ProductItem extends StatelessWidget {
                   width: 160.w,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24).r,
-                    image: DecorationImage(
-                      image: CachedNetworkImageProvider(product!.images!.first),
+                  ),
+                  child: CachedNetworkImage(
+                    imageUrl: product!.images!.first,
 
-                      fit: BoxFit.cover,
-                    ),
+                    placeholder:
+                        (context, url) => Center(
+                          child: CircularProgressIndicator(
+                            color: context.appColors.cyan,
+                          ),
+                        ),
+                    errorWidget:
+                        (context, url, error) => Center(
+                          child: Icon(
+                            Icons.image_not_supported_outlined,
+                            size: 40.r,
+                            color: context.appColors.grey100,
+                          ),
+                        ),
+                    fit: BoxFit.cover,
                   ),
                 )
               else

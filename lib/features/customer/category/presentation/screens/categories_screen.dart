@@ -66,7 +66,11 @@ class CategoriesScreen extends StatelessWidget {
                               category.image ??
                               'https://ozarkhighlandstrail.com/wp-content/themes/u-design/assets/images/placeholders/post-placeholder.jpg',
                           placeholder:
-                              (context, url) => CircularProgressIndicator(),
+                              (context, url) => Center(
+                                child: CircularProgressIndicator(
+                                  color: context.appColors.cyan,
+                                ),
+                              ),
                           errorWidget:
                               (context, url, error) => Center(
                                 child: Icon(

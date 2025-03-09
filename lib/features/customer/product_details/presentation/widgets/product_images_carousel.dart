@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,14 +22,26 @@ class _ProductImagesCarouselState extends State<ProductImagesCarousel> {
   Widget build(BuildContext context) {
     final List<Widget> items =
         widget.images.map((image) {
-          return Container(
+          return SizedBox(
             height: 290.h,
             width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(image),
-                fit: BoxFit.cover,
-              ),
+            child: CachedNetworkImage(
+              imageUrl: image,
+              placeholder:
+                  (context, url) => Center(
+                    child: CircularProgressIndicator(
+                      color: context.appColors.cyan,
+                    ),
+                  ),
+              errorWidget:
+                  (context, url, error) => Center(
+                    child: Icon(
+                      Icons.image_not_supported_outlined,
+                      size: 40.r,
+                      color: context.appColors.grey100,
+                    ),
+                  ),
+              fit: BoxFit.cover,
             ),
           );
         }).toList();

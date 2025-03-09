@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/features/customer/category/presentation/screens/category_products_list_screen.dart';
 import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
+import 'package:ecommerce_app/features/customer/search/presentation/screens/search_screen.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -178,6 +179,12 @@ class AppRouter {
           final product = state.extra as ProductEntity?;
           return ProductDetails(product: product);
         },
+      ),
+
+      GoRoute(
+        path: '/search',
+        name: RouteNames.search,
+        builder: (context, state) => SearchScreen(),
       ),
     ],
   );

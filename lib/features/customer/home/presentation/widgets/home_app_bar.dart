@@ -23,7 +23,16 @@ class HomeAppBar extends StatelessWidget {
       children: [
         SvgPicture.asset(context.assets.appIcon, height: 32.h),
         Spacer(),
-        SvgPicture.asset(context.assets.searchIcon, height: 32.h, width: 32.w),
+        GestureDetector(
+          onTap: () {
+            context.pushNamed(RouteNames.search);
+          },
+          child: SvgPicture.asset(
+            context.assets.searchIcon,
+            height: 32.h,
+            width: 32.w,
+          ),
+        ),
 
         if (user != null && user.avatar != null)
           GestureDetector(

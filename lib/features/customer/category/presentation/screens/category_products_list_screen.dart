@@ -50,6 +50,15 @@ class _CategoryProductsListScreenState
           }
 
           if (state is ProductsByCategoryLoaded) {
+            if (state.products.isEmpty) {
+              return Center(
+                child: Text(
+                  'This category is empty!',
+                  style: context.appTextTheme.body2Medium,
+                ),
+              );
+            }
+
             return GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,

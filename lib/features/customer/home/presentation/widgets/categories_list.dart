@@ -17,7 +17,7 @@ class CategoriesList extends StatelessWidget {
       builder: (context, state) {
         if (state is CategoriesLoading) {
           return Center(
-            child: CircularProgressIndicator(color: context.appColors.grey100),
+            child: CircularProgressIndicator(color: context.appColors.cyan),
           );
         }
         if (state is CategoriesFailure) {
@@ -59,8 +59,7 @@ class CategoriesList extends StatelessWidget {
                           imageUrl:
                               category.image ??
                               'https://ozarkhighlandstrail.com/wp-content/themes/u-design/assets/images/placeholders/post-placeholder.jpg',
-                          placeholder:
-                              (context, url) => CircularProgressIndicator(),
+
                           errorWidget:
                               (context, url, error) => Center(
                                 child: Icon(

@@ -1,11 +1,11 @@
-import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
-import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/core/di/init_dependencies.dart';
+import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/features/customer/home/presentation/bloc/latest_products_bloc.dart';
 import 'package:ecommerce_app/features/customer/home/presentation/widgets/carousel_widget.dart';
@@ -53,9 +53,16 @@ class HomeScreen extends StatelessWidget {
                           return Center(child: Text(state.message));
                         }
                         if (state is LatestProductsLoaded) {
+                          if (state.products.isEmpty) {
+                            return Center(
+                              child: Text(
+                                'No Products here!',
+                                style: context.appTextTheme.body2Medium,
+                              ),
+                            );
+                          }
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-
                             children: [
                               SectionHeader(
                                 onTap: () {
