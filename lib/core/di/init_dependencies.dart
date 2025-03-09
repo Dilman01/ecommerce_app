@@ -4,6 +4,11 @@ import 'package:ecommerce_app/features/customer/home/data/repository/home_reposi
 import 'package:ecommerce_app/features/customer/home/domain/repository/home_repository.dart';
 import 'package:ecommerce_app/features/customer/home/domain/usecases/get_latest_products_usecase.dart';
 import 'package:ecommerce_app/features/customer/home/presentation/bloc/latest_products_bloc.dart';
+import 'package:ecommerce_app/features/customer/search/data/data_source/search_data_source.dart';
+import 'package:ecommerce_app/features/customer/search/data/repository/search_repository_impl.dart';
+import 'package:ecommerce_app/features/customer/search/domain/repository/search_repository.dart';
+import 'package:ecommerce_app/features/customer/search/domain/usecases/search_products_usecase.dart';
+import 'package:ecommerce_app/features/customer/search/presentation/bloc/search_products_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:ecommerce_app/core/common/app/theme_cubit/theme_cubit.dart';

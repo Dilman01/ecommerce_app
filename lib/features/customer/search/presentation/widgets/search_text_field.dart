@@ -1,5 +1,7 @@
+import 'package:ecommerce_app/features/customer/search/presentation/bloc/search_products_bloc.dart';
 import 'package:ecommerce_app/features/customer/search/presentation/widgets/search_bottom_sheet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -25,6 +27,11 @@ class _SearchTextFieldState extends State<SearchTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      onSubmitted: (value) {
+        context.read<SearchProductsBloc>().add(
+          SearchProductByTitle(value.trim()),
+        );
+      },
       controller: controller,
       cursorColor: context.appColors.arrowColor,
       autofocus: true,
@@ -51,26 +58,6 @@ class _SearchTextFieldState extends State<SearchTextField> {
                 return SearchBottomSheet();
               },
             );
-
-            // showBottomSheet(
-            //   context: context,
-            //   builder: (context) {
-            //     return Container(
-            //       height: 388.h,
-            //       decoration: BoxDecoration(
-            //         color: context.appColors.backgroundColor,
-            //         borderRadius: BorderRadius.only(
-            //           topLeft: Radius.circular(24).r,
-            //           topRight: Radius.circular(24).r,
-            //         ),
-            //       ),
-            //       // child: Column(children: [
-
-            //       //   ],
-            //       // ),
-            //     );
-            //   },
-            // );
           },
           icon: SvgPicture.asset(
             AppImages.filterIcon,

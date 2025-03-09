@@ -3,8 +3,8 @@ import 'package:ecommerce_app/features/customer/product_details/domain/entities/
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LatestProductsList extends StatelessWidget {
-  const LatestProductsList({super.key, required this.products});
+class SearchProductsList extends StatelessWidget {
+  const SearchProductsList({super.key, required this.products});
 
   final List<ProductEntity> products;
 
@@ -19,7 +19,7 @@ class LatestProductsList extends StatelessWidget {
       ),
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      itemCount: products.take(6).length,
+      itemCount: products.length,
       itemBuilder: (context, index) {
         return ProductItem(product: products[index]);
       },

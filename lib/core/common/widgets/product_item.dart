@@ -31,24 +31,26 @@ class ProductItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24).r,
                   ),
-                  child: CachedNetworkImage(
-                    imageUrl: product!.images!.first,
-
-                    placeholder:
-                        (context, url) => Center(
-                          child: CircularProgressIndicator(
-                            color: context.appColors.cyan,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(24).r,
+                    child: CachedNetworkImage(
+                      imageUrl: product!.images!.first,
+                      placeholder:
+                          (context, url) => Center(
+                            child: CircularProgressIndicator(
+                              color: context.appColors.cyan,
+                            ),
                           ),
-                        ),
-                    errorWidget:
-                        (context, url, error) => Center(
-                          child: Icon(
-                            Icons.image_not_supported_outlined,
-                            size: 40.r,
-                            color: context.appColors.grey100,
+                      errorWidget:
+                          (context, url, error) => Center(
+                            child: Icon(
+                              Icons.image_not_supported_outlined,
+                              size: 40.r,
+                              color: context.appColors.grey100,
+                            ),
                           ),
-                        ),
-                    fit: BoxFit.cover,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 )
               else

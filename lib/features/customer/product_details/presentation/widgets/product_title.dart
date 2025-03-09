@@ -11,21 +11,24 @@ class ProductTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          width: 255.w,
-          child: Text(
-            title,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: context.appTextTheme.heading3Bold,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 255.w,
+            child: Text(
+              title,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              style: context.appTextTheme.heading3Bold,
+            ),
           ),
-        ),
-        Text('\$$price', style: context.appTextTheme.heading3Bold),
-      ],
+          Text('\$$price', style: context.appTextTheme.heading3Bold),
+        ],
+      ),
     );
   }
 }

@@ -7,6 +7,7 @@ Future<void> initDependencies() async {
   await _initAuth();
   await _initCategories();
   await _initHome();
+  await _initSearch();
 }
 
 Future<void> _initCore() async {
@@ -68,5 +69,15 @@ Future<void> _initHome() async {
     ..registerLazySingleton(() => GetLatestProductsUsecase(sl()))
     ..registerLazySingleton(
       () => LatestProductsBloc(getLatestProductsUsecase: sl()),
+    );
+}
+
+Future<void> _initSearch() async {
+  sl
+    ..registerLazySingleton<SearchDataSource>(() => SearchDataSourceImpl(sl()))
+    ..registerLazySingleton<SearchRepository>(() => SearchRepositoryImpl(sl()))
+    ..registerLazySingleton(() => SearchProductsUsecase(sl()))
+    ..registerLazySingleton(
+      () => SearchProductsBloc(searchProductsUsecase: sl()),
     );
 }
