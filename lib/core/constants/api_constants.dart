@@ -8,4 +8,5 @@ class ApiConstants {
   static const refreshToken = '$baseUrl/auth/refresh-token';
   static const upload = '$baseUrl/files/upload';
   static const categories = '$baseUrl/categories';
+  static const products = '$baseUrl/products';
 }

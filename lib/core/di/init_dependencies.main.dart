@@ -6,6 +6,7 @@ Future<void> initDependencies() async {
   await _initCore();
   await _initAuth();
   await _initCategories();
+  await _initHome();
 }
 
 Future<void> _initCore() async {
@@ -57,5 +58,15 @@ Future<void> _initCategories() async {
     ..registerLazySingleton(() => CategoriesBloc(getAllCategoriesUsecase: sl()))
     ..registerLazySingleton(
       () => GetProductsByCategoryBloc(getProductsByCategoryUsecase: sl()),
+    );
+}
+
+Future<void> _initHome() async {
+  sl
+    ..registerLazySingleton<HomeDataSource>(() => HomeDataSourceImpl(sl()))
+    ..registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl()))
+    ..registerLazySingleton(() => GetLatestProductsUsecase(sl()))
+    ..registerLazySingleton(
+      () => LatestProductsBloc(getLatestProductsUsecase: sl()),
     );
 }

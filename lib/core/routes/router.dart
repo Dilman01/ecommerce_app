@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/common/screens/onboarding/onboarding_screen.dart';
-import 'package:ecommerce_app/core/common/screens/products_list_screen.dart';
+import 'package:ecommerce_app/features/customer/home/presentation/screens/latest_products_list_screen.dart';
 import 'package:ecommerce_app/core/common/screens/splash/splash_screen.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
@@ -155,8 +155,9 @@ class AppRouter {
         name: RouteNames.productsList,
         builder: (context, state) {
           final title = state.pathParameters['title'] ?? 'Items';
+          final products = state.extra as List<ProductEntity>;
 
-          return ProductsListScreen(title: title);
+          return LatestProductsListScreen(title: title, products: products);
         },
       ),
       GoRoute(

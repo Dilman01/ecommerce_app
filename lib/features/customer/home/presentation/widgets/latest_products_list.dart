@@ -1,9 +1,12 @@
 import 'package:ecommerce_app/core/common/widgets/product_item.dart';
+import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LatestProductsList extends StatelessWidget {
-  const LatestProductsList({super.key});
+  const LatestProductsList({super.key, required this.products});
+
+  final List<ProductEntity> products;
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +19,9 @@ class LatestProductsList extends StatelessWidget {
       ),
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      itemCount: 10,
+      itemCount: 6,
       itemBuilder: (context, index) {
-        return ProductItem();
+        return ProductItem(product: products[index]);
       },
     );
   }
