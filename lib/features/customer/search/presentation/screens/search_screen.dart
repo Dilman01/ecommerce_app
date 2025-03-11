@@ -1,13 +1,14 @@
 import 'package:ecommerce_app/core/di/init_dependencies.dart';
-import 'package:ecommerce_app/core/extensions/context_extensions.dart';
-import 'package:ecommerce_app/features/customer/search/presentation/bloc/search_products_bloc.dart';
-import 'package:ecommerce_app/features/customer/search/presentation/widgets/search_products_list.dart';
-import 'package:ecommerce_app/features/customer/search/presentation/widgets/search_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+
+import 'package:ecommerce_app/core/extensions/context_extensions.dart';
+import 'package:ecommerce_app/features/customer/search/presentation/bloc/search_products_bloc.dart';
+import 'package:ecommerce_app/features/customer/search/presentation/widgets/search_products_list.dart';
+import 'package:ecommerce_app/features/customer/search/presentation/widgets/search_text_field.dart';
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});

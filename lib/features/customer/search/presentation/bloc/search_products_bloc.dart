@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/customer/search/data/model/search_request_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,6 +12,10 @@ class SearchProductsBloc
     extends Bloc<SearchProductsEvent, SearchProductsState> {
   final SearchProductsUsecase _searchProductsUsecase;
 
+  String searchTitle = '';
+  int? priceMin;
+  int? priceMax;
+
   SearchProductsBloc({required SearchProductsUsecase searchProductsUsecase})
     : _searchProductsUsecase = searchProductsUsecase,
       super(SearchProductsInitial()) {
@@ -23,7 +28,17 @@ class SearchProductsBloc
   ) async {
     emit(SearchProductsLoading());
 
-    final response = await _searchProductsUsecase(event.title);
+    searchTitle = event.title;
+    priceMin = event.priceMin == 0 ? 1 : event.priceMin;
+    priceMax = event.priceMax;
+
+    final response = await _searchProductsUsecase(
+      SearchRequestModel(
+        title: searchTitle,
+        priceMin: priceMin,
+        priceMax: priceMax,
+      ),
+    );
 
     response.fold(
       (l) => emit(SearchProductsFailure(l.message)),

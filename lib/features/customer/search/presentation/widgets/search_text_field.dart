@@ -1,5 +1,3 @@
-import 'package:ecommerce_app/features/customer/search/presentation/bloc/search_products_bloc.dart';
-import 'package:ecommerce_app/features/customer/search/presentation/widgets/search_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/style/images/app_images.dart';
+import 'package:ecommerce_app/features/customer/search/presentation/bloc/search_products_bloc.dart';
+import 'package:ecommerce_app/features/customer/search/presentation/widgets/search_bottom_sheet.dart';
 
 class SearchTextField extends StatefulWidget {
   const SearchTextField({super.key});
@@ -28,8 +28,17 @@ class _SearchTextFieldState extends State<SearchTextField> {
   Widget build(BuildContext context) {
     return TextField(
       onSubmitted: (value) {
+        context.read<SearchProductsBloc>().searchTitle = value;
+        final title = context.read<SearchProductsBloc>().searchTitle;
+        final priceMin = context.read<SearchProductsBloc>().priceMin;
+        final priceMax = context.read<SearchProductsBloc>().priceMax;
+
         context.read<SearchProductsBloc>().add(
-          SearchProductByTitle(value.trim()),
+          SearchProductByTitle(
+            title: title,
+            priceMin: priceMin,
+            priceMax: priceMax,
+          ),
         );
       },
       controller: controller,
@@ -54,8 +63,14 @@ class _SearchTextFieldState extends State<SearchTextField> {
 
             showModalBottomSheet(
               context: context,
-              builder: (context) {
-                return SearchBottomSheet();
+              builder: (_) {
+                return BlocProvider.value(
+                  value: BlocProvider.of<SearchProductsBloc>(
+                    context,
+                    listen: false,
+                  ),
+                  child: SearchBottomSheet(),
+                );
               },
             );
           },
