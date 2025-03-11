@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,10 +50,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     if (accessToken != null) {
       final res = await _userProfile(accessToken);
 
-      res.fold((l) => emit(AuthLoggedOut()), (userData) {
-        user = userData;
-        emit(AuthLoggedIn());
-      });
+      res.fold(
+        (l) {
+          emit(AuthFailure(l.message));
+        },
+        (userData) {
+          user = userData;
+          emit(AuthLoggedIn());
+        },
+      );
     } else {
       emit(AuthLoggedOut());
     }
@@ -97,10 +100,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
 
-  FutureOr<void> _onAuthLogout(
-    AuthLogout event,
-    Emitter<AuthState> emit,
-  ) async {
+  Future<void> _onAuthLogout(AuthLogout event, Emitter<AuthState> emit) async {
     emit(AuthLoading());
 
     await _userLogout(NoParams());

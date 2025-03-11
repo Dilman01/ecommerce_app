@@ -28,7 +28,6 @@ class MainScreen extends StatelessWidget {
         BlocProvider(
           create: (context) => sl<CategoriesBloc>()..add(GetAllCategories()),
         ),
-        // BlocProvider(create: (context) => sl<GetProductsByCategoryBloc>()),
         BlocProvider(
           create:
               (context) => sl<LatestProductsBloc>()..add(GetLatestProducts()),

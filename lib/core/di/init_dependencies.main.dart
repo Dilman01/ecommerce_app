@@ -8,6 +8,7 @@ Future<void> initDependencies() async {
   await _initCategories();
   await _initHome();
   await _initSearch();
+  await _initCart();
 }
 
 Future<void> _initCore() async {
@@ -76,4 +77,8 @@ Future<void> _initSearch() async {
     ..registerLazySingleton<SearchRepository>(() => SearchRepositoryImpl(sl()))
     ..registerLazySingleton(() => SearchProductsUsecase(sl()))
     ..registerFactory(() => SearchProductsBloc(searchProductsUsecase: sl()));
+}
+
+Future<void> _initCart() async {
+  sl.registerLazySingleton(() => CartBloc());
 }

@@ -98,7 +98,7 @@ class ProfileScreen extends StatelessWidget {
               onTap: () {},
               isThemeToggle: true,
               title: 'Dark Theme',
-              iconPath: AppImages.termsIcon,
+              iconPath: AppImages.themeIcon,
             ),
           ],
         ),

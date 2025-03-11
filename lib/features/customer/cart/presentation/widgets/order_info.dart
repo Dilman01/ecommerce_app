@@ -1,13 +1,23 @@
 import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
+import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class OrderInfo extends StatelessWidget {
-  const OrderInfo({super.key});
+  const OrderInfo({super.key, required this.products});
+
+  final List<ProductEntity> products;
 
   @override
   Widget build(BuildContext context) {
+    final allPrices = products.map((e) => e.price).toList();
+    double total = 0;
+
+    for (double? price in allPrices) {
+      total += price!;
+    }
+
     return Column(
       spacing: 8.h,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +35,7 @@ class OrderInfo extends StatelessWidget {
               ),
             ),
             Text(
-              '\$27.25',
+              '\$$total',
               style: context.appTextTheme.captionRegular.copyWith(
                 color: context.appColors.grey150,
               ),
@@ -53,8 +63,8 @@ class OrderInfo extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text('Totoal', style: context.appTextTheme.body1Medium),
-            Text('\$27.25', style: context.appTextTheme.body1Medium),
+            Text('Total', style: context.appTextTheme.body1Medium),
+            Text('\$$total', style: context.appTextTheme.body1Medium),
           ],
         ),
         SizedBox(height: 8.h),

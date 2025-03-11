@@ -1,19 +1,25 @@
-import 'package:ecommerce_app/core/extensions/context_extensions.dart';
-import 'package:ecommerce_app/core/routes/route_names.dart';
-import 'package:ecommerce_app/core/style/images/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:ecommerce_app/core/extensions/context_extensions.dart';
+import 'package:ecommerce_app/core/routes/route_names.dart';
+import 'package:ecommerce_app/core/style/images/app_images.dart';
+import 'package:ecommerce_app/features/customer/cart/presentation/bloc/cart_bloc.dart';
+import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
+
 class CartItem extends StatelessWidget {
-  const CartItem({super.key});
+  const CartItem({super.key, required this.product});
+
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(RouteNames.productDetails);
+        context.pushNamed(RouteNames.productDetails, extra: product);
       },
       child: SizedBox(
         height: 120.h,
@@ -22,18 +28,25 @@ class CartItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              width: 120.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12).r,
-                image: DecorationImage(
-                  image: NetworkImage(
-                    'https://media.wired.com/photos/61bd571ff6b645152a4dc4ad/master/pass/Evolution-Luxury-Watches-Oris.jpg',
+            if (product.images?.first != null)
+              Container(
+                width: 120.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12).r,
+                  image: DecorationImage(
+                    image: NetworkImage(product.images!.first),
+                    fit: BoxFit.cover,
                   ),
-                  fit: BoxFit.cover,
+                ),
+              )
+            else
+              Center(
+                child: Icon(
+                  Icons.image_not_supported_outlined,
+                  size: 40.r,
+                  color: context.appColors.grey100,
                 ),
               ),
-            ),
             Column(
               spacing: 8.h,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,13 +56,20 @@ class CartItem extends StatelessWidget {
                 SizedBox(
                   width: 160.w,
                   child: Text(
-                    'Loop Silicone Strong Magnetic Watch',
+                    product.title == null
+                        ? 'Unknown'
+                        : product.title!.isEmpty
+                        ? 'Unknown'
+                        : product.title ?? 'Unknown',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: context.appTextTheme.body2Medium,
                   ),
                 ),
-                Text('\$15.25', style: context.appTextTheme.captionSemiBold),
+                Text(
+                  '\$${product.price ?? 0}',
+                  style: context.appTextTheme.captionSemiBold,
+                ),
                 Container(
                   width: 96.w,
                   decoration: BoxDecoration(
@@ -74,7 +94,9 @@ class CartItem extends StatelessWidget {
             Align(
               alignment: Alignment.bottomRight,
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  context.read<CartBloc>().add(RemoveFromCart(product.id!));
+                },
                 child: SvgPicture.asset(
                   AppImages.deleteIcon,
                   height: 24.h,

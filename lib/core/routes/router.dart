@@ -1,16 +1,16 @@
-import 'package:ecommerce_app/core/di/init_dependencies.dart';
-import 'package:ecommerce_app/features/customer/category/presentation/blocs/get_products_by_category_bloc/get_products_by_category_bloc.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/common/screens/onboarding/onboarding_screen.dart';
 import 'package:ecommerce_app/core/common/screens/splash/splash_screen.dart';
+import 'package:ecommerce_app/core/di/init_dependencies.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:ecommerce_app/features/customer/cart/presentation/screens/cart_screen.dart';
+import 'package:ecommerce_app/features/customer/category/presentation/blocs/get_products_by_category_bloc/get_products_by_category_bloc.dart';
 import 'package:ecommerce_app/features/customer/category/presentation/screens/categories_screen.dart';
 import 'package:ecommerce_app/features/customer/category/presentation/screens/category_products_list_screen.dart';
 import 'package:ecommerce_app/features/customer/home/presentation/screens/home_screen.dart';
@@ -50,15 +50,14 @@ class AppRouter {
         if (authState is AuthInitial || authState is AuthLoading) {
           // Let splash screen stay while checking auth
           return '/';
-        }
-
-        if (authState is AuthLoggedIn) {
+        } else if (authState is AuthLoggedIn) {
           // Redirect based on user role
           return '/home';
-        }
-        if (authState is AuthLoggedOut) {
+        } else if (authState is AuthLoggedOut) {
           // Redirect to onboarding if not authenticated
           return '/onboarding';
+        } else {
+          return '/home';
         }
       }
 
@@ -180,7 +179,7 @@ class AppRouter {
         path: '/product-details',
         name: RouteNames.productDetails,
         builder: (context, state) {
-          final product = state.extra as ProductEntity?;
+          final product = state.extra as ProductEntity;
           return ProductDetails(product: product);
         },
       ),

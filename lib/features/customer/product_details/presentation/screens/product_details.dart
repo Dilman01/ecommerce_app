@@ -1,5 +1,7 @@
-import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
+import 'package:ecommerce_app/core/common/toast/show_toast.dart';
+import 'package:ecommerce_app/features/customer/cart/presentation/bloc/cart_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +10,8 @@ import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/style/colors/app_colors.dart';
 import 'package:ecommerce_app/core/style/images/app_images.dart';
+// import 'package:ecommerce_app/features/customer/cart/presentation/cubit/cart_cubit.dart';
+import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
 import 'package:ecommerce_app/features/customer/product_details/presentation/widgets/product_chip.dart';
 import 'package:ecommerce_app/features/customer/product_details/presentation/widgets/product_description.dart';
 import 'package:ecommerce_app/features/customer/product_details/presentation/widgets/product_images_carousel.dart';
@@ -15,9 +19,9 @@ import 'package:ecommerce_app/features/customer/product_details/presentation/wid
 import 'package:ecommerce_app/features/customer/product_details/presentation/widgets/product_title.dart';
 
 class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key, this.product});
+  const ProductDetails({super.key, required this.product});
 
-  final ProductEntity? product;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +33,13 @@ class ProductDetails extends StatelessWidget {
       AppColors.grey150Dark,
     ];
 
+    bool isLoading = false;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Stack(
           children: [
-            ProductImagesCarousel(images: product?.images ?? []),
+            ProductImagesCarousel(images: product.images ?? []),
             Positioned(
               top: 44.h,
               right: 16.w,
@@ -90,14 +96,14 @@ class ProductDetails extends StatelessWidget {
                   ProductChip(),
                   SizedBox(height: 6.h),
                   ProductTitle(
-                    title: product?.title ?? 'Unknown',
-                    price: product?.price ?? 0.0,
+                    title: product.title ?? 'Unknown',
+                    price: product.price ?? 0.0,
                   ),
                   SizedBox(height: 12.h),
                   ProductRating(),
                   SizedBox(height: 12.h),
                   ProductDescription(
-                    description: product?.description ?? 'Unknown',
+                    description: product.description ?? 'Unknown',
                   ),
                   SizedBox(height: 12.h),
                   Text('Colors', style: context.appTextTheme.captionSemiBold),
@@ -154,19 +160,41 @@ class ProductDetails extends StatelessWidget {
                         hasBorder: true,
                         size: Size(160.w, 60.h),
                       ),
-                      CustomButton(
-                        onPressed: () {},
-                        title: 'Add To Cart',
-                        size: Size(160.w, 60.h),
-                        icon: SvgPicture.asset(
-                          AppImages.cartIconUnselected,
-                          colorFilter: ColorFilter.mode(
-                            context.appColors.white,
-                            BlendMode.srcIn,
-                          ),
-                          height: 24.h,
-                          width: 24.w,
-                        ),
+                      BlocConsumer<CartBloc, CartState>(
+                        listener: (context, state) {
+                          if (state is CartSuccess) {
+                            isLoading = false;
+                            ShowToast.showToastSuccessTop(
+                              message: 'Product Added To Cart ✅',
+                            );
+                          }
+                          if (state is CartError) {
+                            isLoading = false;
+                            ShowToast.showToastErrorTop(message: state.message);
+                          }
+                          if (state is CartLoading) {
+                            isLoading = true;
+                          }
+                        },
+                        builder: (context, state) {
+                          return CustomButton(
+                            onPressed: () {
+                              context.read<CartBloc>().add(AddToCart(product));
+                            },
+                            isLoading: isLoading,
+                            title: 'Add To Cart',
+                            size: Size(160.w, 60.h),
+                            icon: SvgPicture.asset(
+                              AppImages.cartIconUnselected,
+                              colorFilter: ColorFilter.mode(
+                                context.appColors.white,
+                                BlendMode.srcIn,
+                              ),
+                              height: 24.h,
+                              width: 24.w,
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

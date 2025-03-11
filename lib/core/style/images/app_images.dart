@@ -43,4 +43,5 @@ class AppImages {
       'assets/icons/profile/change_password_icon.svg';
   static const themeIcon = 'assets/icons/profile/theme_icon.svg';
   static const filterIcon = 'assets/icons/filter_icon.svg';
+  static const cartEmptyIcon = 'assets/images/cart_empty.png';
 }

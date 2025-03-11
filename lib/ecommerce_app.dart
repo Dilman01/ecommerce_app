@@ -8,6 +8,7 @@ import 'package:ecommerce_app/core/di/init_dependencies.dart';
 import 'package:ecommerce_app/core/routes/router.dart';
 import 'package:ecommerce_app/core/style/theme/app_theme.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:ecommerce_app/features/customer/cart/presentation/bloc/cart_bloc.dart';
 
 class EcommerceApp extends StatelessWidget {
   const EcommerceApp({super.key});
@@ -19,6 +20,7 @@ class EcommerceApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<ThemeCubit>()),
         BlocProvider(create: (context) => sl<UploadImageCubit>()),
         BlocProvider(create: (context) => sl<AuthBloc>()),
+        BlocProvider(create: (context) => sl<CartBloc>()),
       ],
       child: ScreenUtilInit(
         designSize: Size(360, 800),
