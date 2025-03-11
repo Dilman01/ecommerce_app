@@ -1,13 +1,10 @@
-import 'package:ecommerce_app/features/customer/category/presentation/screens/category_products_list_screen.dart';
-import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
-import 'package:ecommerce_app/features/customer/search/presentation/screens/search_screen.dart';
+import 'package:ecommerce_app/core/di/init_dependencies.dart';
+import 'package:ecommerce_app/features/customer/category/presentation/blocs/get_products_by_category_bloc/get_products_by_category_bloc.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/common/screens/onboarding/onboarding_screen.dart';
-import 'package:ecommerce_app/features/customer/home/presentation/screens/latest_products_list_screen.dart';
 import 'package:ecommerce_app/core/common/screens/splash/splash_screen.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
@@ -15,10 +12,14 @@ import 'package:ecommerce_app/features/auth/presentation/screens/login_screen.da
 import 'package:ecommerce_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:ecommerce_app/features/customer/cart/presentation/screens/cart_screen.dart';
 import 'package:ecommerce_app/features/customer/category/presentation/screens/categories_screen.dart';
+import 'package:ecommerce_app/features/customer/category/presentation/screens/category_products_list_screen.dart';
 import 'package:ecommerce_app/features/customer/home/presentation/screens/home_screen.dart';
+import 'package:ecommerce_app/features/customer/home/presentation/screens/latest_products_list_screen.dart';
 import 'package:ecommerce_app/features/customer/main/presentation/screens/main_screen.dart';
+import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
 import 'package:ecommerce_app/features/customer/product_details/presentation/screens/product_details.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/screens/profile_screen.dart';
+import 'package:ecommerce_app/features/customer/search/presentation/screens/search_screen.dart';
 import 'package:ecommerce_app/features/customer/wishlist/presentation/screens/wishlist_screen.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -168,7 +169,10 @@ class AppRouter {
           final title = state.pathParameters['title'] ?? 'Items';
           final id = int.tryParse(state.pathParameters['id'] ?? '0') ?? 0;
 
-          return CategoryProductsListScreen(title: title, id: id);
+          return BlocProvider(
+            create: (context) => sl<GetProductsByCategoryBloc>(),
+            child: CategoryProductsListScreen(title: title, id: id),
+          );
         },
       ),
 

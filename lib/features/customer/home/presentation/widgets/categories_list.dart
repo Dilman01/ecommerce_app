@@ -39,7 +39,12 @@ class CategoriesList extends StatelessWidget {
                       RouteNames.categoryProductsList,
                       pathParameters: {
                         'id': category.id.toString(),
-                        'title': category.name ?? 'Unknown',
+                        'title':
+                            category.name == null
+                                ? 'Unknown'
+                                : category.name!.isEmpty
+                                ? 'Unknown'
+                                : category.name ?? 'Unknown',
                       },
                     );
                   },
@@ -73,7 +78,11 @@ class CategoriesList extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                         Text(
-                          category.name ?? 'Unknown',
+                          category.name == null
+                              ? 'Unknown'
+                              : category.name!.isEmpty
+                              ? 'Unknown'
+                              : category.name ?? 'Unknown',
                           overflow: TextOverflow.ellipsis,
                           style: context.appTextTheme.overlineSemiBold,
                         ),

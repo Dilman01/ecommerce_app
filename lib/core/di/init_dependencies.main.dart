@@ -56,8 +56,8 @@ Future<void> _initCategories() async {
     )
     ..registerLazySingleton(() => GetAllCategoriesUsecase(sl()))
     ..registerLazySingleton(() => GetProductsByCategoryUsecase(sl()))
-    ..registerLazySingleton(() => CategoriesBloc(getAllCategoriesUsecase: sl()))
-    ..registerLazySingleton(
+    ..registerFactory(() => CategoriesBloc(getAllCategoriesUsecase: sl()))
+    ..registerFactory(
       () => GetProductsByCategoryBloc(getProductsByCategoryUsecase: sl()),
     );
 }
@@ -67,9 +67,7 @@ Future<void> _initHome() async {
     ..registerLazySingleton<HomeDataSource>(() => HomeDataSourceImpl(sl()))
     ..registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl()))
     ..registerLazySingleton(() => GetLatestProductsUsecase(sl()))
-    ..registerLazySingleton(
-      () => LatestProductsBloc(getLatestProductsUsecase: sl()),
-    );
+    ..registerFactory(() => LatestProductsBloc(getLatestProductsUsecase: sl()));
 }
 
 Future<void> _initSearch() async {
@@ -77,7 +75,5 @@ Future<void> _initSearch() async {
     ..registerLazySingleton<SearchDataSource>(() => SearchDataSourceImpl(sl()))
     ..registerLazySingleton<SearchRepository>(() => SearchRepositoryImpl(sl()))
     ..registerLazySingleton(() => SearchProductsUsecase(sl()))
-    ..registerLazySingleton(
-      () => SearchProductsBloc(searchProductsUsecase: sl()),
-    );
+    ..registerFactory(() => SearchProductsBloc(searchProductsUsecase: sl()));
 }

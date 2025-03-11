@@ -26,84 +26,81 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
 
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Text(
-                  'Personal Information',
-                  style: context.appTextTheme.captionSemiBold,
-                ),
+        child: ListView(
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Text(
+                'Personal Information',
+                style: context.appTextTheme.captionSemiBold,
               ),
-              SizedBox(height: 25.h),
-              SettingItem(
-                onTap: () {},
-                title: 'Shipping Address',
-                iconPath: AppImages.shippingIcon,
+            ),
+            SizedBox(height: 25.h),
+            SettingItem(
+              onTap: () {},
+              title: 'Shipping Address',
+              iconPath: AppImages.shippingIcon,
+            ),
+            SizedBox(height: 14.h),
+            SettingItem(
+              onTap: () {},
+              title: 'Payment Method',
+              iconPath: AppImages.paymentIcon,
+            ),
+            SizedBox(height: 14.h),
+            SettingItem(
+              onTap: () {},
+              title: 'Order History',
+              iconPath: AppImages.orderHistoryIcon,
+            ),
+            SizedBox(height: 24.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Text(
+                'Support & Information',
+                style: context.appTextTheme.captionSemiBold,
               ),
-              SizedBox(height: 14.h),
-              SettingItem(
-                onTap: () {},
-                title: 'Payment Method',
-                iconPath: AppImages.paymentIcon,
+            ),
+            SizedBox(height: 25.h),
+            SettingItem(
+              onTap: () {},
+              title: 'Privacy Policy',
+              iconPath: AppImages.privacyIcon,
+            ),
+            SizedBox(height: 14.h),
+            SettingItem(
+              onTap: () {},
+              title: 'Terms & Conditions',
+              iconPath: AppImages.termsIcon,
+            ),
+            SizedBox(height: 14.h),
+            SettingItem(
+              onTap: () {},
+              title: 'FAQs',
+              iconPath: AppImages.faqsIcon,
+            ),
+            SizedBox(height: 24.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Text(
+                'Account Management',
+                style: context.appTextTheme.captionSemiBold,
               ),
-              SizedBox(height: 14.h),
-              SettingItem(
-                onTap: () {},
-                title: 'Order History',
-                iconPath: AppImages.orderHistoryIcon,
-              ),
-              SizedBox(height: 24.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Text(
-                  'Support & Information',
-                  style: context.appTextTheme.captionSemiBold,
-                ),
-              ),
-              SizedBox(height: 25.h),
-              SettingItem(
-                onTap: () {},
-                title: 'Privacy Policy',
-                iconPath: AppImages.privacyIcon,
-              ),
-              SizedBox(height: 14.h),
-              SettingItem(
-                onTap: () {},
-                title: 'Terms & Conditions',
-                iconPath: AppImages.termsIcon,
-              ),
-              SizedBox(height: 14.h),
-              SettingItem(
-                onTap: () {},
-                title: 'FAQs',
-                iconPath: AppImages.faqsIcon,
-              ),
-              SizedBox(height: 24.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Text(
-                  'Account Management',
-                  style: context.appTextTheme.captionSemiBold,
-                ),
-              ),
-              SizedBox(height: 25.h),
-              SettingItem(
-                onTap: () {},
-                title: 'Change Password',
-                iconPath: AppImages.changePasswordIcon,
-              ),
-              SizedBox(height: 14.h),
-              SettingItem(
-                onTap: () {},
-                isThemeToggle: true,
-                title: 'Dark Theme',
-                iconPath: AppImages.termsIcon,
-              ),
-            ],
-          ),
+            ),
+            SizedBox(height: 25.h),
+            SettingItem(
+              onTap: () {},
+              title: 'Change Password',
+              iconPath: AppImages.changePasswordIcon,
+            ),
+            SizedBox(height: 14.h),
+            SettingItem(
+              onTap: () {},
+              isThemeToggle: true,
+              title: 'Dark Theme',
+              iconPath: AppImages.termsIcon,
+            ),
+          ],
         ),
       ),
     );
