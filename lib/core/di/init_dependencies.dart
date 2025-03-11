@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/customer/wishlist/presentation/cubit/wishlist_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:ecommerce_app/core/common/app/theme_cubit/theme_cubit.dart';

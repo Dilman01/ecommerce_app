@@ -1,16 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
+import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
+import 'package:ecommerce_app/features/customer/wishlist/presentation/cubit/wishlist_cubit.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key, this.product});
+  const ProductItem({super.key, required this.product});
 
-  final ProductEntity? product;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class ProductItem extends StatelessWidget {
         children: [
           Stack(
             children: [
-              if (product?.images?.first != null)
+              if (product.images?.first != null)
                 Container(
                   height: 138.h,
                   width: 160.w,
@@ -34,7 +36,7 @@ class ProductItem extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(24).r,
                     child: CachedNetworkImage(
-                      imageUrl: product!.images!.first,
+                      imageUrl: product.images!.first,
                       placeholder:
                           (context, url) => Center(
                             child: CircularProgressIndicator(
@@ -69,36 +71,51 @@ class ProductItem extends StatelessWidget {
                     ),
                   ),
                 ),
-              Positioned(
-                top: 6.h,
-                right: 6.w,
-                child: Container(
-                  height: 30.h,
-                  width: 30.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: context.appColors.favButtonBgColor,
-                  ),
-                  child: IconButton(
-                    onPressed: () {},
-                    padding: EdgeInsets.zero,
-                    icon: Icon(
-                      Icons.favorite_border_outlined,
-                      size: 18.r,
-                      color: context.appColors.dynamicWhiteOrBlack,
+              BlocBuilder<WishlistCubit, WishlistState>(
+                builder: (context, state) {
+                  return Positioned(
+                    top: 6.h,
+                    right: 6.w,
+                    child: Container(
+                      height: 30.h,
+                      width: 30.w,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: context.appColors.favButtonBgColor,
+                      ),
+                      child: IconButton(
+                        onPressed: () async {
+                          await context.read<WishlistCubit>().manageWishlist(
+                            product: product,
+                          );
+                        },
+                        padding: EdgeInsets.zero,
+                        icon: Icon(
+                          context.read<WishlistCubit>().isFavorite(product.id!)
+                              ? Icons.favorite
+                              : Icons.favorite_border_outlined,
+                          size: 18.r,
+                          color:
+                              context.read<WishlistCubit>().isFavorite(
+                                    product.id!,
+                                  )
+                                  ? context.appColors.red
+                                  : context.appColors.dynamicWhiteOrBlack,
+                        ),
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               ),
             ],
           ),
           Text(
-            product?.title ?? 'Unknown',
+            product.title ?? 'Unknown',
             overflow: TextOverflow.ellipsis,
             style: context.appTextTheme.body2Medium,
           ),
           Text(
-            '\$${product?.price ?? 0}',
+            '\$${product.price ?? 0}',
             style: context.appTextTheme.captionSemiBold,
           ),
         ],

@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/services/hive/hive_database.dart';
 import 'package:ecommerce_app/core/services/secure_storage/secure_storage.dart';
 import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
 import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
@@ -11,6 +12,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
   @override
   Future<void> logout() async {
+    await HiveDatabase().clearAllBox();
     await SecureStorage().deleteAll();
     await SharedPref().removePreference(PrefKeys.userRole);
   }

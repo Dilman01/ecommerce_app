@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/common/toast/show_toast.dart';
 import 'package:ecommerce_app/features/customer/cart/presentation/bloc/cart_bloc.dart';
+import 'package:ecommerce_app/features/customer/wishlist/presentation/cubit/wishlist_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,26 +41,41 @@ class ProductDetails extends StatelessWidget {
         child: Stack(
           children: [
             ProductImagesCarousel(images: product.images ?? []),
-            Positioned(
-              top: 44.h,
-              right: 16.w,
-              child: Container(
-                height: 32.h,
-                width: 32.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: context.appColors.favButtonBgColor,
-                ),
-                child: IconButton(
-                  onPressed: () {},
-                  padding: EdgeInsets.zero,
-                  icon: Icon(
-                    Icons.favorite_border_outlined,
-                    size: 20.r,
-                    color: context.appColors.dynamicWhiteOrBlack,
+            BlocBuilder<WishlistCubit, WishlistState>(
+              builder: (context, state) {
+                return Positioned(
+                  top: 44.h,
+                  right: 16.w,
+                  child: Container(
+                    height: 32.h,
+                    width: 32.w,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: context.appColors.favButtonBgColor,
+                    ),
+                    child: IconButton(
+                      onPressed: () async {
+                        await context.read<WishlistCubit>().manageWishlist(
+                          product: product,
+                        );
+                      },
+                      padding: EdgeInsets.zero,
+                      icon: Icon(
+                        context.read<WishlistCubit>().isFavorite(product.id!)
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                        size: 20.r,
+                        color:
+                            context.read<WishlistCubit>().isFavorite(
+                                  product.id!,
+                                )
+                                ? context.appColors.red
+                                : context.appColors.dynamicWhiteOrBlack,
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
             Positioned(
               top: 44.h,

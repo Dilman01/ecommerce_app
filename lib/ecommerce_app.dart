@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/customer/wishlist/presentation/cubit/wishlist_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +22,7 @@ class EcommerceApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<UploadImageCubit>()),
         BlocProvider(create: (context) => sl<AuthBloc>()),
         BlocProvider(create: (context) => sl<CartBloc>()),
+        BlocProvider(create: (context) => sl<WishlistCubit>()),
       ],
       child: ScreenUtilInit(
         designSize: Size(360, 800),

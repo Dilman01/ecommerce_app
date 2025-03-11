@@ -7,8 +7,8 @@ import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/core/style/images/app_images.dart';
 
-class EmptyCart extends StatelessWidget {
-  const EmptyCart({super.key});
+class EmptyWishlist extends StatelessWidget {
+  const EmptyWishlist({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +20,17 @@ class EmptyCart extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            AppImages.cartEmptyIcon,
+            AppImages.wishlistEmptyIcon,
             height: 240.h,
             width: 240.w,
             fit: BoxFit.cover,
           ),
-          Text('Your cart is empty', style: context.appTextTheme.heading2Bold),
           Text(
-            'Looks like you have not added anything in your cart. Go ahead and explore top categories.',
+            'Your wishlist is empty',
+            style: context.appTextTheme.heading2Bold,
+          ),
+          Text(
+            'Tap heart button to start saving your favorite items.',
             textAlign: TextAlign.center,
             style: context.appTextTheme.body2Regular,
           ),

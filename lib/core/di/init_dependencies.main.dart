@@ -9,6 +9,7 @@ Future<void> initDependencies() async {
   await _initHome();
   await _initSearch();
   await _initCart();
+  await _initWishlist();
 }
 
 Future<void> _initCore() async {
@@ -81,4 +82,8 @@ Future<void> _initSearch() async {
 
 Future<void> _initCart() async {
   sl.registerLazySingleton(() => CartBloc());
+}
+
+Future<void> _initWishlist() async {
+  sl.registerLazySingleton(() => WishlistCubit());
 }
