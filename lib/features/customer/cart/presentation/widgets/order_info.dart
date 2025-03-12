@@ -1,8 +1,10 @@
 import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
+import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class OrderInfo extends StatelessWidget {
   const OrderInfo({super.key, required this.products});
@@ -68,7 +70,12 @@ class OrderInfo extends StatelessWidget {
           ],
         ),
         SizedBox(height: 8.h),
-        CustomButton(onPressed: () {}, title: 'Checkout'),
+        CustomButton(
+          onPressed: () {
+            context.pushNamed(RouteNames.checkout);
+          },
+          title: 'Checkout',
+        ),
       ],
     );
   }

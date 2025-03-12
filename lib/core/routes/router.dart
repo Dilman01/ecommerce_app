@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/customer/checkout/presentation/screens/checkout_screen.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -188,6 +189,12 @@ class AppRouter {
         path: '/search',
         name: RouteNames.search,
         builder: (context, state) => SearchScreen(),
+      ),
+
+      GoRoute(
+        path: '/checkout',
+        name: RouteNames.checkout,
+        builder: (context, state) => CheckoutScreen(),
       ),
     ],
   );

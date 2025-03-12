@@ -45,4 +45,7 @@ class AppImages {
   static const filterIcon = 'assets/icons/filter_icon.svg';
   static const cartEmptyIcon = 'assets/images/cart_empty.png';
   static const wishlistEmptyIcon = 'assets/images/wishlist_empty.png';
+  static const shippingCompleteIcon = 'assets/icons/shipping_box_complete.svg';
+  static const paymentCompleteIcon = 'assets/icons/payment_complete.svg';
+  static const reviewIcon = 'assets/icons/review_icon.svg';
 }
