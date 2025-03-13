@@ -1,9 +1,15 @@
-import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
-import 'package:ecommerce_app/core/extensions/context_extensions.dart';
-import 'package:ecommerce_app/core/style/images/app_images.dart';
+import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
+import 'package:ecommerce_app/core/extensions/context_extensions.dart';
+import 'package:ecommerce_app/core/style/images/app_images.dart';
+import 'package:ecommerce_app/features/customer/checkout/presentation/widgets/review_content.dart';
+import 'package:ecommerce_app/features/customer/profile/presentation/widgets/payment_form.dart';
+import 'package:ecommerce_app/features/customer/profile/presentation/widgets/shipping_form.dart';
+import 'package:go_router/go_router.dart';
 
 class CheckoutScreen extends StatefulWidget {
   const CheckoutScreen({super.key});
@@ -38,12 +44,23 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             currentStep: currentStep,
             stepIconMargin: EdgeInsets.zero,
             connectorThickness: 1,
-
             connectorColor: WidgetStatePropertyAll(context.appColors.grey100),
             stepIconBuilder: (stepIndex, stepState) => SizedBox.shrink(),
             controlsBuilder:
                 (context, details) => CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (details.currentStep == 0) {
+                      setState(() {
+                        currentStep++;
+                      });
+                    } else if (details.currentStep == 1) {
+                      setState(() {
+                        currentStep++;
+                      });
+                    } else {
+                      context.pushNamed(RouteNames.orderSuccess);
+                    }
+                  },
                   title:
                       details.currentStep == 0
                           ? 'Save'
@@ -92,7 +109,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ),
                 isActive: currentStep == 0,
                 stepStyle: StepStyle(color: Colors.transparent),
-                content: Column(children: []),
+                content: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [ShippingForm(), SizedBox(height: 12.h)],
+                ),
               ),
               Step(
                 title: Container(
@@ -128,7 +149,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ),
                 isActive: currentStep == 1,
                 stepStyle: StepStyle(color: Colors.transparent),
-                content: Column(children: []),
+                content: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [PaymentForm(), SizedBox(height: 30.h)],
+                ),
               ),
               Step(
                 title: Container(
@@ -162,7 +187,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                 ),
                 isActive: currentStep == 2,
                 stepStyle: StepStyle(color: Colors.transparent),
-                content: Column(children: []),
+                content: ReviewContent(),
               ),
             ],
           ),

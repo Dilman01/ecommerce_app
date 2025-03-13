@@ -34,10 +34,6 @@ class CartItem extends StatelessWidget {
                 width: 120.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12).r,
-                  // image: DecorationImage(
-                  //   image: NetworkImage(product.images!.first),
-                  //   fit: BoxFit.cover,
-                  // ),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12).r,

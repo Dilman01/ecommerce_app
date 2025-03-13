@@ -21,7 +21,7 @@ class PaymentForm extends StatelessWidget {
           children: [
             Container(
               height: 64.h,
-              width: 160.w,
+              width: 145.w,
               decoration: BoxDecoration(
                 color: context.appColors.cyan50,
                 borderRadius: BorderRadius.circular(12).r,
@@ -36,7 +36,7 @@ class PaymentForm extends StatelessWidget {
             ),
             Container(
               height: 64.h,
-              width: 160.w,
+              width: 145.w,
               decoration: BoxDecoration(
                 color: context.appColors.cyan50,
                 borderRadius: BorderRadius.circular(12).r,
@@ -63,9 +63,9 @@ class PaymentForm extends StatelessWidget {
             CustomTextField(
               title: 'Expiration',
               hintText: 'MM/YY',
-              width: 160.w,
+              width: 145.w,
             ),
-            CustomTextField(title: 'CVV', hintText: '123', width: 160.w),
+            CustomTextField(title: 'CVV', hintText: '123', width: 145.w),
           ],
         ),
       ],

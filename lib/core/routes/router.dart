@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/customer/checkout/presentation/screens/order_success_screen.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -212,10 +213,17 @@ class AppRouter {
         name: RouteNames.shipping,
         builder: (context, state) => ShippingScreen(),
       ),
+
       GoRoute(
         path: '/payment',
         name: RouteNames.payment,
         builder: (context, state) => PaymentScreen(),
+      ),
+
+      GoRoute(
+        path: '/order-success',
+        name: RouteNames.orderSuccess,
+        builder: (context, state) => OrderSuccessScreen(),
       ),
     ],
   );
