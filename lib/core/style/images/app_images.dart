@@ -48,4 +48,6 @@ class AppImages {
   static const shippingCompleteIcon = 'assets/icons/shipping_box_complete.svg';
   static const paymentCompleteIcon = 'assets/icons/payment_complete.svg';
   static const reviewIcon = 'assets/icons/review_icon.svg';
+  static const paypalIcon = 'assets/icons/paypal_icon.svg';
+  static const googlePayIcon = 'assets/icons/google_pay_icon.svg';
 }

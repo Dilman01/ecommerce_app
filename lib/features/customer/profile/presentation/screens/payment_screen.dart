@@ -4,34 +4,32 @@ import 'package:go_router/go_router.dart';
 
 import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
-import 'package:ecommerce_app/features/customer/profile/presentation/widgets/shipping_form.dart';
+import 'package:ecommerce_app/features/customer/profile/presentation/widgets/payment_form.dart';
 
-class ShippingScreen extends StatelessWidget {
-  const ShippingScreen({super.key});
+class PaymentScreen extends StatelessWidget {
+  const PaymentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Shipping Address',
-          style: context.appTextTheme.body2Medium,
-        ),
+        title: Text('Payment Method', style: context.appTextTheme.body2Medium),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ShippingForm(),
-              SizedBox(height: 80.h),
+              PaymentForm(),
+              SizedBox(height: 160.h),
               CustomButton(
                 onPressed: () {
                   context.pop();
                 },
                 title: 'Save',
               ),
-              SizedBox(height: 34.h),
+              SizedBox(height: 20.h),
             ],
           ),
         ),

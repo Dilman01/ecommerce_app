@@ -8,10 +8,12 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.title,
     required this.hintText,
+    this.width,
   });
 
   final String title;
   final String hintText;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +34,7 @@ class CustomTextField extends StatelessWidget {
         ),
         SizedBox(
           height: 60.h,
+          width: width,
           child: TextField(
             cursorColor: context.appColors.arrowColor,
             decoration: InputDecoration(
