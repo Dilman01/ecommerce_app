@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -5,6 +6,7 @@ import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/style/images/app_images.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/widgets/profile_app_bar.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/widgets/setting_item.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -37,7 +39,9 @@ class ProfileScreen extends StatelessWidget {
             ),
             SizedBox(height: 25.h),
             SettingItem(
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(RouteNames.shipping);
+              },
               title: 'Shipping Address',
               iconPath: AppImages.shippingIcon,
             ),

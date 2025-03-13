@@ -14,4 +14,6 @@ class RouteNames {
   static const productsList = 'productsList';
   static const categoryProductsList = 'categoryProductsList';
   static const checkout = 'checkout';
+  static const shipping = 'shipping';
+  static const payment = 'payment';
 }

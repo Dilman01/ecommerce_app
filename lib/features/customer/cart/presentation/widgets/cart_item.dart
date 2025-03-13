@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,8 +34,29 @@ class CartItem extends StatelessWidget {
                 width: 120.w,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12).r,
-                  image: DecorationImage(
-                    image: NetworkImage(product.images!.first),
+                  // image: DecorationImage(
+                  //   image: NetworkImage(product.images!.first),
+                  //   fit: BoxFit.cover,
+                  // ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(12).r,
+                  child: CachedNetworkImage(
+                    imageUrl: product.images!.first,
+                    placeholder:
+                        (context, url) => Center(
+                          child: CircularProgressIndicator(
+                            color: context.appColors.cyan,
+                          ),
+                        ),
+                    errorWidget:
+                        (context, url, error) => Center(
+                          child: Icon(
+                            Icons.image_not_supported_outlined,
+                            size: 40.r,
+                            color: context.appColors.grey100,
+                          ),
+                        ),
                     fit: BoxFit.cover,
                   ),
                 ),

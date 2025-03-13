@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/common/toast/show_toast.dart';
+import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/features/customer/cart/presentation/bloc/cart_bloc.dart';
 import 'package:ecommerce_app/features/customer/wishlist/presentation/cubit/wishlist_cubit.dart';
 import 'package:flutter/material.dart';
@@ -169,7 +170,9 @@ class ProductDetails extends StatelessWidget {
                     spacing: 8.w,
                     children: [
                       CustomButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.pushNamed(RouteNames.checkout);
+                        },
                         title: 'Buy Now',
                         backgroundColor: context.appColors.backgroundColor,
                         textButtonColor: context.appColors.buttonTextColor,

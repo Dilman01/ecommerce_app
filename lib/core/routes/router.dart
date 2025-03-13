@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/features/customer/checkout/presentation/screens/checkout_screen.dart';
+import 'package:ecommerce_app/features/customer/profile/presentation/screens/shipping_screen.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -93,6 +94,7 @@ class AppRouter {
               ),
             ],
           ),
+
           StatefulShellBranch(
             navigatorKey: _categoriesNavigatorKey,
             routes: [
@@ -103,6 +105,7 @@ class AppRouter {
               ),
             ],
           ),
+
           StatefulShellBranch(
             navigatorKey: _cartNavigatorKey,
             routes: [
@@ -113,6 +116,7 @@ class AppRouter {
               ),
             ],
           ),
+
           StatefulShellBranch(
             navigatorKey: _wishlistNavigatorKey,
             routes: [
@@ -123,9 +127,9 @@ class AppRouter {
               ),
             ],
           ),
+
           StatefulShellBranch(
             navigatorKey: _profileNavigatorKey,
-
             routes: [
               GoRoute(
                 path: '/profile',
@@ -136,7 +140,9 @@ class AppRouter {
           ),
         ],
       ),
+
       GoRoute(path: '/', builder: (context, routeState) => SplashScreen()),
+
       GoRoute(
         path: '/onboarding',
         name: RouteNames.onBoarding,
@@ -147,11 +153,13 @@ class AppRouter {
         name: RouteNames.signup,
         builder: (context, state) => SignupScreen(),
       ),
+
       GoRoute(
         path: '/login',
         name: RouteNames.login,
         builder: (context, state) => LoginScreen(),
       ),
+
       GoRoute(
         path: '/products-list/:title',
         name: RouteNames.productsList,
@@ -162,6 +170,7 @@ class AppRouter {
           return LatestProductsListScreen(title: title, products: products);
         },
       ),
+
       GoRoute(
         path: '/category-products-list/:id/:title',
         name: RouteNames.categoryProductsList,
@@ -195,6 +204,12 @@ class AppRouter {
         path: '/checkout',
         name: RouteNames.checkout,
         builder: (context, state) => CheckoutScreen(),
+      ),
+
+      GoRoute(
+        path: '/shipping',
+        name: RouteNames.shipping,
+        builder: (context, state) => ShippingScreen(),
       ),
     ],
   );
