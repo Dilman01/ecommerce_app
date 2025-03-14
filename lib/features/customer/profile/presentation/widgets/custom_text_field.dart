@@ -9,11 +9,13 @@ class CustomTextField extends StatelessWidget {
     required this.title,
     required this.hintText,
     this.width,
+    this.suffixIcon,
   });
 
   final String title;
   final String hintText;
   final double? width;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +56,7 @@ class CustomTextField extends StatelessWidget {
                 borderSide: BorderSide(color: context.appColors.grey50),
                 borderRadius: BorderRadius.circular(12).r,
               ),
+              suffixIcon: suffixIcon,
             ),
             textCapitalization: TextCapitalization.words,
             style: context.appTextTheme.captionRegular,

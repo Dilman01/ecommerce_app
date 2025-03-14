@@ -376,7 +376,9 @@ If you have any questions or concerns regarding these Terms and Conditions, plea
                   ),
                   SizedBox(height: 25.h),
                   SettingItem(
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(RouteNames.changePassword);
+                    },
                     title: 'Change Password',
                     iconPath: AppImages.changePasswordIcon,
                   ),

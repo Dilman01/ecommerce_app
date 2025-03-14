@@ -18,4 +18,5 @@ class RouteNames {
   static const payment = 'payment';
   static const orderSuccess = 'orderSuccess';
   static const support = 'support';
+  static const changePassword = 'changePassword';
 }

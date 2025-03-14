@@ -31,7 +31,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
     ),
     CarouselItem(
       imageUrl:
-          'https://img.freepik.com/free-photo/laptop-nature-concept_23-2150246074.jpg?t=st=1741974991~exp=1741978591~hmac=eec94d757c09d95b8eeabd00d3bda2709c9af9139b0b4062410447eda08536cc&w=1060',
+          'https://t3.ftcdn.net/jpg/06/28/06/20/360_F_628062031_JfPJNvjOASTUBiXdOVekeQB53YIe3KHu.jpg',
       discount: '15',
       productTitle: 'On Laptops',
     ),
