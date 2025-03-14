@@ -3,7 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarouselItem extends StatelessWidget {
-  const CarouselItem({super.key});
+  const CarouselItem({
+    super.key,
+    required this.imageUrl,
+    required this.discount,
+    required this.productTitle,
+  });
+
+  final String imageUrl;
+  final String discount;
+  final String productTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +23,7 @@ class CarouselItem extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24).r,
         image: DecorationImage(
-          image: NetworkImage(
-            'https://img.freepik.com/premium-photo/black-headphones-blue-background-headphones-are-overear-have-modern-design_14117-205216.jpg',
-          ),
+          image: NetworkImage(imageUrl),
           fit: BoxFit.cover,
         ),
       ),
@@ -33,14 +40,14 @@ class CarouselItem extends StatelessWidget {
               color: context.appColors.black,
             ),
             child: Text(
-              '30% OFF',
+              '$discount% OFF',
               style: context.appTextTheme.overlineSemiBold.copyWith(
                 color: context.appColors.white,
               ),
             ),
           ),
           Text(
-            'On Headphones',
+            productTitle,
             style: context.appTextTheme.captionRegular.copyWith(
               color: context.appColors.white,
             ),

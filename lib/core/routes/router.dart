@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/features/customer/checkout/presentation/screens/order_success_screen.dart';
-import 'package:flutter/material.dart' show GlobalKey, NavigatorState;
+import 'package:ecommerce_app/features/customer/profile/presentation/screens/support_and_info_screen.dart';
+import 'package:flutter/material.dart' show GlobalKey, NavigatorState, Widget;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -224,6 +225,17 @@ class AppRouter {
         path: '/order-success',
         name: RouteNames.orderSuccess,
         builder: (context, state) => OrderSuccessScreen(),
+      ),
+
+      GoRoute(
+        path: '/support-and-info/:title',
+        name: RouteNames.support,
+        builder: (context, state) {
+          final title = state.pathParameters['title'] as String;
+          final widgets = state.extra as List<Widget>;
+
+          return SupportAndInfoScreen(title: title, widgets: widgets);
+        },
       ),
     ],
   );

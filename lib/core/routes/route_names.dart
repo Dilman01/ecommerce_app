@@ -17,4 +17,5 @@ class RouteNames {
   static const shipping = 'shipping';
   static const payment = 'payment';
   static const orderSuccess = 'orderSuccess';
+  static const support = 'support';
 }

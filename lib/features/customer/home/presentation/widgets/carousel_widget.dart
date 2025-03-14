@@ -17,11 +17,30 @@ class _CarouselWidgetState extends State<CarouselWidget> {
   int _currentIndex = 0;
 
   final List<Widget> items = [
-    CarouselItem(),
-    CarouselItem(),
-    CarouselItem(),
-    CarouselItem(),
-    CarouselItem(),
+    CarouselItem(
+      imageUrl:
+          'https://img.freepik.com/premium-photo/black-headphones-blue-background-headphones-are-overear-have-modern-design_14117-205216.jpg',
+      discount: '30',
+      productTitle: 'On Headphones',
+    ),
+    CarouselItem(
+      imageUrl:
+          'https://static.vecteezy.com/system/resources/previews/027/807/254/non_2x/t-shirts-mockup-with-text-space-on-colrful-background-hd-ai-free-photo.jpg',
+      discount: '20',
+      productTitle: 'On T-Shirts',
+    ),
+    CarouselItem(
+      imageUrl:
+          'https://img.freepik.com/free-photo/laptop-nature-concept_23-2150246074.jpg?t=st=1741974991~exp=1741978591~hmac=eec94d757c09d95b8eeabd00d3bda2709c9af9139b0b4062410447eda08536cc&w=1060',
+      discount: '15',
+      productTitle: 'On Laptops',
+    ),
+    CarouselItem(
+      imageUrl:
+          'https://img.freepik.com/premium-photo/dark-living-room-interior-design-with-sofa-plant-3d-rendering-background_517102-221.jpg',
+      discount: '40',
+      productTitle: 'On Furniture',
+    ),
   ];
 
   @override
