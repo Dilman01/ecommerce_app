@@ -32,6 +32,7 @@ class OrderSuccessScreen extends StatelessWidget {
                   AppImages.orderSuccessImage,
                   height: 240.h,
                   width: 240.w,
+                  fit: BoxFit.cover,
                 ),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/features/customer/checkout/presentation/screens/order_success_screen.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/screens/change_password_screen.dart';
+import 'package:ecommerce_app/features/customer/profile/presentation/screens/order_history_screen.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/screens/support_and_info_screen.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState, Widget;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -243,6 +244,12 @@ class AppRouter {
         path: '/change-password',
         name: RouteNames.changePassword,
         builder: (context, state) => ChangePasswordScreen(),
+      ),
+
+      GoRoute(
+        path: '/order-history',
+        name: RouteNames.orderHistory,
+        builder: (context, state) => OrderHistoryScreen(),
       ),
     ],
   );

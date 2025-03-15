@@ -29,7 +29,7 @@ class CategoriesList extends StatelessWidget {
             height: 70.h,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemCount: 4,
+              itemCount: state.categories.take(4).length,
               separatorBuilder: (context, index) => SizedBox(width: 8.w),
               itemBuilder: (context, index) {
                 final category = state.categories[index];

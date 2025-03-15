@@ -318,7 +318,9 @@ If you have any questions or concerns regarding these Terms and Conditions, plea
                   ),
                   SizedBox(height: 14.h),
                   SettingItem(
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(RouteNames.orderHistory);
+                    },
                     title: 'Order History',
                     iconPath: AppImages.orderHistoryIcon,
                   ),

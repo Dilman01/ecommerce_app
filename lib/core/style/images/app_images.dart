@@ -51,4 +51,5 @@ class AppImages {
   static const paypalIcon = 'assets/icons/paypal_icon.svg';
   static const googlePayIcon = 'assets/icons/google_pay_icon.svg';
   static const orderSuccessImage = 'assets/images/order_success.png';
+  static const orderHistoryImage = 'assets/images/order_history.png';
 }
