@@ -1,6 +1,6 @@
-import 'package:ecommerce_app/features/customer/wishlist/presentation/cubit/wishlist_cubit.dart';
 import 'package:get_it/get_it.dart';
 
+import 'package:ecommerce_app/core/common/app/internet_connection_cubit/internet_connection_cubit.dart';
 import 'package:ecommerce_app/core/common/app/theme_cubit/theme_cubit.dart';
 import 'package:ecommerce_app/core/common/app/upload_image/cubit/upload_image_cubit.dart';
 import 'package:ecommerce_app/core/common/app/upload_image/data_source/upload_image_data_source.dart';
@@ -33,5 +33,6 @@ import 'package:ecommerce_app/features/customer/search/data/repository/search_re
 import 'package:ecommerce_app/features/customer/search/domain/repository/search_repository.dart';
 import 'package:ecommerce_app/features/customer/search/domain/usecases/search_products_usecase.dart';
 import 'package:ecommerce_app/features/customer/search/presentation/bloc/search_products_bloc.dart';
+import 'package:ecommerce_app/features/customer/wishlist/presentation/cubit/wishlist_cubit.dart';
 
 part 'init_dependencies.main.dart';

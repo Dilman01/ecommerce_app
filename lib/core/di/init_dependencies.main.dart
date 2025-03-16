@@ -15,6 +15,7 @@ Future<void> initDependencies() async {
 Future<void> _initCore() async {
   sl
     ..registerSingleton<DioClient>(DioClient())
+    ..registerLazySingleton(() => InternetConnectionCubit())
     ..registerLazySingleton(() => ThemeCubit())
     ..registerLazySingleton(() => UploadImageCubit(sl()))
     ..registerLazySingleton<UploadImageDataSource>(

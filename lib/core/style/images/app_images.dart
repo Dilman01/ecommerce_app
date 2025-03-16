@@ -52,4 +52,5 @@ class AppImages {
   static const googlePayIcon = 'assets/icons/google_pay_icon.svg';
   static const orderSuccessImage = 'assets/images/order_success.png';
   static const orderHistoryImage = 'assets/images/order_history.png';
+  static const noInternetImage = 'assets/images/no_internet.svg';
 }
