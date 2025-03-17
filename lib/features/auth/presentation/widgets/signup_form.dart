@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/common/app/upload_image/cubit/upload_image_cubit.dart';
+import 'package:ecommerce_app/features/auth/presentation/widgets/admin_checkbox.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,6 +30,8 @@ class _SignupFormState extends State<SignupForm> {
 
   bool obscureText = true;
   bool isLoading = false;
+
+  String role = 'customer';
 
   @override
   void dispose() {
@@ -120,6 +123,15 @@ class _SignupFormState extends State<SignupForm> {
                   return null;
                 },
               ),
+              AdminCheckbox(
+                onChanged: (value) {
+                  if (value != null && value) {
+                    role = 'admin';
+                  } else {
+                    role = 'customer';
+                  }
+                },
+              ),
               SizedBox(height: 8.h),
               CustomButton(
                 onPressed: () {
@@ -138,7 +150,7 @@ class _SignupFormState extends State<SignupForm> {
                           name: _nameController.text.trim(),
                           email: _emailController.text.trim(),
                           password: _passwordController.text.trim(),
-                          role: 'customer',
+                          role: role,
                           avatar: imageCubit.getImageUrl,
                         ),
                       ),

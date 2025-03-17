@@ -37,6 +37,10 @@ class _LoginFormState extends State<LoginForm> {
           isLoading = false;
           if (state.user.role == 'customer') {
             context.pushReplacementNamed(RouteNames.home);
+          } else if (state.user.role == 'admin') {
+            context.pushReplacementNamed(RouteNames.adminHome);
+          } else {
+            context.pushReplacementNamed(RouteNames.onBoarding);
           }
         } else if (state is AuthFailure) {
           isLoading = false;

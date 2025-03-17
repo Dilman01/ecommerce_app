@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/features/admin/home/presentation/screen/admin_home_screen.dart';
 import 'package:ecommerce_app/features/customer/checkout/presentation/screens/order_success_screen.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/screens/change_password_screen.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/screens/order_history_screen.dart';
@@ -59,20 +60,19 @@ class AppRouter {
           return '/';
         } else if (authState is AuthLoggedIn) {
           // Redirect based on user role
-          return '/home';
+          return authBloc.user?.role == 'admin' ? '/admin-home' : '/home';
         } else if (authState is AuthLoggedOut) {
           // Redirect to onboarding if not authenticated
           return '/onboarding';
         } else {
-          return '/home';
+          return authBloc.user?.role == 'admin' ? '/admin-home' : '/home';
         }
       }
 
       // Prevent logged-in users from accessing onboarding
       if ((authState is AuthSuccess || authState is AuthLoggedIn) &&
           currentLocation == '/onboarding') {
-        return '/home';
-        // return authState.user.role == 'admin' ? '/admin-home' : '/home';
+        return authBloc.user?.role == 'admin' ? '/admin-home' : '/home';
       }
 
       // Prevent unauthenticated users from accessing protected routes
@@ -250,6 +250,12 @@ class AppRouter {
         path: '/order-history',
         name: RouteNames.orderHistory,
         builder: (context, state) => OrderHistoryScreen(),
+      ),
+
+      GoRoute(
+        path: '/admin-home',
+        name: RouteNames.adminHome,
+        builder: (context, state) => AdminHomeScreen(),
       ),
     ],
   );

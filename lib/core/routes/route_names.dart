@@ -20,4 +20,5 @@ class RouteNames {
   static const support = 'support';
   static const changePassword = 'changePassword';
   static const orderHistory = 'orderHistory';
+  static const adminHome = 'adminHome';
 }
