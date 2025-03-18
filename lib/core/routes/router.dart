@@ -1,8 +1,3 @@
-import 'package:ecommerce_app/features/admin/home/presentation/screen/admin_home_screen.dart';
-import 'package:ecommerce_app/features/customer/checkout/presentation/screens/order_success_screen.dart';
-import 'package:ecommerce_app/features/customer/profile/presentation/screens/change_password_screen.dart';
-import 'package:ecommerce_app/features/customer/profile/presentation/screens/order_history_screen.dart';
-import 'package:ecommerce_app/features/customer/profile/presentation/screens/support_and_info_screen.dart';
 import 'package:flutter/material.dart' show GlobalKey, NavigatorState, Widget;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -11,6 +6,9 @@ import 'package:ecommerce_app/core/common/screens/onboarding/onboarding_screen.d
 import 'package:ecommerce_app/core/common/screens/splash/splash_screen.dart';
 import 'package:ecommerce_app/core/di/init_dependencies.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
+import 'package:ecommerce_app/core/services/shared_pref/pref_keys.dart';
+import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
+import 'package:ecommerce_app/features/admin/home/presentation/screen/admin_home_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/screens/signup_screen.dart';
@@ -19,14 +17,18 @@ import 'package:ecommerce_app/features/customer/category/presentation/blocs/get_
 import 'package:ecommerce_app/features/customer/category/presentation/screens/categories_screen.dart';
 import 'package:ecommerce_app/features/customer/category/presentation/screens/category_products_list_screen.dart';
 import 'package:ecommerce_app/features/customer/checkout/presentation/screens/checkout_screen.dart';
+import 'package:ecommerce_app/features/customer/checkout/presentation/screens/order_success_screen.dart';
 import 'package:ecommerce_app/features/customer/home/presentation/screens/home_screen.dart';
 import 'package:ecommerce_app/features/customer/home/presentation/screens/latest_products_list_screen.dart';
 import 'package:ecommerce_app/features/customer/main/presentation/screens/main_screen.dart';
 import 'package:ecommerce_app/features/customer/product_details/domain/entities/product_entity.dart';
 import 'package:ecommerce_app/features/customer/product_details/presentation/screens/product_details.dart';
+import 'package:ecommerce_app/features/customer/profile/presentation/screens/change_password_screen.dart';
+import 'package:ecommerce_app/features/customer/profile/presentation/screens/order_history_screen.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/screens/payment_screen.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/screens/profile_screen.dart';
 import 'package:ecommerce_app/features/customer/profile/presentation/screens/shipping_screen.dart';
+import 'package:ecommerce_app/features/customer/profile/presentation/screens/support_and_info_screen.dart';
 import 'package:ecommerce_app/features/customer/search/presentation/screens/search_screen.dart';
 import 'package:ecommerce_app/features/customer/wishlist/presentation/screens/wishlist_screen.dart';
 
@@ -51,6 +53,7 @@ class AppRouter {
     redirect: (context, state) {
       final authBloc = context.read<AuthBloc>();
       final authState = authBloc.state;
+      final userRole = SharedPref().getString(PrefKeys.userRole);
       final currentLocation = state.matchedLocation;
 
       // Handle splash screen redirection
@@ -60,19 +63,19 @@ class AppRouter {
           return '/';
         } else if (authState is AuthLoggedIn) {
           // Redirect based on user role
-          return authBloc.user?.role == 'admin' ? '/admin-home' : '/home';
+          return userRole == 'admin' ? '/admin-home' : '/home';
         } else if (authState is AuthLoggedOut) {
           // Redirect to onboarding if not authenticated
           return '/onboarding';
         } else {
-          return authBloc.user?.role == 'admin' ? '/admin-home' : '/home';
+          return userRole == 'admin' ? '/admin-home' : '/home';
         }
       }
 
       // Prevent logged-in users from accessing onboarding
       if ((authState is AuthSuccess || authState is AuthLoggedIn) &&
           currentLocation == '/onboarding') {
-        return authBloc.user?.role == 'admin' ? '/admin-home' : '/home';
+        return userRole == 'admin' ? '/admin-home' : '/home';
       }
 
       // Prevent unauthenticated users from accessing protected routes
