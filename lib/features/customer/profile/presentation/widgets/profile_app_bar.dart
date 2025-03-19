@@ -72,6 +72,7 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
               context: context,
               builder: (context) {
                 return AlertDialog(
+                  backgroundColor: context.appColors.backgroundColor,
                   title: Text(
                     'Logout',
                     style: context.appTextTheme.heading3SemiBold,
