@@ -9,7 +9,7 @@ import 'package:ecommerce_app/core/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/features/auth/data/model/login_req_params.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:ecommerce_app/features/auth/presentation/widgets/custom_text_form_field.dart';
+import 'package:ecommerce_app/core/common/widgets/custom_text_form_field.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});

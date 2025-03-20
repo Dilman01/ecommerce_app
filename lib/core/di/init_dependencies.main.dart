@@ -18,7 +18,7 @@ Future<void> _initCore() async {
     ..registerSingleton<DioClient>(DioClient())
     ..registerLazySingleton(() => InternetConnectionCubit())
     ..registerLazySingleton(() => ThemeCubit())
-    ..registerLazySingleton(() => UploadImageCubit(sl()))
+    ..registerFactory(() => UploadImageCubit(sl()))
     ..registerLazySingleton<UploadImageDataSource>(
       () => UploadImageDataSourceImpl(sl()),
     )

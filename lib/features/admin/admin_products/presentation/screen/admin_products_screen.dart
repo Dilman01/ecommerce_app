@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
-class AddProductsScreen extends StatelessWidget {
-  const AddProductsScreen({super.key});
+class AdminProductsScreen extends StatelessWidget {
+  const AdminProductsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
