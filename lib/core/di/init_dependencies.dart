@@ -6,6 +6,17 @@ import 'package:ecommerce_app/core/common/app/upload_image/cubit/upload_image_cu
 import 'package:ecommerce_app/core/common/app/upload_image/data_source/upload_image_data_source.dart';
 import 'package:ecommerce_app/core/common/app/upload_image/repo/upload_image_repo.dart';
 import 'package:ecommerce_app/core/services/network/dio_client.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/data/data_source/admin_categories_data_source.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/data/repository/admin_category_repository_impl.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/domain/repository/admin_category_repository.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/domain/usecases/create_category_usecase.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/domain/usecases/delete_category_usecase.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/domain/usecases/get_all_admin_categories_usecase.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/domain/usecases/update_category_usecase.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/create_category/create_category_bloc.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/delete_category/delete_category_bloc.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/get_all_admin_categories/get_all_admin_categories_bloc.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/update_category/update_category_bloc.dart';
 import 'package:ecommerce_app/features/auth/data/data_source/auth_local_data_source.dart';
 import 'package:ecommerce_app/features/auth/data/data_source/auth_remote_data_source.dart';
 import 'package:ecommerce_app/features/auth/data/repository/auth_repository_impl.dart';

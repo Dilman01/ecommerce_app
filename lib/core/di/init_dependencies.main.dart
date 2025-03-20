@@ -10,6 +10,7 @@ Future<void> initDependencies() async {
   await _initSearch();
   await _initCart();
   await _initWishlist();
+  await _initAdminCategory();
 }
 
 Future<void> _initCore() async {
@@ -87,4 +88,24 @@ Future<void> _initCart() async {
 
 Future<void> _initWishlist() async {
   sl.registerLazySingleton(() => WishlistCubit());
+}
+
+Future<void> _initAdminCategory() async {
+  sl
+    ..registerLazySingleton<AdminCategoriesDataSource>(
+      () => AdminCategoriesDataSourceImpl(sl()),
+    )
+    ..registerLazySingleton<AdminCategoryRepository>(
+      () => AdminCategoryRepositoryImpl(sl()),
+    )
+    ..registerLazySingleton(() => GetAllAdminCategoriesUsecase(sl()))
+    ..registerLazySingleton(() => CreateCategoryUsecase(sl()))
+    ..registerLazySingleton(() => UpdateCategoryUsecase(sl()))
+    ..registerLazySingleton(() => DeleteCategoryUsecase(sl()))
+    ..registerFactory(
+      () => GetAllAdminCategoriesBloc(getAllAdminCategoriesUsecase: sl()),
+    )
+    ..registerFactory(() => CreateCategoryBloc(createCategoryUsecase: sl()))
+    ..registerFactory(() => UpdateCategoryBloc(updateCategoryUsecase: sl()))
+    ..registerFactory(() => DeleteCategoryBloc(deleteCategoryUsecase: sl()));
 }
