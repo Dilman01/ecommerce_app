@@ -17,13 +17,13 @@ import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs
 import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/delete_category/delete_category_bloc.dart';
 import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/get_all_admin_categories/get_all_admin_categories_bloc.dart';
 import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/update_category/update_category_bloc.dart';
-import 'package:ecommerce_app/features/admin/admin_products/data/create_product_usecase.dart';
 import 'package:ecommerce_app/features/admin/admin_products/data/data_source/admin_products_data_source.dart';
-import 'package:ecommerce_app/features/admin/admin_products/data/delete_product_usecase.dart';
-import 'package:ecommerce_app/features/admin/admin_products/data/get_all_admin_products_usecase.dart';
 import 'package:ecommerce_app/features/admin/admin_products/data/repository/admin_products_repository_impl.dart';
-import 'package:ecommerce_app/features/admin/admin_products/data/update_product_usecase.dart';
 import 'package:ecommerce_app/features/admin/admin_products/domain/repository/admin_products_repository.dart';
+import 'package:ecommerce_app/features/admin/admin_products/domain/usecases/create_product_usecase.dart';
+import 'package:ecommerce_app/features/admin/admin_products/domain/usecases/delete_product_usecase.dart';
+import 'package:ecommerce_app/features/admin/admin_products/domain/usecases/get_all_admin_products_usecase.dart';
+import 'package:ecommerce_app/features/admin/admin_products/domain/usecases/update_product_usecase.dart';
 import 'package:ecommerce_app/features/auth/data/data_source/auth_local_data_source.dart';
 import 'package:ecommerce_app/features/auth/data/data_source/auth_remote_data_source.dart';
 import 'package:ecommerce_app/features/auth/data/repository/auth_repository_impl.dart';

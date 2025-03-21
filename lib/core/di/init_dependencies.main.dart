@@ -122,5 +122,11 @@ Future<void> _initAdminProducts() async {
     ..registerLazySingleton(() => GetAllAdminProductsUsecase(sl()))
     ..registerLazySingleton(() => CreateProductUsecase(sl()))
     ..registerLazySingleton(() => UpdateProductUsecase(sl()))
-    ..registerLazySingleton(() => DeleteProductUsecase(sl()));
+    ..registerLazySingleton(() => DeleteProductUsecase(sl()))
+    ..registerFactory(
+      () => GetAllAdminCategoriesBloc(getAllAdminCategoriesUsecase: sl()),
+    )
+    ..registerFactory(() => CreateCategoryBloc(createCategoryUsecase: sl()))
+    ..registerFactory(() => UpdateCategoryBloc(updateCategoryUsecase: sl()))
+    ..registerFactory(() => DeleteCategoryBloc(deleteCategoryUsecase: sl()));
 }
