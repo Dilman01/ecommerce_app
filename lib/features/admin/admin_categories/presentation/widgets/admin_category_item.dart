@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/delete_category/delete_category_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -53,7 +54,10 @@ class AdminCategoryItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 spacing: 80.w,
                 children: [
-                  DeleteCategoryWidget(id: id),
+                  BlocProvider(
+                    create: (context) => sl<DeleteCategoryBloc>(),
+                    child: DeleteCategoryWidget(id: id),
+                  ),
                   IconButton(
                     onPressed: () {
                       CustomBottomSheet.showModalBottomSheetContainer(

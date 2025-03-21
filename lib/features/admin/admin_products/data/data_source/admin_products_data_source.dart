@@ -46,7 +46,7 @@ class AdminProductsDataSourceImpl implements AdminProductsDataSource {
   Future<void> updateProduct(UpdateProductReqBody body) async {
     try {
       await _dio.put(
-        '${ApiConstants.products}/${body.productId}',
+        '${ApiConstants.products}${body.productId}',
         data: body.toJson(),
       );
     } on ServerException catch (e) {
@@ -57,7 +57,7 @@ class AdminProductsDataSourceImpl implements AdminProductsDataSource {
   @override
   Future<void> deleteProduct(int id) async {
     try {
-      await _dio.delete('${ApiConstants.products}/$id');
+      await _dio.delete('${ApiConstants.products}$id');
     } on ServerException catch (e) {
       throw ServerException(e.message);
     }

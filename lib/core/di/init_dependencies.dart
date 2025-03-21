@@ -1,3 +1,7 @@
+import 'package:ecommerce_app/features/admin/admin_products/presentation/blocs/create_product/create_product_bloc.dart';
+import 'package:ecommerce_app/features/admin/admin_products/presentation/blocs/delete_product/delete_product_bloc.dart';
+import 'package:ecommerce_app/features/admin/admin_products/presentation/blocs/get_all_admin_products/get_all_admin_products_bloc.dart';
+import 'package:ecommerce_app/features/admin/admin_products/presentation/blocs/update_product/update_product_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import 'package:ecommerce_app/core/common/app/internet_connection_cubit/internet_connection_cubit.dart';

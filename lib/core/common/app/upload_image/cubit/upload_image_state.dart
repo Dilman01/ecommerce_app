@@ -11,6 +11,15 @@ final class UploadImageInitial extends UploadImageState {}
 
 final class UploadImageLoading extends UploadImageState {}
 
+final class UploadImageLoadingList extends UploadImageState {
+  final int index;
+
+  const UploadImageLoadingList(this.index);
+
+  @override
+  List<Object> get props => [index];
+}
+
 final class UploadImageSuccess extends UploadImageState {}
 
 final class UploadImageError extends UploadImageState {

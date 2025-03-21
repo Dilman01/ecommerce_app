@@ -9,11 +9,9 @@ import 'package:ecommerce_app/core/di/init_dependencies.dart';
 import 'package:ecommerce_app/core/extensions/context_extensions.dart';
 import 'package:ecommerce_app/core/routes/route_names.dart';
 import 'package:ecommerce_app/core/style/images/app_images.dart';
-import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/create_category/create_category_bloc.dart';
-import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/delete_category/delete_category_bloc.dart';
 import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/get_all_admin_categories/get_all_admin_categories_bloc.dart';
-import 'package:ecommerce_app/features/admin/admin_categories/presentation/blocs/update_category/update_category_bloc.dart';
 import 'package:ecommerce_app/features/admin/admin_categories/presentation/screen/admin_categories_screen.dart';
+import 'package:ecommerce_app/features/admin/admin_products/presentation/blocs/get_all_admin_products/get_all_admin_products_bloc.dart';
 import 'package:ecommerce_app/features/admin/admin_products/presentation/screen/admin_products_screen.dart';
 import 'package:ecommerce_app/features/admin/dashboard/presentation/screen/dashboard_screen.dart';
 import 'package:ecommerce_app/features/admin/home/presentation/widget/profile_header.dart';
@@ -40,9 +38,12 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                   sl<GetAllAdminCategoriesBloc>()
                     ..add(FetchAllCategories(isLoading: true)),
         ),
-        BlocProvider(create: (context) => sl<CreateCategoryBloc>()),
-        BlocProvider(create: (context) => sl<UpdateCategoryBloc>()),
-        BlocProvider(create: (context) => sl<DeleteCategoryBloc>()),
+        BlocProvider(
+          create:
+              (context) =>
+                  sl<GetAllAdminProductsBloc>()
+                    ..add(FetchAllAdminProducts(isLoading: true)),
+        ),
       ],
       child: Scaffold(
         appBar: AppBar(

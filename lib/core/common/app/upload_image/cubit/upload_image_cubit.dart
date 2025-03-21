@@ -14,6 +14,10 @@ class UploadImageCubit extends Cubit<UploadImageState> {
 
   String getImageUrl = '';
 
+  List<String> imageList = ['', '', ''];
+
+  List<String> imageUpdateList = [];
+
   Future<void> uploadImage(BuildContext context) async {
     final pickedImage = await PickImageUtils().pickImage(context);
 
@@ -25,6 +29,50 @@ class UploadImageCubit extends Cubit<UploadImageState> {
 
     result.fold((l) => emit(UploadImageError(l.message)), (image) {
       getImageUrl = image.location ?? '';
+
+      emit(UploadImageSuccess());
+    });
+  }
+
+  // pick image and save it in file and upload it to server with List
+  Future<void> uploadImageList(
+    BuildContext context, {
+    required int indexId,
+  }) async {
+    final pickedImage = await PickImageUtils().pickImage(context);
+    if (pickedImage == null) return;
+
+    emit(UploadImageLoadingList(indexId));
+    final result = await _repo.uploadImage(imageFile: pickedImage);
+
+    result.fold((l) => emit(UploadImageError(l.message)), (image) {
+      imageList
+        ..removeAt(indexId)
+        ..insert(indexId, image.location ?? '');
+
+      emit(UploadImageSuccess());
+    });
+  }
+
+  // Upload update image list
+  Future<void> uploadUpdateImageList(
+    BuildContext context, {
+    required int indexId,
+    required List<String> productImageList,
+  }) async {
+    final pickedImage = await PickImageUtils().pickImage(context);
+    if (pickedImage == null) return;
+
+    emit(UploadImageLoadingList(indexId));
+
+    final result = await _repo.uploadImage(imageFile: pickedImage);
+
+    result.fold((l) => emit(UploadImageError(l.message)), (image) {
+      imageUpdateList = productImageList;
+
+      imageUpdateList
+        ..removeAt(indexId)
+        ..insert(indexId, image.location ?? '');
 
       emit(UploadImageSuccess());
     });

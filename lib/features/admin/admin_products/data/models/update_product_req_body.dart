@@ -15,10 +15,11 @@ class UpdateProductReqBody {
 
   final String title;
   final double price;
+  @JsonKey(name: 'images')
   final List<String> imageList;
   final String description;
-  final double categoryId;
-  final String productId;
+  final int categoryId;
+  final int productId;
 
   Map<String, dynamic> toJson() => _$UpdateProductReqBodyToJson(this);
 }

@@ -14,9 +14,10 @@ class CreateProductReqBody {
 
   final String title;
   final double price;
+  @JsonKey(name: 'images')
   final List<String> imageList;
   final String description;
-  final double categoryId;
+  final int categoryId;
 
   Map<String, dynamic> toJson() => _$CreateProductReqBodyToJson(this);
 }

@@ -31,7 +31,7 @@ class GetAllAdminProductsBloc
 
     response.fold(
       (l) => emit(GetAllAdminProductsFailure(l.message)),
-      (r) => emit(GetAllAdminProductsSuccess(r)),
+      (r) => emit(GetAllAdminProductsSuccess(r.reversed.toList())),
     );
   }
 }

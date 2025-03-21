@@ -10,7 +10,7 @@ sealed class GetAllAdminProductsEvent extends Equatable {
 final class FetchAllAdminProducts extends GetAllAdminProductsEvent {
   final bool isLoading;
 
-  const FetchAllAdminProducts(this.isLoading);
+  const FetchAllAdminProducts({required this.isLoading});
 
   @override
   List<Object> get props => [isLoading];

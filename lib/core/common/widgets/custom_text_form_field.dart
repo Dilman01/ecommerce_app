@@ -16,6 +16,7 @@ class CustomTextFormField extends StatelessWidget {
     this.autovalidateMode = AutovalidateMode.onUnfocus,
     this.textCapitalization = TextCapitalization.none,
     this.validator,
+    this.maxLines = 1,
   });
 
   final TextEditingController controller;
@@ -29,6 +30,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextCapitalization textCapitalization;
 
   final String? Function(String? value)? validator;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +54,7 @@ class CustomTextFormField extends StatelessWidget {
           textCapitalization: textCapitalization,
           autovalidateMode: autovalidateMode,
           enableSuggestions: enableSuggestions,
+          maxLines: maxLines,
           decoration: InputDecoration(
             hintText: hintText,
             hintStyle: context.appTextTheme.captionRegular.copyWith(
