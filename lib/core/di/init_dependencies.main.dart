@@ -11,6 +11,7 @@ Future<void> initDependencies() async {
   await _initCart();
   await _initWishlist();
   await _initAdminCategory();
+  await _initAdminProducts();
 }
 
 Future<void> _initCore() async {
@@ -108,4 +109,18 @@ Future<void> _initAdminCategory() async {
     ..registerFactory(() => CreateCategoryBloc(createCategoryUsecase: sl()))
     ..registerFactory(() => UpdateCategoryBloc(updateCategoryUsecase: sl()))
     ..registerFactory(() => DeleteCategoryBloc(deleteCategoryUsecase: sl()));
+}
+
+Future<void> _initAdminProducts() async {
+  sl
+    ..registerLazySingleton<AdminProductsDataSource>(
+      () => AdminProductsDataSourceImpl(sl()),
+    )
+    ..registerLazySingleton<AdminProductsRepository>(
+      () => AdminProductsRepositoryImpl(sl()),
+    )
+    ..registerLazySingleton(() => GetAllAdminProductsUsecase(sl()))
+    ..registerLazySingleton(() => CreateProductUsecase(sl()))
+    ..registerLazySingleton(() => UpdateProductUsecase(sl()))
+    ..registerLazySingleton(() => DeleteProductUsecase(sl()));
 }
