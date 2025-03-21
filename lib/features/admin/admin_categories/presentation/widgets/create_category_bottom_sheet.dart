@@ -78,7 +78,7 @@ class _CreateCategoryBottomSheetState extends State<CreateCategoryBottomSheet> {
               hintText: 'Name',
               validator: (value) {
                 if (value == null || value.isEmpty || value.length < 2) {
-                  return 'Please Selected Your Category Name';
+                  return 'Invalid Name';
                 }
                 return null;
               },

@@ -39,9 +39,15 @@ class AdminCategoryItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                title ?? 'Unknown',
-                style: context.appTextTheme.heading3SemiBold,
+              SizedBox(
+                height: 55.h,
+                width: 140.w,
+                child: Text(
+                  title ?? 'Unknown',
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: context.appTextTheme.heading3SemiBold,
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
