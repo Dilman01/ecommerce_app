@@ -12,6 +12,7 @@ Future<void> initDependencies() async {
   await _initWishlist();
   await _initAdminCategory();
   await _initAdminProducts();
+  await _initAdminUsers();
 }
 
 Future<void> _initCore() async {
@@ -129,4 +130,10 @@ Future<void> _initAdminProducts() async {
     ..registerFactory(() => CreateProductBloc(createProductUsecase: sl()))
     ..registerFactory(() => UpdateProductBloc(updateProductUsecase: sl()))
     ..registerFactory(() => DeleteProductBloc(deleteProductUsecase: sl()));
+}
+
+Future<void> _initAdminUsers() async {
+  sl
+    ..registerLazySingleton<UsersDataSource>(() => UsersDataSourceImpl(sl()))
+    ..registerLazySingleton<UsersRepository>(() => UsersRepositoryImpl(sl()));
 }

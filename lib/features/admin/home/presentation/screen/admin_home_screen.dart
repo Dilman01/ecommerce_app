@@ -133,7 +133,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                   style: context.appTextTheme.heading3SemiBold,
                 ),
                 leading: Icon(
-                  Icons.people_alt,
+                  Icons.people_alt_outlined,
                   color: context.appColors.arrowColor,
                   size: 32.r,
                 ),
