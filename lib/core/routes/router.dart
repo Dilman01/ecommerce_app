@@ -78,12 +78,6 @@ class AppRouter {
         return userRole == 'admin' ? '/admin-home' : '/home';
       }
 
-      // Prevent unauthenticated users from accessing protected routes
-      // if (authState is! AuthSuccess &&
-      //     (currentLocation == '/home' || currentLocation == '/admin-home')) {
-      //   return '/onboarding';
-      // }
-
       return null;
     },
     routes: [
