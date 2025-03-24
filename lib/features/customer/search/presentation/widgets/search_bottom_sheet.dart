@@ -28,8 +28,8 @@ class _SearchBottomSheetState extends State<SearchBottomSheet> {
           decoration: BoxDecoration(
             color: context.appColors.backgroundColor,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(24).r,
-              topRight: Radius.circular(24).r,
+              topLeft: const Radius.circular(24).r,
+              topRight: const Radius.circular(24).r,
             ),
           ),
           child: Column(

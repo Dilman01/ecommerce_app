@@ -9,7 +9,7 @@ import 'package:ecommerce_app/core/style/theme/text_extension.dart';
 
 abstract class AppTheme {
   static final light = ThemeData.light().copyWith(
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       elevation: 0,
       backgroundColor: AppColors.white,
       scrolledUnderElevation: 0,
@@ -21,8 +21,8 @@ abstract class AppTheme {
       enableFeedback: false,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
-      selectedIconTheme: IconThemeData(color: AppColors.cyan),
-      unselectedIconTheme: IconThemeData(color: AppColors.grey150Light),
+      selectedIconTheme: const IconThemeData(color: AppColors.cyan),
+      unselectedIconTheme: const IconThemeData(color: AppColors.grey150Light),
       unselectedLabelStyle: AppTypography.captionRegular.copyWith(
         color: AppColors.grey150Light,
       ),
@@ -36,7 +36,7 @@ abstract class AppTheme {
   );
 
   static final dark = ThemeData.dark().copyWith(
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       elevation: 0,
       backgroundColor: AppColors.black,
       scrolledUnderElevation: 0,
@@ -48,8 +48,8 @@ abstract class AppTheme {
       enableFeedback: false,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
-      selectedIconTheme: IconThemeData(color: AppColors.cyan),
-      unselectedIconTheme: IconThemeData(color: AppColors.grey150Light),
+      selectedIconTheme: const IconThemeData(color: AppColors.cyan),
+      unselectedIconTheme: const IconThemeData(color: AppColors.grey150Light),
       unselectedLabelStyle: AppTypography.captionRegular.copyWith(
         color: AppColors.grey150Light,
       ),

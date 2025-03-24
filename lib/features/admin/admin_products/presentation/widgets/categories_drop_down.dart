@@ -65,7 +65,7 @@ class CategoriesDropDown extends StatelessWidget {
               color: context.appColors.arrowColor,
             ),
             menuStyle: MenuStyle(
-              elevation: WidgetStatePropertyAll(0),
+              elevation: const WidgetStatePropertyAll(0),
               backgroundColor: WidgetStatePropertyAll(
                 context.appColors.backgroundColor,
               ),

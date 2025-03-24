@@ -27,7 +27,7 @@ class EcommerceApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<WishlistCubit>()),
       ],
       child: ScreenUtilInit(
-        designSize: Size(360, 800),
+        designSize: const Size(360, 800),
         child: BlocBuilder<ThemeCubit, ThemeState>(
           builder: (context, state) {
             return BlocListener<AuthBloc, AuthState>(

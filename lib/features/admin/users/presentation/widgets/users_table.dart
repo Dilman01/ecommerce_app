@@ -27,7 +27,7 @@ class UsersTable extends StatelessWidget {
       children: [
         TableRow(
           decoration: BoxDecoration(color: context.appColors.cyan50),
-          children: [
+          children: const [
             TableCell(
               verticalAlignment: TableCellVerticalAlignment.middle,
               child: TableCellTitle(icon: Icons.person_outlined, title: 'Name'),
@@ -52,7 +52,7 @@ class UsersTable extends StatelessWidget {
               TableCell(
                 verticalAlignment: TableCellVerticalAlignment.middle,
                 child: Padding(
-                  padding: EdgeInsets.all(10).r,
+                  padding: const EdgeInsets.all(10).r,
                   child: Text(
                     userList[index].name ?? 'Unknown',
                     style: context.appTextTheme.captionSemiBold,
@@ -62,7 +62,7 @@ class UsersTable extends StatelessWidget {
               TableCell(
                 verticalAlignment: TableCellVerticalAlignment.middle,
                 child: Padding(
-                  padding: EdgeInsets.all(10).r,
+                  padding: const EdgeInsets.all(10).r,
                   child: Text(
                     userList[index].email ?? 'Unknown',
                     style: context.appTextTheme.captionSemiBold,

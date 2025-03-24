@@ -51,7 +51,7 @@ class CategoriesList extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12).r,
                   child: Container(
                     width: 94.w,
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12).r,
                       border: Border.all(color: context.appColors.grey50),
@@ -94,7 +94,7 @@ class CategoriesList extends StatelessWidget {
             ),
           );
         }
-        return SizedBox();
+        return const SizedBox();
       },
     );
   }

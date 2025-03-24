@@ -17,25 +17,25 @@ class _CarouselWidgetState extends State<CarouselWidget> {
   int _currentIndex = 0;
 
   final List<Widget> items = [
-    CarouselItem(
+    const CarouselItem(
       imageUrl:
           'https://img.freepik.com/premium-photo/black-headphones-blue-background-headphones-are-overear-have-modern-design_14117-205216.jpg',
       discount: '30',
       productTitle: 'On Headphones',
     ),
-    CarouselItem(
+    const CarouselItem(
       imageUrl:
           'https://static.vecteezy.com/system/resources/previews/027/807/254/non_2x/t-shirts-mockup-with-text-space-on-colrful-background-hd-ai-free-photo.jpg',
       discount: '20',
       productTitle: 'On T-Shirts',
     ),
-    CarouselItem(
+    const CarouselItem(
       imageUrl:
           'https://t3.ftcdn.net/jpg/06/28/06/20/360_F_628062031_JfPJNvjOASTUBiXdOVekeQB53YIe3KHu.jpg',
       discount: '15',
       productTitle: 'On Laptops',
     ),
-    CarouselItem(
+    const CarouselItem(
       imageUrl:
           'https://img.freepik.com/premium-photo/dark-living-room-interior-design-with-sofa-plant-3d-rendering-background_517102-221.jpg',
       discount: '40',
@@ -73,7 +73,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
           bottom: 12.h,
           child: Container(
             height: 16.h,
-            padding: EdgeInsets.all(5).r,
+            padding: const EdgeInsets.all(5).r,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12).r,
               color: context.appColors.grey50,

@@ -27,7 +27,7 @@ class AdminHomeScreen extends StatefulWidget {
 }
 
 class _AdminHomeScreenState extends State<AdminHomeScreen> {
-  Widget currentScreen = DashboardScreen();
+  Widget currentScreen = const DashboardScreen();
 
   @override
   Widget build(BuildContext context) {
@@ -37,19 +37,19 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           create:
               (context) =>
                   sl<GetAllAdminCategoriesBloc>()
-                    ..add(FetchAllCategories(isLoading: true)),
+                    ..add(const FetchAllCategories(isLoading: true)),
         ),
         BlocProvider(
           create:
               (context) =>
                   sl<GetAllAdminProductsBloc>()
-                    ..add(FetchAllAdminProducts(isLoading: true)),
+                    ..add(const FetchAllAdminProducts(isLoading: true)),
         ),
         BlocProvider(
           create:
               (context) =>
                   sl<GetAllUsersBloc>()
-                    ..add(FetchAllUsersEvent(isLoading: true)),
+                    ..add(const FetchAllUsersEvent(isLoading: true)),
         ),
       ],
       child: Scaffold(
@@ -74,7 +74,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              ProfileHeader(),
+              const ProfileHeader(),
               ListTile(
                 title: Text(
                   'Dashboard',
@@ -87,7 +87,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 ),
                 onTap: () {
                   setState(() {
-                    currentScreen = DashboardScreen();
+                    currentScreen = const DashboardScreen();
                   });
                   context.pop();
                 },
@@ -108,7 +108,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 ),
                 onTap: () {
                   setState(() {
-                    currentScreen = AdminCategoriesScreen();
+                    currentScreen = const AdminCategoriesScreen();
                   });
                   context.pop();
                 },
@@ -129,7 +129,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 ),
                 onTap: () {
                   setState(() {
-                    currentScreen = AdminProductsScreen();
+                    currentScreen = const AdminProductsScreen();
                   });
                   context.pop();
                 },
@@ -146,7 +146,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 ),
                 onTap: () {
                   setState(() {
-                    currentScreen = UsersScreen();
+                    currentScreen = const UsersScreen();
                   });
                   context.pop();
                 },
@@ -207,7 +207,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                   );
                 },
               ),
-              Spacer(),
+              const Spacer(),
               Column(
                 children: [
                   IconButton(
@@ -233,7 +233,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                   ),
                 ],
               ),
-              Spacer(),
+              const Spacer(),
             ],
           ),
         ),

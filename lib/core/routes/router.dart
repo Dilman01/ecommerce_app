@@ -92,7 +92,7 @@ class AppRouter {
               GoRoute(
                 path: '/home',
                 name: RouteNames.home,
-                builder: (context, state) => HomeScreen(),
+                builder: (context, state) => const HomeScreen(),
               ),
             ],
           ),
@@ -103,7 +103,7 @@ class AppRouter {
               GoRoute(
                 path: '/categories',
                 name: RouteNames.categories,
-                builder: (context, state) => CategoriesScreen(),
+                builder: (context, state) => const CategoriesScreen(),
               ),
             ],
           ),
@@ -114,7 +114,7 @@ class AppRouter {
               GoRoute(
                 path: '/cart',
                 name: RouteNames.cart,
-                builder: (context, state) => CartScreen(),
+                builder: (context, state) => const CartScreen(),
               ),
             ],
           ),
@@ -125,7 +125,7 @@ class AppRouter {
               GoRoute(
                 path: '/wishlist',
                 name: RouteNames.wishlist,
-                builder: (context, state) => WishlistScreen(),
+                builder: (context, state) => const WishlistScreen(),
               ),
             ],
           ),
@@ -136,30 +136,30 @@ class AppRouter {
               GoRoute(
                 path: '/profile',
                 name: RouteNames.profile,
-                builder: (context, state) => ProfileScreen(),
+                builder: (context, state) => const ProfileScreen(),
               ),
             ],
           ),
         ],
       ),
 
-      GoRoute(path: '/', builder: (context, routeState) => SplashScreen()),
+      GoRoute(path: '/', builder: (context, routeState) => const SplashScreen()),
 
       GoRoute(
         path: '/onboarding',
         name: RouteNames.onBoarding,
-        builder: (context, state) => OnBoardingScreen(),
+        builder: (context, state) => const OnBoardingScreen(),
       ),
       GoRoute(
         path: '/signup',
         name: RouteNames.signup,
-        builder: (context, state) => SignupScreen(),
+        builder: (context, state) => const SignupScreen(),
       ),
 
       GoRoute(
         path: '/login',
         name: RouteNames.login,
-        builder: (context, state) => LoginScreen(),
+        builder: (context, state) => const LoginScreen(),
       ),
 
       GoRoute(
@@ -199,31 +199,31 @@ class AppRouter {
       GoRoute(
         path: '/search',
         name: RouteNames.search,
-        builder: (context, state) => SearchScreen(),
+        builder: (context, state) => const SearchScreen(),
       ),
 
       GoRoute(
         path: '/checkout',
         name: RouteNames.checkout,
-        builder: (context, state) => CheckoutScreen(),
+        builder: (context, state) => const CheckoutScreen(),
       ),
 
       GoRoute(
         path: '/shipping',
         name: RouteNames.shipping,
-        builder: (context, state) => ShippingScreen(),
+        builder: (context, state) => const ShippingScreen(),
       ),
 
       GoRoute(
         path: '/payment',
         name: RouteNames.payment,
-        builder: (context, state) => PaymentScreen(),
+        builder: (context, state) => const PaymentScreen(),
       ),
 
       GoRoute(
         path: '/order-success',
         name: RouteNames.orderSuccess,
-        builder: (context, state) => OrderSuccessScreen(),
+        builder: (context, state) => const OrderSuccessScreen(),
       ),
 
       GoRoute(
@@ -240,19 +240,19 @@ class AppRouter {
       GoRoute(
         path: '/change-password',
         name: RouteNames.changePassword,
-        builder: (context, state) => ChangePasswordScreen(),
+        builder: (context, state) => const ChangePasswordScreen(),
       ),
 
       GoRoute(
         path: '/order-history',
         name: RouteNames.orderHistory,
-        builder: (context, state) => OrderHistoryScreen(),
+        builder: (context, state) => const OrderHistoryScreen(),
       ),
 
       GoRoute(
         path: '/admin-home',
         name: RouteNames.adminHome,
-        builder: (context, state) => AdminHomeScreen(),
+        builder: (context, state) => const AdminHomeScreen(),
       ),
     ],
   );

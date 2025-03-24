@@ -36,81 +36,90 @@ class CategoriesScreen extends StatelessWidget {
                   return Center(child: Text(state.message));
                 }
                 if (state is AllCategoriesLoaded) {
-                  return GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 8.h,
-                      crossAxisSpacing: 8.w,
-                      childAspectRatio: 160 / 100,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 12.h,
-                    ),
-                    itemCount: state.categories.length,
-                    itemBuilder: (context, index) {
-                      final category = state.categories[index];
-                      return InkWell(
-                        onTap: () {
-                          context.pushNamed(
-                            RouteNames.categoryProductsList,
-                            pathParameters: {
-                              'id': category.id.toString(),
-                              'title': category.name ?? 'Unknown',
-                            },
-                          );
-                        },
-                        borderRadius: BorderRadius.circular(16).r,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16).r,
-                            border: Border.all(color: context.appColors.grey50),
-                          ),
-                          child: Column(
-                            spacing: 2.h,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              CachedNetworkImage(
-                                imageUrl:
-                                    category.image ??
-                                    'https://ozarkhighlandstrail.com/wp-content/themes/u-design/assets/images/placeholders/post-placeholder.jpg',
-                                placeholder:
-                                    (context, url) => Center(
-                                      child: CircularProgressIndicator(
-                                        color: context.appColors.cyan,
-                                      ),
-                                    ),
-                                errorWidget:
-                                    (context, url, error) => Center(
-                                      child: Icon(
-                                        Icons.image_not_supported_outlined,
-                                        size: 40.r,
-                                        color: context.appColors.grey100,
-                                      ),
-                                    ),
-                                height: 60.h,
-                                fit: BoxFit.cover,
-                              ),
-                              Text(
-                                category.name ?? 'Unknown',
-                                overflow: TextOverflow.ellipsis,
-                                style: context.appTextTheme.captionSemiBold,
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
+                  return RefreshIndicator(
+                    onRefresh: () async {
+                      context.read<CategoriesBloc>().add(GetAllCategories());
                     },
+                    color: context.appColors.cyan,
+                    backgroundColor: context.appColors.backgroundColor,
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 8.h,
+                        crossAxisSpacing: 8.w,
+                        childAspectRatio: 160 / 100,
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 12.h,
+                      ),
+                      itemCount: state.categories.length,
+                      itemBuilder: (context, index) {
+                        final category = state.categories[index];
+                        return InkWell(
+                          onTap: () {
+                            context.pushNamed(
+                              RouteNames.categoryProductsList,
+                              pathParameters: {
+                                'id': category.id.toString(),
+                                'title': category.name ?? 'Unknown',
+                              },
+                            );
+                          },
+                          borderRadius: BorderRadius.circular(16).r,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16).r,
+                              border: Border.all(
+                                color: context.appColors.grey50,
+                              ),
+                            ),
+                            child: Column(
+                              spacing: 2.h,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                CachedNetworkImage(
+                                  imageUrl:
+                                      category.image ??
+                                      'https://ozarkhighlandstrail.com/wp-content/themes/u-design/assets/images/placeholders/post-placeholder.jpg',
+                                  placeholder:
+                                      (context, url) => Center(
+                                        child: CircularProgressIndicator(
+                                          color: context.appColors.cyan,
+                                        ),
+                                      ),
+                                  errorWidget:
+                                      (context, url, error) => Center(
+                                        child: Icon(
+                                          Icons.image_not_supported_outlined,
+                                          size: 40.r,
+                                          color: context.appColors.grey100,
+                                        ),
+                                      ),
+                                  height: 60.h,
+                                  fit: BoxFit.cover,
+                                ),
+                                Text(
+                                  category.name ?? 'Unknown',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: context.appTextTheme.captionSemiBold,
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   );
                 }
-                return SizedBox();
+                return const SizedBox();
               },
             );
           } else if (state is InternetConnectionDisconnected) {
             return Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-              child: NoInternet(),
+              child: const NoInternet(),
             );
           } else {
             return Center(

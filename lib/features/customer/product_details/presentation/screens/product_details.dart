@@ -103,21 +103,21 @@ class ProductDetails extends StatelessWidget {
               decoration: BoxDecoration(
                 color: context.appColors.backgroundColor,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(24).r,
-                  topRight: Radius.circular(24).r,
+                  topLeft: const Radius.circular(24).r,
+                  topRight: const Radius.circular(24).r,
                 ),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ProductChip(),
+                  const ProductChip(),
                   SizedBox(height: 6.h),
                   ProductTitle(
                     title: product.title ?? 'Unknown',
                     price: product.price ?? 0.0,
                   ),
                   SizedBox(height: 12.h),
-                  ProductRating(),
+                  const ProductRating(),
                   SizedBox(height: 12.h),
                   ProductDescription(
                     description: product.description ?? 'Unknown',

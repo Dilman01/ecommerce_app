@@ -79,7 +79,7 @@ class AdminCategoryItem extends StatelessWidget {
                         ),
                         whenComplete: () {
                           context.read<GetAllAdminCategoriesBloc>().add(
-                            FetchAllCategories(isLoading: false),
+                            const FetchAllCategories(isLoading: false),
                           );
                         },
                       );

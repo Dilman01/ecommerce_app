@@ -51,7 +51,7 @@ class _SearchUsersState extends State<SearchUsers> {
               onPressed: () {
                 controller.clear();
                 context.read<GetAllUsersBloc>().add(
-                  FetchAllUsersEvent(isLoading: true),
+                  const FetchAllUsersEvent(isLoading: true),
                 );
               },
               icon:

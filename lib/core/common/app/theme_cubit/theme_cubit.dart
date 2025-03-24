@@ -8,7 +8,7 @@ import 'package:ecommerce_app/core/services/shared_pref/shared_pref.dart';
 part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit() : super(ThemeInitial(ThemeMode.system)) {
+  ThemeCubit() : super(const ThemeInitial(ThemeMode.system)) {
     _loadTheme();
   }
 

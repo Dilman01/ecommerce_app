@@ -19,7 +19,7 @@ class DeleteUserIcon extends StatelessWidget {
       listener: (context, state) {
         if (state is DeleteUserSuccess) {
           context.read<GetAllUsersBloc>().add(
-            FetchAllUsersEvent(isLoading: false),
+            const FetchAllUsersEvent(isLoading: false),
           );
           ShowToast.showToastSuccessTop(message: 'User has been deleted');
         }

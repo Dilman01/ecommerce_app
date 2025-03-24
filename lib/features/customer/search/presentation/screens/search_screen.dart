@@ -40,7 +40,7 @@ class SearchScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 16.h),
-                    SearchTextField(),
+                    const SearchTextField(),
                     SizedBox(height: 16.h),
 
                     BlocBuilder<
@@ -86,11 +86,11 @@ class SearchScreen extends StatelessWidget {
                                 );
                               }
 
-                              return SearchProductsList(products: []);
+                              return const SearchProductsList(products: []);
                             },
                           );
                         } else if (state is InternetConnectionDisconnected) {
-                          return NoInternet();
+                          return const NoInternet();
                         } else {
                           return Center(
                             child: CircularProgressIndicator(

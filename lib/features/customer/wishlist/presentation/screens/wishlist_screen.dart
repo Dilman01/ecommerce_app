@@ -22,7 +22,7 @@ class WishlistScreen extends StatelessWidget {
               context.read<WishlistCubit>().wishlistProducts;
 
           if (wishlistProducts.isEmpty) {
-            return EmptyWishlist();
+            return const EmptyWishlist();
           }
 
           return ListView.separated(

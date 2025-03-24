@@ -126,7 +126,7 @@ class _CreateProductBottomSheetState extends State<CreateProductBottomSheet> {
                     );
                   }
                   return CategoriesDropDown(
-                    categories: [],
+                    categories: const [],
                     onSelected: (value) {},
                   );
                 },

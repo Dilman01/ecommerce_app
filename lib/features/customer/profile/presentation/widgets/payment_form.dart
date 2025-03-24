@@ -52,11 +52,11 @@ class PaymentForm extends StatelessWidget {
           ],
         ),
         SizedBox(height: 12.h),
-        CustomTextField(
+        const CustomTextField(
           title: 'Card Holder Name',
           hintText: 'Enter card holder name',
         ),
-        CustomTextField(title: 'Card Number', hintText: '4111 1111 1111 1111'),
+        const CustomTextField(title: 'Card Number', hintText: '4111 1111 1111 1111'),
         Row(
           spacing: 8.w,
           children: [

@@ -26,7 +26,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 hintText: 'Enter your old password',
                 suffixIcon: IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.remove_red_eye_outlined),
+                  icon: const Icon(Icons.remove_red_eye_outlined),
                 ),
               ),
               CustomTextField(
@@ -34,7 +34,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 hintText: 'Enter your new password',
                 suffixIcon: IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.remove_red_eye_outlined),
+                  icon: const Icon(Icons.remove_red_eye_outlined),
                 ),
               ),
               CustomTextField(
@@ -42,7 +42,7 @@ class ChangePasswordScreen extends StatelessWidget {
                 hintText: 'Confirm your password',
                 suffixIcon: IconButton(
                   onPressed: () {},
-                  icon: Icon(Icons.remove_red_eye_outlined),
+                  icon: const Icon(Icons.remove_red_eye_outlined),
                 ),
               ),
               SizedBox(height: 20.h),

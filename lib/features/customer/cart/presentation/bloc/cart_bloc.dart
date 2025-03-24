@@ -6,7 +6,7 @@ part 'cart_event.dart';
 part 'cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  CartBloc() : super(CartInitial([])) {
+  CartBloc() : super(const CartInitial([])) {
     on<AddToCart>(_onAddToCart);
     on<RemoveFromCart>(_onRemoveFromCart);
   }
@@ -14,7 +14,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   Future<void> _onAddToCart(AddToCart event, Emitter<CartState> emit) async {
     emit(CartLoading(state.products));
 
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
 
     if (state.products.contains(event.product)) {
       emit(CartError('Product is Already Added to Cart', state.products));

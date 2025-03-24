@@ -45,7 +45,7 @@ class AdminProductItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(16).r,
         border: Border.all(color: context.appColors.grey50),
       ),
-      padding: EdgeInsets.all(8).r,
+      padding: const EdgeInsets.all(8).r,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -72,7 +72,7 @@ class AdminProductItem extends StatelessWidget {
                           create:
                               (context) =>
                                   sl<GetAllAdminCategoriesBloc>()
-                                    ..add(FetchAllCategories(isLoading: false)),
+                                    ..add(const FetchAllCategories(isLoading: false)),
                         ),
                       ],
                       child: UpdateProductBottomSheet(
@@ -87,7 +87,7 @@ class AdminProductItem extends StatelessWidget {
                     ),
                     whenComplete: () {
                       context.read<GetAllAdminProductsBloc>().add(
-                        FetchAllAdminProducts(isLoading: false),
+                        const FetchAllAdminProducts(isLoading: false),
                       );
                     },
                   );

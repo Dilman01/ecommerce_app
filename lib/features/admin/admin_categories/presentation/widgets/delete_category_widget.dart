@@ -35,7 +35,7 @@ class DeleteCategoryWidget extends StatelessWidget {
 
           if (state is DeleteCategorySuccess) {
             context.read<GetAllAdminCategoriesBloc>().add(
-              FetchAllCategories(isLoading: false),
+              const FetchAllCategories(isLoading: false),
             );
             ShowToast.showToastSuccessTop(
               message: 'The Category was deleted successfully!',

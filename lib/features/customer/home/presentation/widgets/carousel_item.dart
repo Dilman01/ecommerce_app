@@ -34,7 +34,7 @@ class CarouselItem extends StatelessWidget {
         spacing: 6.h,
         children: [
           Container(
-            padding: EdgeInsets.all(5).r,
+            padding: const EdgeInsets.all(5).r,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8).r,
               color: context.appColors.black,

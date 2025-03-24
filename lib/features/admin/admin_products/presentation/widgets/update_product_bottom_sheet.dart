@@ -152,7 +152,7 @@ class _UpdateProductBottomSheetState extends State<UpdateProductBottomSheet> {
                     );
                   }
                   return CategoriesDropDown(
-                    categories: [],
+                    categories: const [],
                     initialSelection: categoryValueName,
                     onSelected: (value) {},
                   );

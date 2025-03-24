@@ -60,7 +60,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
       return right(null);
     } catch (e) {
-      return left(Failure('Failed to logout'));
+      return left(const Failure('Failed to logout'));
     }
   }
 }

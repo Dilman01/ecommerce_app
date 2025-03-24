@@ -24,13 +24,13 @@ class DashboardScreen extends StatelessWidget {
             return RefreshIndicator(
               onRefresh: () async {
                 context.read<GetAllAdminProductsBloc>().add(
-                  FetchAllAdminProducts(isLoading: true),
+                  const FetchAllAdminProducts(isLoading: true),
                 );
                 context.read<GetAllAdminCategoriesBloc>().add(
-                  FetchAllCategories(isLoading: true),
+                  const FetchAllCategories(isLoading: true),
                 );
                 context.read<GetAllUsersBloc>().add(
-                  FetchAllUsersEvent(isLoading: true),
+                  const FetchAllUsersEvent(isLoading: true),
                 );
               },
               color: context.appColors.cyan,
@@ -235,7 +235,7 @@ class DashboardScreen extends StatelessWidget {
               ),
             );
           } else if (state is InternetConnectionDisconnected) {
-            return NoInternet();
+            return const NoInternet();
           } else {
             return Center(
               child: CircularProgressIndicator(color: context.appColors.cyan),

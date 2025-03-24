@@ -12,7 +12,7 @@ class ShippingForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       spacing: 12.h,
-      children: [
+      children: const [
         CustomTextField(title: 'Full Name', hintText: 'Enter full name'),
         PhoneNumberField(),
         DropDownWidget(),

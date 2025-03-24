@@ -75,7 +75,7 @@ class _CategoryProductsListScreenState
             );
           }
 
-          return SizedBox();
+          return const SizedBox();
         },
       ),
     );

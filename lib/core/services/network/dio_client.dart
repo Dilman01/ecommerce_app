@@ -85,7 +85,7 @@ class DioClient {
       Logger().i('Refreshing the access token was successful ✅');
     } catch (e) {
       Logger().e('Refreshing the access token failed ❌');
-      throw ServerException('Something went wrong, please try again later!');
+      throw const ServerException('Something went wrong, please try again later!');
     }
   }
 
@@ -107,7 +107,7 @@ class DioClient {
       );
       return response;
     } catch (e) {
-      throw ServerException('Something went wrong, please try again later!');
+      throw const ServerException('Something went wrong, please try again later!');
     }
   }
 
@@ -130,7 +130,7 @@ class DioClient {
       );
       return response;
     } catch (e) {
-      throw ServerException('Something went wrong, please try again later!');
+      throw const ServerException('Something went wrong, please try again later!');
     }
   }
 
@@ -156,7 +156,7 @@ class DioClient {
       );
       return response;
     } catch (e) {
-      throw ServerException('Something went wrong, please try again later!');
+      throw const ServerException('Something went wrong, please try again later!');
     }
   }
 
@@ -178,7 +178,7 @@ class DioClient {
       );
       return response.data;
     } catch (e) {
-      throw ServerException('Something went wrong, please try again later!');
+      throw const ServerException('Something went wrong, please try again later!');
     }
   }
 }

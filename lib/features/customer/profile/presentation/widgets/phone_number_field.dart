@@ -37,14 +37,14 @@ class PhoneNumberField extends StatelessWidget {
             height: 60.h,
             child: InternationalPhoneNumberInput(
               onInputChanged: (value) {},
-              selectorConfig: SelectorConfig(
+              selectorConfig: const SelectorConfig(
                 selectorType: PhoneInputSelectorType.DIALOG,
               ),
               selectorTextStyle: context.appTextTheme.captionRegular,
               textStyle: context.appTextTheme.captionRegular,
               cursorColor: context.appColors.arrowColor,
               initialValue: PhoneNumber(isoCode: 'IQ'),
-              keyboardType: TextInputType.numberWithOptions(
+              keyboardType: const TextInputType.numberWithOptions(
                 signed: true,
                 decimal: true,
               ),

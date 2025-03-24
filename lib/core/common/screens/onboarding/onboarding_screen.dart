@@ -76,7 +76,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             Container(
               height: 16.h,
               width: 36.w,
-              padding: EdgeInsets.all(5).r,
+              padding: const EdgeInsets.all(5).r,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12).r,
                 color: context.appColors.cyan50,

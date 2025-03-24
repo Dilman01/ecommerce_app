@@ -9,7 +9,7 @@ class SecureStorage {
 
   static final SecureStorage _instance = SecureStorage._();
 
-  final FlutterSecureStorage _storage = FlutterSecureStorage();
+  static const FlutterSecureStorage _storage = FlutterSecureStorage();
 
   Future<void> write(String key, String value) async {
     await _storage.write(key: key, value: value);

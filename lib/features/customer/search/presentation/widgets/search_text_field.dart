@@ -69,7 +69,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
                     context,
                     listen: false,
                   ),
-                  child: SearchBottomSheet(),
+                  child: const SearchBottomSheet(),
                 );
               },
             );

@@ -33,14 +33,14 @@ class CreateProductWidget extends StatelessWidget {
                     create:
                         (context) =>
                             sl<GetAllAdminCategoriesBloc>()
-                              ..add(FetchAllCategories(isLoading: false)),
+                              ..add(const FetchAllCategories(isLoading: false)),
                   ),
                 ],
-                child: CreateProductBottomSheet(),
+                child: const CreateProductBottomSheet(),
               ),
               whenComplete:
                   () => context.read<GetAllAdminProductsBloc>().add(
-                    FetchAllAdminProducts(isLoading: false),
+                    const FetchAllAdminProducts(isLoading: false),
                   ),
             );
           },

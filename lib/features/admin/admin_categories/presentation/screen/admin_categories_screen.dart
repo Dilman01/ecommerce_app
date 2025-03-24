@@ -23,14 +23,14 @@ class AdminCategoriesScreen extends StatelessWidget {
               spacing: 20.h,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CreateCategoryWidget(),
+                const CreateCategoryWidget(),
                 Expanded(
                   child: RefreshIndicator(
                     color: context.appColors.cyan,
                     backgroundColor: context.appColors.backgroundColor,
                     onRefresh: () async {
                       context.read<GetAllAdminCategoriesBloc>().add(
-                        FetchAllCategories(isLoading: true),
+                        const FetchAllCategories(isLoading: true),
                       );
                     },
                     child: CustomScrollView(
@@ -76,7 +76,7 @@ class AdminCategoriesScreen extends StatelessWidget {
                                 );
                               }
 
-                              return SizedBox();
+                              return const SizedBox();
                             },
                           ),
                         ),
@@ -87,7 +87,7 @@ class AdminCategoriesScreen extends StatelessWidget {
               ],
             );
           } else if (state is InternetConnectionDisconnected) {
-            return NoInternet();
+            return const NoInternet();
           } else {
             return Center(
               child: CircularProgressIndicator(color: context.appColors.cyan),

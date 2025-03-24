@@ -66,7 +66,7 @@ class _SignupFormState extends State<SignupForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 16.h,
             children: [
-              UserAvatarImage(),
+              const UserAvatarImage(),
               CustomTextFormField(
                 controller: _nameController,
                 title: 'Full Name',
@@ -108,7 +108,7 @@ class _SignupFormState extends State<SignupForm> {
                       obscureText = !obscureText;
                     });
                   },
-                  icon: Icon(Icons.remove_red_eye_outlined),
+                  icon: const Icon(Icons.remove_red_eye_outlined),
                 ),
                 obscureText: obscureText,
                 enableSuggestions: false,

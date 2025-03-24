@@ -18,7 +18,7 @@ class LatestProductsList extends StatelessWidget {
         childAspectRatio: 160 / 198,
       ),
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: products.take(6).length,
       itemBuilder: (context, index) {
         return ProductItem(product: products[index]);

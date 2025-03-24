@@ -22,12 +22,12 @@ class UsersScreen extends StatelessWidget {
             return Column(
               spacing: 20.h,
               children: [
-                SearchUsers(),
+                const SearchUsers(),
                 Flexible(
                   child: RefreshIndicator(
                     onRefresh: () async {
                       context.read<GetAllUsersBloc>().add(
-                        FetchAllUsersEvent(isLoading: true),
+                        const FetchAllUsersEvent(isLoading: true),
                       );
                     },
                     color: context.appColors.cyan,
@@ -77,7 +77,7 @@ class UsersScreen extends StatelessWidget {
                                 );
                               }
 
-                              return SizedBox();
+                              return const SizedBox();
                             },
                           ),
                         ),
@@ -88,7 +88,7 @@ class UsersScreen extends StatelessWidget {
               ],
             );
           } else if (state is InternetConnectionDisconnected) {
-            return NoInternet();
+            return const NoInternet();
           } else {
             return Center(
               child: CircularProgressIndicator(color: context.appColors.cyan),

@@ -24,7 +24,7 @@ class CustomBottomSheet {
           padding: EdgeInsets.only(
             bottom: MediaQuery.of(context).viewInsets.bottom,
           ),
-          child: Container(padding: EdgeInsets.all(16).r, child: widget),
+          child: Container(padding: const EdgeInsets.all(16).r, child: widget),
         ),
       );
     },

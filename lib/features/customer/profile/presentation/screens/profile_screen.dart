@@ -274,7 +274,7 @@ If you have any questions or concerns regarding these Terms and Conditions, plea
     ];
 
     return Scaffold(
-      appBar: ProfileAppBar(),
+      appBar: const ProfileAppBar(),
       backgroundColor: context.appColors.cyan,
       body: Container(
         width: double.infinity,
@@ -283,8 +283,8 @@ If you have any questions or concerns regarding these Terms and Conditions, plea
         decoration: BoxDecoration(
           color: context.appColors.backgroundColor,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(24).r,
-            topRight: Radius.circular(24).r,
+            topLeft: const Radius.circular(24).r,
+            topRight: const Radius.circular(24).r,
           ),
         ),
         child: CustomScrollView(

@@ -43,7 +43,7 @@ class SettingItem extends StatelessWidget {
                     color: context.appColors.grey150,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 if (!isThemeToggle)
                   Icon(
                     Icons.arrow_forward_ios,

@@ -23,12 +23,12 @@ class AdminProductsScreen extends StatelessWidget {
               spacing: 20.h,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CreateProductWidget(),
+                const CreateProductWidget(),
                 Expanded(
                   child: RefreshIndicator(
                     onRefresh: () async {
                       context.read<GetAllAdminProductsBloc>().add(
-                        FetchAllAdminProducts(isLoading: true),
+                        const FetchAllAdminProducts(isLoading: true),
                       );
                     },
                     color: context.appColors.cyan,
@@ -71,7 +71,7 @@ class AdminProductsScreen extends StatelessWidget {
                                       ),
                                   shrinkWrap: true,
                                   padding: EdgeInsets.zero,
-                                  physics: NeverScrollableScrollPhysics(),
+                                  physics: const NeverScrollableScrollPhysics(),
                                   itemCount: products.length,
                                   itemBuilder: (context, index) {
                                     final product = products[index];
@@ -91,7 +91,7 @@ class AdminProductsScreen extends StatelessWidget {
                                 );
                               }
 
-                              return SizedBox();
+                              return const SizedBox();
                             },
                           ),
                         ),
@@ -102,7 +102,7 @@ class AdminProductsScreen extends StatelessWidget {
               ],
             );
           } else if (state is InternetConnectionDisconnected) {
-            return NoInternet();
+            return const NoInternet();
           } else {
             return Center(
               child: CircularProgressIndicator(color: context.appColors.cyan),

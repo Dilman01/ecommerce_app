@@ -120,5 +120,5 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(kToolbarHeight + 20);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 20);
 }

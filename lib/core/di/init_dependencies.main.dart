@@ -33,7 +33,7 @@ Future<void> _initAuth() async {
       () => AuthRemoteDataSourceImpl(sl()),
     )
     ..registerLazySingleton<AuthLocalDataSource>(
-      () => AuthLocalDataSourceImpl(),
+      () => const AuthLocalDataSourceImpl(),
     )
     ..registerLazySingleton<AuthRepository>(
       () => AuthRepositoryImpl(sl(), sl()),

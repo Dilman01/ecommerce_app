@@ -21,7 +21,7 @@ class CartScreen extends StatelessWidget {
       body: BlocBuilder<CartBloc, CartState>(
         builder: (context, state) {
           if (state.products.isEmpty) {
-            return EmptyCart();
+            return const EmptyCart();
           }
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),

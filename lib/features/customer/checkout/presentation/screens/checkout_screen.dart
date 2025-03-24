@@ -45,7 +45,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             stepIconMargin: EdgeInsets.zero,
             connectorThickness: 1,
             connectorColor: WidgetStatePropertyAll(context.appColors.grey100),
-            stepIconBuilder: (stepIndex, stepState) => SizedBox.shrink(),
+            stepIconBuilder: (stepIndex, stepState) => const SizedBox.shrink(),
             controlsBuilder:
                 (context, details) => CustomButton(
                   onPressed: () {
@@ -108,11 +108,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   ),
                 ),
                 isActive: currentStep == 0,
-                stepStyle: StepStyle(color: Colors.transparent),
+                stepStyle: const StepStyle(color: Colors.transparent),
                 content: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [ShippingForm(), SizedBox(height: 12.h)],
+                  children: [const ShippingForm(), SizedBox(height: 12.h)],
                 ),
               ),
               Step(
@@ -148,11 +148,11 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   ),
                 ),
                 isActive: currentStep == 1,
-                stepStyle: StepStyle(color: Colors.transparent),
+                stepStyle: const StepStyle(color: Colors.transparent),
                 content: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [PaymentForm(), SizedBox(height: 30.h)],
+                  children: [const PaymentForm(), SizedBox(height: 30.h)],
                 ),
               ),
               Step(
@@ -186,8 +186,8 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   ),
                 ),
                 isActive: currentStep == 2,
-                stepStyle: StepStyle(color: Colors.transparent),
-                content: ReviewContent(),
+                stepStyle: const StepStyle(color: Colors.transparent),
+                content: const ReviewContent(),
               ),
             ],
           ),

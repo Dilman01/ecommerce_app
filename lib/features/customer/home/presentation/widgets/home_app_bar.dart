@@ -22,7 +22,7 @@ class HomeAppBar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SvgPicture.asset(context.assets.appIcon, height: 32.h),
-        Spacer(),
+        const Spacer(),
         GestureDetector(
           onTap: () {
             context.pushNamed(RouteNames.search);

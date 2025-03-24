@@ -98,7 +98,7 @@ class UserAvatarImage extends StatelessWidget {
                   ),
                 )
               else
-                SizedBox.shrink(),
+                const SizedBox.shrink(),
             ],
           ),
         );

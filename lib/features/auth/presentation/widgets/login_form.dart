@@ -79,7 +79,7 @@ class _LoginFormState extends State<LoginForm> {
                       obscureText = !obscureText;
                     });
                   },
-                  icon: Icon(Icons.remove_red_eye_outlined),
+                  icon: const Icon(Icons.remove_red_eye_outlined),
                 ),
                 obscureText: obscureText,
                 enableSuggestions: false,

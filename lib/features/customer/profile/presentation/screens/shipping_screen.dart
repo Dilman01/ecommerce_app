@@ -23,7 +23,7 @@ class ShippingScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ShippingForm(),
+              const ShippingForm(),
               SizedBox(height: 80.h),
               CustomButton(
                 onPressed: () {

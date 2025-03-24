@@ -26,12 +26,12 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
           bottom: PreferredSize(
             preferredSize: Size(328.w, 80.h),
 
-            child: TabBarWidget(),
+            child: const TabBarWidget(),
           ),
         ),
 
         body: TabBarView(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,

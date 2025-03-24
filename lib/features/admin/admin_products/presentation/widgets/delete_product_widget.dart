@@ -34,7 +34,7 @@ class DeleteProductWidget extends StatelessWidget {
 
         if (state is DeleteProductSuccess) {
           context.read<GetAllAdminProductsBloc>().add(
-            FetchAllAdminProducts(isLoading: false),
+            const FetchAllAdminProducts(isLoading: false),
           );
           ShowToast.showToastSuccessTop(
             message: 'The Product was deleted successfully!',
