@@ -135,5 +135,9 @@ Future<void> _initAdminProducts() async {
 Future<void> _initAdminUsers() async {
   sl
     ..registerLazySingleton<UsersDataSource>(() => UsersDataSourceImpl(sl()))
-    ..registerLazySingleton<UsersRepository>(() => UsersRepositoryImpl(sl()));
+    ..registerLazySingleton<UsersRepository>(() => UsersRepositoryImpl(sl()))
+    ..registerLazySingleton(() => GetAllUsersUsecase(sl()))
+    ..registerLazySingleton(() => DeleteUserUsecase(sl()))
+    ..registerFactory(() => GetAllUsersBloc(getAllUsersUsecase: sl()))
+    ..registerFactory(() => DeleteUserBloc(deleteUserUsecase: sl()));
 }

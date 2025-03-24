@@ -15,6 +15,7 @@ import 'package:ecommerce_app/features/admin/admin_products/presentation/blocs/g
 import 'package:ecommerce_app/features/admin/admin_products/presentation/screen/admin_products_screen.dart';
 import 'package:ecommerce_app/features/admin/dashboard/presentation/screen/dashboard_screen.dart';
 import 'package:ecommerce_app/features/admin/home/presentation/widget/profile_header.dart';
+import 'package:ecommerce_app/features/admin/users/presentation/blocs/get_all_users/get_all_users_bloc.dart';
 import 'package:ecommerce_app/features/admin/users/presentation/screen/users_screen.dart';
 import 'package:ecommerce_app/features/auth/presentation/bloc/auth_bloc.dart';
 
@@ -43,6 +44,12 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
               (context) =>
                   sl<GetAllAdminProductsBloc>()
                     ..add(FetchAllAdminProducts(isLoading: true)),
+        ),
+        BlocProvider(
+          create:
+              (context) =>
+                  sl<GetAllUsersBloc>()
+                    ..add(FetchAllUsersEvent(isLoading: true)),
         ),
       ],
       child: Scaffold(
