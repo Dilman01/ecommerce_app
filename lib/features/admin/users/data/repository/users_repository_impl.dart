@@ -23,7 +23,7 @@ class UsersRepositoryImpl implements UsersRepository {
   }
 
   @override
-  Future<Either<Failure, void>> deleteUser(String userId) async {
+  Future<Either<Failure, void>> deleteUser(int userId) async {
     try {
       final response = await _usersDataSource.deleteUser(userId);
 

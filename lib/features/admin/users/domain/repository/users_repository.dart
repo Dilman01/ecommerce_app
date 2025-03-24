@@ -5,5 +5,5 @@ import 'package:ecommerce_app/features/admin/users/domain/entity/users_entity.da
 
 abstract interface class UsersRepository {
   Future<Either<Failure, List<UsersEntity>>> getAllUsers();
-  Future<Either<Failure, void>> deleteUser(String userId);
+  Future<Either<Failure, void>> deleteUser(int userId);
 }

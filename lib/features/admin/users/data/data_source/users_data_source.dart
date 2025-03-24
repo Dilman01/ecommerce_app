@@ -5,7 +5,7 @@ import 'package:ecommerce_app/features/admin/users/data/model/users_model.dart';
 
 abstract interface class UsersDataSource {
   Future<List<UsersModel>> getAllUsers();
-  Future<void> deleteUser(String userId);
+  Future<void> deleteUser(int userId);
 }
 
 class UsersDataSourceImpl implements UsersDataSource {
@@ -27,7 +27,7 @@ class UsersDataSourceImpl implements UsersDataSource {
   }
 
   @override
-  Future<void> deleteUser(String userId) async {
+  Future<void> deleteUser(int userId) async {
     try {
       await _dio.delete('${ApiConstants.users}/$userId');
     } on ServerException catch (e) {
