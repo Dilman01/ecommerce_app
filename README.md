@@ -2,7 +2,7 @@
 
 ![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
 
-An intuitive and modern e-commerce app designed for both customers and admins to browse, browse, and organize product listings efficiently.
+An intuitive and modern e-commerce app designed for both customers and admins to browse and organize product listings efficiently.
 
 **Note:** This app uses the [Platzi Fake Store API](https://fakeapi.platzi.com/en/about/introduction/).
 
